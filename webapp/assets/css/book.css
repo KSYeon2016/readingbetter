@@ -7,7 +7,7 @@
 #list h2	{ text-align: left; margin-bottom:30px; }
 #list #search-form { text-align:center; margin-bottom:20px; }
 #list #book-table { 
-	width:800px;
+	width:900px;
 	border:1px solid #333;
 	font-size:15px;
 	text-align:center;
@@ -15,7 +15,7 @@
 }
 #list #book-table,
 #list #book-table td { padding:5px; }
-#list .img-thumbnail	{ width:200px; heigt:200px; }
+#list .img-thumbnail   { max-width:150px; width:auto; max-height:150px; }
 #list .table-right	{ text-align:right; }
 #list .table-left	{ text-align:left; }
 

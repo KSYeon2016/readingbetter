@@ -22,87 +22,93 @@
 </head>
 <body>
 <input type="hidden" class="category" value="honor">
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-			<div id="navigation" class="col-lg-2">
-				<c:import url='/WEB-INF/views/include/navi_ranking.jsp' />
-			</div>
-			<div id="content" class="col-lg-10">
-				<div id="honor">
-					<div class="small-menu">
-						<a href="/readingbetter/main">홈</a> > 
-						<a href="/readingbetter/ranking/summary">순위</a> > 명예의 전당
-					</div>
-					<div id="top3" class="col-lg-6">
-						<p id="title">★ Reading Better Top 3 ★</p>
-						<div id="graph"></div>
-						<!-- 구글 차트로 데이터 전송 -->
-						<c:forEach items="${totalTopRanker }" var="scoresvo" varStatus="status">
-							<input type="hidden" name="id${status.index }" value="${scoresvo.id }">
-							<input type="hidden" name="score${status.index }" value="${scoresvo.totalScore }">
-						</c:forEach>
-						
-					</div>
 
-					<!-- table -->
-					<div id="honor-table" class="col-lg-6">
-						<p id="title">명예의 전당 - Top 10</p>
-						<br>
-						<table id="rtable" class="table table-striped">
-							<colgroup>
-								<col width="20%" />
-								<col width="40%" />
-								<col width="40%" />
-							</colgroup>
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
+
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_ranking.jsp' />
+	</div>
+	
+	<div id="cont">
+		<div id="honor">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > 
+				<a href="/readingbetter/ranking/summary">순위</a> > 명예의 전당
+			</div>
+
+			<div id="top3" class="col-lg-6">
+				<p id="title">★ Reading Better Top 3 ★</p>
+				<div id="graph"></div>
+
+				<!-- 구글 차트로 데이터 전송 -->
+				<c:forEach items="${totalTopRanker }" var="scoresvo" varStatus="status">
+					<input type="hidden" name="id${status.index }" value="${scoresvo.id }">
+					<input type="hidden" name="score${status.index }" value="${scoresvo.totalScore }">
+				</c:forEach>
+			</div>
+
+			<!-- table -->
+			<div id="honor-table" class="col-lg-6">
+				<p id="title">명예의 전당 - Top 10</p>
+				<br>
+				<table id="rtable" class="table table-striped">
+					<colgroup>
+						<col width="20%" />
+						<col width="40%" />
+						<col width="40%" />
+					</colgroup>
+					<tr>
+						<th>순위</th>
+						<th>아이디</th>
+						<th>점수</th>
+					</tr>
+					<c:forEach items="${honor }" end="10" var="rankingvo">
+						<tr>
+							<td>${rankingvo.rank }</td>
+							<td>${rankingvo.id }</td>
+							<td>${rankingvo.totalScore }</td>
+						<tr>
+					</c:forEach>
+				</table>
+				<br> <br>
+			</div>
+
+			<div>
+				<p id="title">나의 순위</p>
+				<br>
+				<table id="myhonor" class="table table-striped">
+					<colgroup>
+						<col width="20%" />
+						<col width="40%" />
+						<col width="40%" />
+					</colgroup>
+					<tr>
+						<th>순위</th>
+						<th>아이디</th>
+						<th>점수</th>
+					</tr>
+					<c:choose>
+						<c:when test="${not empty sessionScope.authUser}">
 							<tr>
-								<th>순위</th>
-								<th>아이디</th>
-								<th>점수</th>
+								<td>${myTotalRank.rank }</td>
+								<td>${myTotalRank.id }</td>
+								<td>${myTotalRank.myTotalScore }</td>
 							</tr>
-							<c:forEach items="${honor }" end="10" var="rankingvo">
-								<tr>
-									<td>${rankingvo.rank }</td>
-									<td>${rankingvo.id }</td>
-									<td>${rankingvo.totalScore }</td>
-								<tr>
-							</c:forEach>
-						</table>
-						<br> <br>
-					</div>
-					<div>
-						<p id="title">나의 순위</p>
-						<br>
-						<table id="myhonor" class="table table-striped">
-							<colgroup>
-								<col width="20%" />
-								<col width="40%" />
-								<col width="40%" />
-							</colgroup>
-							<tr>
-								<th>순위</th>
-								<th>아이디</th>
-								<th>점수</th>
-							</tr>
-							<c:choose>
-								<c:when test="${not empty sessionScope.authUser}">
-									<tr>
-										<td>${myTotalRank.rank }</td>
-										<td>${myTotalRank.id }</td>
-										<td>${myTotalRank.myTotalScore }</td>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<td colspan=3>로그인이 필요한 기능입니다</td>
-								</c:otherwise>
-							</c:choose>
-						</table>
-						<br> <br>
-					</div>
-				</div>
+						</c:when>
+						<c:otherwise>
+							<td colspan=3>로그인이 필요한 기능입니다</td>
+						</c:otherwise>
+					</c:choose>
+				</table>
+				<br> <br>
 			</div>
 		</div>
-		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>
+</div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>

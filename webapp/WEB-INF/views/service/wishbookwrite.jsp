@@ -18,56 +18,60 @@
 </head>
 <body>
 <input type="hidden" class="category" value="wishbook">
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-			<div id="navigation" class="col-lg-2">
-				<c:import url='/WEB-INF/views/include/navi_service.jsp' />
-			</div>
-			<div id="content" class="col-lg-10">
-				<div id="wishbookwrite">
-					<div class="small-menu">
-						<a href="/readingbetter/main">홈</a> > 
-						<a href="/readingbetter/service/noticelist">고객센터</a> > 
-						<a href="/readingbetter/service/wishbooklist"> 희망도서 신청</a> > 글쓰기
-					</div>
 
-					<form action="/readingbetter/service/wishbookwrite" method="post">
-						<p class="menu-title">희망도서 신청</p>
-						<div id="board">
-							<table class="table table-bordered ">
-								<tr>
-									<th class="active">책 제목</th>
-									<td colspan=3>
-										<input type="text" class="form-control" name="title" placeholder="필수 입력">
-									</td>
-								</tr>
-								<tr>
-									<th class="active">출판사</th>
-									<td>
-										<input type="text" class="form-control" name="publisher" placeholder="필수 입력">
-									</td>
-								</tr>
-								<tr>
-									<th colspan=4 class="active">책 소개 (또는 추천 이유)</th>
-								</tr>
-								<tr>
-									<td colspan=4>
-										<textarea class="form-control" rows="10" placeholder="내용을 입력하세요." name="reason"></textarea>
-									</td>
-								</tr>
-							</table>
-							
-							<div id="buttonalign">
-								<button type="submit" class="btn btn-default">작성</button>
-								<br><br>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<c:import url='/WEB-INF/views/include/footer.jsp' />
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
+
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_service.jsp' />
 	</div>
+	
+	<div id="cont">
+		<div id="wishbookwrite">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > 
+				<a href="/readingbetter/service/noticelist">고객센터</a> > 
+				<a href="/readingbetter/service/wishbooklist"> 희망도서 신청</a> > 글쓰기
+			</div>
+
+			<form action="/readingbetter/service/wishbookwrite" method="post">
+				<p class="menu-title">희망도서 신청</p>
+				<div id="board">
+					<table class="table table-bordered ">
+						<tr>
+							<th class="active">책 제목</th>
+							<td colspan=3>
+								<input type="text" class="form-control" name="title" placeholder="필수 입력">
+							</td>
+						</tr>
+						<tr>
+							<th class="active">출판사</th>
+							<td>
+								<input type="text" class="form-control" name="publisher" placeholder="필수 입력">
+							</td>
+						</tr>
+						<tr>
+							<th colspan=4 class="active">책 소개 (또는 추천 이유)</th>
+						</tr>
+						<tr>
+							<td colspan=4>
+								<textarea class="form-control" rows="10" placeholder="내용을 입력하세요." name="reason"></textarea>
+							</td>
+						</tr>
+					</table>
+							
+					<div id="buttonalign">
+						<button type="submit" class="btn btn-default">작성</button>
+						<br><br>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>

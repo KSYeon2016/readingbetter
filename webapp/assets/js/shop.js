@@ -26,7 +26,7 @@ $(function() {
 		var title = $("#title").text();
 		var point = $("#point").val();
 		
-		if (point < price) {
+		if (parseInt(point) < parseInt(price)) {
 			alert("캔디가 부족합니다");
 			return;
 		}

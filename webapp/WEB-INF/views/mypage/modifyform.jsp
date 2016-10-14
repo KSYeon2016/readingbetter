@@ -20,115 +20,121 @@
 <body>
 <input type="hidden" class="category" value="info">
 <input type="hidden" id="authUserEmail" value="${vo.email }">
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-			<div id="navigation" class="col-lg-2">
-				<c:import url='/WEB-INF/views/include/navi_mypage.jsp' />
+
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
+
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_mypage.jsp' />
+	</div>
+	
+	<div id="cont">
+		<div id="chage">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > 
+				<a href="/readingbetter/mypage/info">내정보</a> > 
+				<a href="/readingbetter/mypage/info">내정보 보기</a> > 내정보 수정
 			</div>
-			<div id="content" class="col-lg-10">
-				<div id="chage">
-					<div class="small-menu">
-						<a href="/readingbetter/main">홈</a> > <a
-							href="/readingbetter/mypage/info">내정보</a> > <a
-							href="/readingbetter/mypage/info">내정보 보기</a> > 내정보 수정
+
+			<p class="menu-title">내 정보 수정</p>
+
+			<div id="radio-group">
+				<form id="modify-form" class="form-horizontal" action="/readingbetter/mypage/modify" method="POST">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">이름</label>
+						<div class="col-sm-6">
+							<input type="text" name="name" class="form-control" id="inputName" placeholder="Name" value="${vo.name }">
+						</div>
 					</div>
-					<p class="menu-title">내 정보 수정</p>
 
-					<div id="radio-group">
-						<form id="modify-form" class="form-horizontal" action="/readingbetter/mypage/modify" method="POST">
-							<div class="form-group">
-								<label class="col-sm-3 control-label">이름</label>
-								<div class="col-sm-6">
-									<input type="text" name="name" class="form-control" id="inputName" placeholder="Name" value="${vo.name }">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-3 control-label">비밀번호</label>
-								<div class="col-sm-6">
-									<input type="password" name="pw" class="form-control" id="inputPassword" placeholder="Password">
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<label class="col-sm-3 control-label">비밀번호 확인</label>
-								<div class="col-sm-6">
-									<input type="password" name="check-pw" class="form-control" id="inputPasswordConfirm" placeholder="Password check">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-3 control-label">이메일</label>
-								<div class="col-sm-6">
-									<input type="Email" name="email" class="form-control" id="inputEmail" placeholder="Email" value="${vo.email }">
-								</div>
-								<div class="col-sm-1">
-									<img id="image-emailchecked" style="width:16px;" src="/readingbetter/assets/images/check.png"/>
-									<a class="btn btn-default" style="display:none" role="button" id="check-email">중복확인</a>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-3 control-label">전화번호</label>
-								<div class="col-sm-6">
-									<input type="text" name="tel" class="form-control" id="inputPhone" placeholder="PhoneNumber" value="${vo.tel }">
-								</div>
-							</div>
-
-							<c:choose>
-								<c:when test="${vo.schoolName == '기타' }">
-									<label class="radio-inline"> 
-										<input type="radio" name="element" id="element" value="option1">초등학생
-									</label> 
-									<label class="radio-inline"> 
-										<input type="radio" name="etc" id="etc" value="option3" checked>기타
-									</label> <br> <br>
-								</c:when>
-								<c:otherwise>
-									<label class="radio-inline"> 
-										<input type="radio" name="inlineRadioOptions" id="element" value="option1" checked>초등학생
-									</label> 
-									<label class="radio-inline"> 
-										<input type="radio" name="inlineRadioOptions" id="etc" value="option3">기타
-									</label> <br> <br>
-								</c:otherwise>
-							</c:choose>
-							
-							<div id="school-info">
-								<div class="form-group">
-									<label class="col-sm-3 control-label">학교이름</label>
-									<div class="col-sm-6">
-										<input type="text" name="schoolName" class="form-control" id="inputSchoolName" placeholder="SchoolName" readOnly value="${vo.schoolName }">
-									</div>
-									<div class="col-sm-1">
-										<button type="button" class="btn btn-default" id="btn-searchschool">찾기</button>
-									</div>
-								</div>
-	
-								<div class="form-group">
-									<label class="col-sm-3 control-label">학년</label>
-									<div class="col-sm-6">
-										<input type="text" name="grade" class="form-control" id="inputSchoolGrade"
-											placeholder="Grade" value=${vo.grade }>
-									</div>
-								</div>
-	
-								<div class="form-group">
-									<label class="col-sm-3 control-label">반</label>
-									<div class="col-sm-6">
-										<input type="text" name="classNo" class="form-control" id="inputSchoolClass" placeholder="Class" value="${vo.classNo }">
-									</div>
-								</div>
-							</div>
-							<button class="btn btn-default" type="submit">수정하기</button>
-						</form>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">비밀번호</label>
+						<div class="col-sm-6">
+							<input type="password" name="pw" class="form-control" id="inputPassword" placeholder="Password">
+						</div>
 					</div>
-				</div>
+							
+					<div class="form-group">
+						<label class="col-sm-3 control-label">비밀번호 확인</label>
+						<div class="col-sm-6">
+							<input type="password" name="check-pw" class="form-control" id="inputPasswordConfirm" placeholder="Password check">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">이메일</label>
+						<div class="col-sm-6">
+							<input type="Email" name="email" class="form-control" id="inputEmail" placeholder="Email" value="${vo.email }">
+						</div>
+
+						<div class="col-sm-1">
+							<img id="image-emailchecked" style="width:16px;" src="/readingbetter/assets/images/check.png"/>
+							<a class="btn btn-default" style="display:none" role="button" id="check-email">중복확인</a>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">전화번호</label>
+						<div class="col-sm-6">
+							<input type="text" name="tel" class="form-control" id="inputPhone" placeholder="PhoneNumber" value="${vo.tel }">
+						</div>
+					</div>
+
+					<c:choose>
+						<c:when test="${vo.schoolName == '기타' }">
+							<label class="radio-inline"> 
+								<input type="radio" name="element" id="element" value="option1">초등학생
+							</label> 
+							<label class="radio-inline"> 
+								<input type="radio" name="etc" id="etc" value="option3" checked>기타
+							</label> <br> <br>
+						</c:when>
+						<c:otherwise>
+							<label class="radio-inline"> 
+								<input type="radio" name="inlineRadioOptions" id="element" value="option1" checked>초등학생
+							</label> 
+							<label class="radio-inline"> 
+								<input type="radio" name="inlineRadioOptions" id="etc" value="option3">기타
+							</label> <br> <br>
+						</c:otherwise>
+					</c:choose>
+							
+					<div id="school-info">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">학교이름</label>
+							<div class="col-sm-6">
+								<input type="text" name="schoolName" class="form-control" id="inputSchoolName" placeholder="SchoolName" readOnly value="${vo.schoolName }">
+							</div>
+							<div class="col-sm-1">
+								<button type="button" class="btn btn-default" id="btn-searchschool">찾기</button>
+							</div>
+						</div>
+	
+						<div class="form-group">
+							<label class="col-sm-3 control-label">학년</label>
+							<div class="col-sm-6">
+								<input type="text" name="grade" class="form-control" id="inputSchoolGrade" placeholder="Grade" value=${vo.grade }>
+							</div>
+						</div>
+	
+						<div class="form-group">
+							<label class="col-sm-3 control-label">반</label>
+							<div class="col-sm-6">
+								<input type="text" name="classNo" class="form-control" id="inputSchoolClass" placeholder="Class" value="${vo.classNo }">
+							</div>
+						</div>
+					</div>
+
+					<button class="btn btn-default" type="submit">수정하기</button>
+				</form>
 			</div>
 		</div>
-		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>
+</div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>
 

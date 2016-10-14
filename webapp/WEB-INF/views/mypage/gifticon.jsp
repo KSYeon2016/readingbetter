@@ -18,80 +18,89 @@
 <script type="text/javascript" src="/readingbetter/assets/js/gifticon.js"></script>
 </head>
 <body>
-<input type="hidden" class="category" value="history">
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-			<div id="navigation" class="col-lg-2">
-				<c:import url='/WEB-INF/views/include/navi_mypage.jsp' />
-			</div>
-			<div id="content" class="col-lg-10">
-				<div id="history">
-					<div class="small-menu">
-						<a href="/readingbetter/main">홈</a> > <a
-							href="/readingbetter/mypage/info">내 정보</a> > 기프키콘
-					</div>
-					<p class="menu-title">나의 기프티콘 보기</p>
-					<br>
-					
-						<br> <br>
-					<table id="history-table" class="table table-striped">
-						<tr>
-							<th>번호</th>
-							<th>상품명</th>
-							<th>획득날짜</th>
-							<th>기한</th>
-						</tr>
-						<c:forEach var='vo' items='${list}' varStatus='s'>
-					
-						<tr>
-							<td>${vo.no }</td>
-							<td>${vo.title }</td>
-							<td id=date >${vo.getDate }</td>	
-							<td>30일</td>
-						</tr>
-						</c:forEach>
-					</table>
-					<br>
-					<!-- begin:paging -->
-					<div class="pager">
-						<ul>
-							<c:if test="${beginPage>1 }">
-								<li>
-									<a href="/readingbetter/mypage/gifticon?pageNo=${beginPage-1 }">◀</a>
-									<input type="hidden" name="pageNo" value="${beginPage-1 }">
-								</li>
-							</c:if>
-							<c:forEach begin='${beginPage }' end='${endPage }' step='1' var='i'>
-								<c:choose>
-									<c:when test='${currentPage == i }'>
-										<li class="selected">${i }</li>
-									</c:when>
-								<c:otherwise>
-									<li>
-										<a href="/readingbetter/mypage/gifticon?pageNo=${i }">${i }</a>
-										<input type="hidden" name="pageNo" value="${i}">
-									</li>
-								</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						
-							<c:if test='${endPage<total }'>
-								<li>
-									<a href="/readingbetter/mypage/gifticon?pageNo=${endPage+1 }">▶</a>
-									<input type="hidden" name="pageNo" value="${endPage+1}">
-								</li>
-							</c:if>
-						</ul>
-					</div>
-					<!-- end:paging -->
+<input type="hidden" class="category" value="gifticon">
 
-					
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
 
-				</div>
-			</div>
-		</div>
-		<c:import url='/WEB-INF/views/include/footer.jsp' />
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_mypage.jsp' />
 	</div>
+	
+	<div id="cont">
+		<div id="history">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > 
+				<a href="/readingbetter/mypage/info">내 정보</a> > 기프키콘
+			</div>
+
+			<p class="menu-title">나의 기프티콘 보기</p>
+			<br>
+				
+			<br> <br>
+			<table id="history-table" class="table table-striped">
+				<tr>
+					<th>번호</th>
+					<th>상품명</th>
+					<th>획득날짜</th>
+					<th>기한</th>
+				</tr>
+
+				<c:forEach var='vo' items='${list}' varStatus='s'>
+					<tr>
+						<td>${vo.no }</td>
+						<td>${vo.title }</td>
+						<td>${vo.getDate }</td>
+						<td>	
+							<c:choose>
+								<c:when test="${vo.limit ==30}">만료되었습니다.</c:when>
+		                        <c:when test="${vo.limit<30}">${30-vo.limit }</c:when>
+							</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+			<br>
+			
+			<!-- begin:paging -->
+			<div class="pager">
+				<ul>
+					<c:if test="${beginPage>1 }">
+						<li>
+							<a href="/readingbetter/mypage/gifticon?pageNo=${beginPage-1 }">◀</a>
+							<input type="hidden" name="pageNo" value="${beginPage-1 }">
+						</li>
+					</c:if>
+
+					<c:forEach begin='${beginPage }' end='${endPage }' step='1' var='i'>
+						<c:choose>
+							<c:when test='${currentPage == i }'>
+								<li class="selected">${i }</li>
+							</c:when>
+							<c:otherwise>
+								<li>
+									<a href="/readingbetter/mypage/gifticon?pageNo=${i }">${i }</a>
+									<input type="hidden" name="pageNo" value="${i}">
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+						
+					<c:if test='${endPage<total }'>
+						<li>
+							<a href="/readingbetter/mypage/gifticon?pageNo=${endPage+1 }">▶</a>
+							<input type="hidden" name="pageNo" value="${endPage+1}">
+						</li>
+					</c:if>
+				</ul>
+			</div>
+			<!-- end:paging -->
+		</div>
+	</div>
+</div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>

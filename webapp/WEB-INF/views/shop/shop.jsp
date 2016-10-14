@@ -18,52 +18,58 @@
 <script type="text/javascript" src="/readingbetter/assets/js/shop.js"></script>
 </head>
 <body>
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-		<div id="navigation" class="col-lg-2">
-			<c:import url='/WEB-INF/views/include/navi_shop.jsp' />
-		</div>
-		<div id="content" class="col-lg-10">
-			<div id="shop">
-				<div class="small-menu">
-					<a href="/readingbetter/main">홈</a> > 상점
-				</div>
-				<p class="menu-title">상점</p>
-				<p id="myPoint">내 캔디수 : ${scoresVo.point }</p>
-				<div class="imggroup">
-					<c:forEach var='vo' items='${getGoodsList}' varStatus='s'> 
-						<div class="col-lg-3">
-							<!-- Button trigger modal -->
-							<c:choose>
-								<c:when test="${not empty sessionScope.authUser}">
-									<button name=no value="${vo.no }" type="button" class="btn btn-default btn-confirm"  data-toggle="modal" data-target="#myModal">
-										<img id="img-shop" class="img-thumbnail" src="${vo.cover }" />
-									</button>
-								</c:when>
-								<c:otherwise>
+
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
+
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_shop.jsp' />
+	</div>
+	
+	<div id="cont">
+		<div id="shop">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > 상점
+			</div>
+
+			<p class="menu-title">상점</p>
+			<p id="myPoint">내 캔디수 : ${scoresVo.point }</p>
+
+			<div class="imggroup">
+				<c:forEach var='vo' items='${getGoodsList}' varStatus='s'> 
+					<div class="col-lg-3">
+						<!-- Button trigger modal -->
+						<c:choose>
+							<c:when test="${not empty sessionScope.authUser}">
+								<button name=no value="${vo.no }" type="button" class="btn btn-default btn-confirm"  data-toggle="modal" data-target="#myModal">
 									<img id="img-shop" class="img-thumbnail" src="${vo.cover }" />
-								</c:otherwise>
-							</c:choose>
+								</button>
+							</c:when>
+							<c:otherwise>
+								<img id="img-shop" class="img-thumbnail" src="${vo.cover }" />
+							</c:otherwise>
+						</c:choose>
 							
-							<table class="table">
-								<tr>
-									<td>상품명</td><br>
-									<td>${vo.title }</td>
-								</tr>
-								<tr>
-									<td>개수</td><br>
-									<td>${vo.price }</td>
-								</tr>
-							</table><br>
-						</div>
-					</c:forEach>
-				</div>
+						<table class="table">
+							<tr>
+								<td>상품명</td><br>
+								<td>${vo.title }</td>
+							</tr>
+							<tr>
+								<td>개수</td><br>
+								<td>${vo.price }</td>
+							</tr>
+						</table><br>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
-	<c:import url='/WEB-INF/views/include/footer.jsp' />
 </div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>
 

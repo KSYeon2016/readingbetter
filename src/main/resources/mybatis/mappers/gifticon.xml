@@ -11,23 +11,43 @@
 	
 	<select id="listid" parameterType="gifticonvo" resultType="gifticonvo">
 		<![CDATA[
-			select  no,title,cover,get_date as getDate,member_no from gifticon where member_no=#{memberNo}
+			select c.no,
+				   c.cover,
+				   c.get_date,
+				   c.member_no,
+				   c.title,
+				   to_date(Sysdate) - to_date(c.get_date) as limit,
+				   c.get_date as getDate 
+				from (select no,
+							 cover,
+							 member_no,
+							 title,
+							 get_date 
+						from gifticon 
+						where member_no = #{memberNo}) c 
 		]]>
 	</select>
 	
 	<select id="listpage" parameterType="gifticonvo" resultType="gifticonvo">
 		<![CDATA[
-		select * from(
-		select rownum as rnum,c.*
-  		from(
-        select  no,title,cover,get_date as getDate,
-        member_no from gifticon where member_no=#{memberNo}
-     			 order by getDate desc
-        		)c)
-        	where (#{pageNo}-1)*5+1 <= rnum  and rnum <= #{pageNo}*5		
+		select * 
+			from(select rownum as rnum, d.*
+  					from(select c.no,
+  								c.cover,
+  								c.get_date,
+  								c.member_no,
+  								c.title,
+  								to_date(Sysdate) - to_date(c.get_date) as limit,
+  								c.get_date as getDate 
+  							from (select no,
+  										 cover,
+  										 member_no,
+  										 title,
+  										 get_date 
+  									from gifticon 
+  									where member_no = #{memberNo}) c) d)
+        	where (#{pageNo} - 1) * 5 + 1 <= rnum  and rnum <= #{pageNo} * 5		
 		]]>
 	</select>
-	
-	
 	
 </mapper>

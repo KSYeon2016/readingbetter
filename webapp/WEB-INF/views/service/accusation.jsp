@@ -20,60 +20,67 @@
 </head>
 <body>
 <input type="hidden" class="category" value="notice">
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-			<div class="col-lg-2" id="navigation">
-				<c:import url='/WEB-INF/views/include/navi_service.jsp' />
+
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
+
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_service.jsp' />
+	</div>
+	
+	<div id="cont">
+		<div id="review">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > 
+				<a href="/readingbetter/service/noticelist">고객센터</a> > 
+				<a href="/readingbetter/service/noticelist">공지</a> > 신고
 			</div>
-			<div id="content" class="col-lg-10">
-				<div id="review">
-					<div class="small-menu">
-						<a href="/readingbetter/main">홈</a> > 
-						<a href="/readingbetter/service/noticelist">고객센터</a> > 
-						<a href="/readingbetter/service/noticelist">공지</a> > 신고
-					</div>
-					<p class="menu-title">신고</p>
-					<br>
-					<div>
-						<form method="post" action="../insertComments" id="comments-accusation">
-							<input type="hidden" name="keyNo" value="${vo.no }">
-							<input type="hidden" name="memberNo" value="${authUser.no }">
-							<table id="board" class="table table-bordered">
-								<tr>
-									<th class="active" colspan=5>부당하게 신고할 시 본인에게 불이익이 있을 수 있습니다</th>
-								</tr>
-								<tr>
-									<th class="active">신고자</th>
-									<td colspan=2>${authUser.id }</td>
-									<th class="active">피신고자</th>
-									<td colspan=2>${vo.id }</td>
-								</tr>
-								<tr>
-									<th  class="active" colspan=6>글 내용</th>
-								</tr>
-								<tr>
-									<td id="content" colspan=6>${vo.content }</td>
-								</tr>
-								<tr>
-									<th  class="active" colspan=6>신고 이유</th>
-								</tr>
-								<tr>
-									<td id="content" colspan=6>
-										<input name="reason" type="text" class="form-control">
-									</td>
-								</tr>
-							</table>
+
+			<p class="menu-title">신고</p>
+			<br>
+
+			<div>
+				<form method="post" action="../insertComments" id="comments-accusation">
+					<input type="hidden" name="keyNo" value="${vo.no }">
+					<input type="hidden" name="memberNo" value="${authUser.no }">
+
+					<table id="board" class="table table-bordered">
+						<tr>
+							<th class="active" colspan=5>부당하게 신고할 시 본인에게 불이익이 있을 수 있습니다</th>
+						</tr>
+						<tr>
+							<th class="active">신고자</th>
+							<td colspan=2>${authUser.id }</td>
+							<th class="active">피신고자</th>
+							<td colspan=2>${vo.id }</td>
+						</tr>
+						<tr>
+							<th  class="active" colspan=6>글 내용</th>
+						</tr>
+						<tr>
+							<td id="content" colspan=6>${vo.content }</td>
+						</tr>
+						<tr>
+							<th  class="active" colspan=6>신고 이유</th>
+						</tr>
+						<tr>
+							<td id="content" colspan=6>
+								<input name="reason" type="text" class="form-control">
+							</td>
+						</tr>
+					</table>
 								
-							<div id="buttons">
-								<button type="submit" class="btn btn-default">제출</button>
-							</div>
-						</form>
+					<div id="buttons">
+						<button type="submit" class="btn btn-default">제출</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
-		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>
+</div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>

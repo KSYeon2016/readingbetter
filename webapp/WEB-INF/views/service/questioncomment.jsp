@@ -18,57 +18,63 @@
 </head>
 <body>
 <input type="hidden" class="category" value="question">
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-			<div id="navigation" class="col-lg-2">
-				<c:import url='/WEB-INF/views/include/navi_service.jsp' />
-			</div>
-			<div id="content" class="col-lg-10">
-				<div id="questionwrite">
-					<div class="small-menu">
-						<a href="/readingbetter/main">홈</a> > <a href="/readingbetter/service/noticelist">고객센터</a> > <a href="/readingbetter/service/questionlist">문의 게시판 </a> > 답글 작성
-					</div>
-					<p class="menu-title">문의 답글 작성</p>
-					<form action="/readingbetter/service/questioncomment/write?group=${contents.groupNo }&no=${contents.no}" method="post">
-						<table id="board" class="table table-bordered">
-							<tr>
-								<th id="celltitle" class="active">문의 제목</th>
-								<td>${contents.title }</td>
-							</tr>
-							<tr>
-								<th class="active" colspan=2>문의 내용</th>
-							</tr>
-							<tr>
-								<td id="content" colspan=2>${contents.content }</td>
-							</tr>
-						</table>
 
-						<div id="board">
-							<table id="board" class="table table-bordered">
-								<tr>
-									<th id="celltitle" class="active">제목</th>
-									<td><input type="text" class="form-control" name="title" placeholder="필수 입력"></td>
-								</tr>
-								<tr>
-									<th class="active" colspan=2>내용</th>
-								</tr>
-								<tr>
-									<td id="content" colspan=2><textarea id="sub"
-											class="form-control" name="content" placeholder="내용을 입력하세요."></textarea>
-									</td>
-								</tr>
-							</table>
-						</div>
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
 
-						<div id="buttonalign">
-							<button type="submit" class="btn btn-default">제출</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<c:import url='/WEB-INF/views/include/footer.jsp' />
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_service.jsp' />
 	</div>
+	
+	<div id="cont">
+		<div id="questionwrite">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > <a href="/readingbetter/service/noticelist">고객센터</a> > <a href="/readingbetter/service/questionlist">문의 게시판 </a> > 답글 작성
+			</div>
+
+			<p class="menu-title">문의 답글 작성</p>
+
+			<form action="/readingbetter/service/questioncomment/write?group=${contents.groupNo }&no=${contents.no}" method="post">
+				<table id="board" class="table table-bordered">
+					<tr>
+						<th id="celltitle" class="active">문의 제목</th>
+						<td>${contents.title }</td>
+					</tr>
+					<tr>
+						<th class="active" colspan=2>문의 내용</th>
+					</tr>
+					<tr>
+						<td id="content" colspan=2>${contents.content }</td>
+					</tr>
+				</table>
+
+				<div id="board">
+					<table id="board" class="table table-bordered">
+						<tr>
+							<th id="celltitle" class="active">제목</th>
+							<td><input type="text" class="form-control" name="title" placeholder="필수 입력"></td>
+						</tr>
+						<tr>
+							<th class="active" colspan=2>내용</th>
+						</tr>
+						<tr>
+							<td id="content" colspan=2>
+								<textarea id="sub" class="form-control" name="content" placeholder="내용을 입력하세요."></textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div id="buttonalign">
+					<button type="submit" class="btn btn-default">제출</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>

@@ -3,7 +3,7 @@ body			{ font:13px "맑은 고딕", 돋움, 굴림; text-align:center; }
 html, body		{ height :100% !important;}
 ul, ol			{ list-style-type: none }
 
-.container-fluid {height: 83%;}
+/* .container-fluid {height: 83%;}
 #header {
 	height: 100%;
 	background-color: #B6E1EA;
@@ -33,6 +33,55 @@ ul, ol			{ list-style-type: none }
 }
 
 #footer {
+	height: 60px;
+	background-color: #F3FAFB;
+} */
+
+#header {
+	position: relative;
+	z-index: 20;
+	height: auto;
+	background-color: #B6E1EA;
+	padding: 10px;
+	background-image:
+		url("http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/bg_header.png");
+	background-repeat: repeat;
+	margin: 0px;
+}
+
+#wrap {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	min-height: 700px;
+	padding-bottom: 20px;
+}
+
+#menu {
+	width: 200px;
+	float: left;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	background-color:#D9F0F4;
+	font-size:15px;
+	padding: 10px;
+}
+
+#cont {
+	margin-left: 200px;
+	display: block;
+}
+
+.cont-box {
+	background-color: #ffff00;
+}
+
+#footer {
+	position: relative;
+	clear: both;
+	width: 100%;
 	height: 60px;
 	background-color: #F3FAFB;
 }
@@ -68,27 +117,21 @@ div#header #anim {
 div#header .tbl-category {
 	margin-left: auto;
 	margin-right: auto;
-	
 }
 
 /* navigation */
-div#navigation   { 
-	background-color:#D9F0F4; 
-	height: 100%; 
-	font-size:15px;
-}
-div#navigation ul   { width:100%;}
-div#navigation li   { width:100%; background-color:#D9F0F4; border:1px solid #DADADA;}
-div#navigation li a   { display:block; color:#4F4F4F; width:100%; padding:5px 10px;}
-div#navigation li:hover { background-color:#F7FCFD; }
-div#navigation p#category {
+div#menu ul   { width:100%;}
+div#menu li   { width:100%; background-color:#D9F0F4; border:1px solid #DADADA;}
+div#menu li a   { display:block; color:#4F4F4F; width:100%; padding:5px 10px;}
+div#menu li:hover { background-color:#F7FCFD; }
+div#menu p#category {
    width: 100%;
    text-align: left;
    font-size: 1.5em;
    margin: 10px 0;
    color: #f55;
 }
-div#navigation a.selected-navi {
+div#menu a.selected-navi {
 	background-color:#F7FCFD;
 }
 

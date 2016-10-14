@@ -165,4 +165,9 @@ public class MainController {
 	public void removeAttend(HttpSession session){
 		session.removeAttribute("checkAttend");
 	}
+	
+	@RequestMapping(value = "/newmain")
+	public String newMain(){
+		return "main/index";
+	}
 }

@@ -24,3 +24,7 @@ START WITH 1
 INCREMENT BY 1;
 
 commit;
+
+select * from member;
+select * from school;
+insert into school values(0, '기타');

@@ -18,98 +18,101 @@
 </head>
 <body>
 <input type="hidden" class="category" value="wishbook">
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-			<div class="col-lg-2" id="navigation">
-				<c:import url='/WEB-INF/views/include/navi_service.jsp' />
-			</div>
-			<div class="col-lg-10">
-				<div class="small-menu">
-					<a href="/readingbetter/main">홈</a> > 
-					<a href="/readingbetter/service/noticelist">고객센터</a> > 희망도서 신청
-				</div>
-				<p class="menu-title">희망도서 신청</p>
-				<form id="search_form" action="" method="get">
-					<input type="text" id="wKwd" name="wKwd" value="${wKwd}">
-					<input type="submit" value="찾기">
-				</form>
-				
-				<div id="board">
-					<table class="table table-bordered">
-						<tr>
-							<th class="th-board-no active">번호</th>
-							<th class="th-board-title active">제목</th>
-							<th class="th-board-writer active">글쓴이</th>
-							<th class="active">추천수</th>
-							<th class="active">작성일</th>
-							<th class="active">승인</th>
-						</tr>
-						<c:forEach var='vo' items='${listpage }'>
-							<tr>
-								<td class="board-no">${vo.no }</td>
-								<td class="board-title"><a href="/readingbetter/service/wishbookview?no=${vo.no }">${vo.title }</a></td>
-								<td>${vo.name }</td>
-								<td>${vo.recommend }</td>
-								<td>${vo.regDate }</td>
-								<td>
-								<c:choose>
-									<c:when test="${vo.accept == 0 }">대기</c:when>
-									<c:when test="${vo.accept == 1 }">승인</c:when>
-									<c:when test="${vo.accept == 2 }">반려</c:when>
-								</c:choose>
-								</td>
-							</tr>
-						</c:forEach>
-					</table>
-					
-					<c:if test="${authUser != null }">
-						<div id="button-set">
-							<a class="btn btn-default" href="/readingbetter/service/wishbookwriteform" role="button">글쓰기</a>
-						</div>
-					</c:if>
-					
-					<!-- begin:paging -->
-					<div class="pager">
-						<ul>
-							<c:if test="${beginPage>1 }">
-								<li>
-									<a href="/readingbetter/service/wishbooklist?pageNo=${beginPage-1 }&wKwd=${wKwd}">◀</a>
-									<input type="hidden" name="pageNo" value="${beginPage-1 }">
-								</li>
-							</c:if>
-							<c:forEach begin='${beginPage }' end='${endPage }' step='1' var='i'>
-								<c:choose>
-									<c:when test='${currentPage == i }'>
-										<li class="selected">${i }</li>
-									</c:when>
-								<c:otherwise>
-									<li>
-										<a href="/readingbetter/service/wishbooklist?pageNo=${i }&wKwd=${wKwd}">${i }</a>
-										<input type="hidden" name="pageNo" value="${i}">
-									</li>
-								</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						
-							<c:if test='${endPage<total }'>
-								<li>
-									<a href="/readingbetter/service/wishbooklist?pageNo=${endPage+1 }&wKwd=${wKwd}">▶</a>
-									<input type="hidden" name="pageNo" value="${endPage+1}">
-								</li>
-							</c:if>
-						</ul>
-					</div>
-					<!-- end:paging -->
 
-				</div>
-			</div>
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
+
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_service.jsp' />
+	</div>
+	
+	<div id="cont">
+		<div class="small-menu">
+			<a href="/readingbetter/main">홈</a> > 
+			<a href="/readingbetter/service/noticelist">고객센터</a> > 희망도서 신청
 		</div>
-		<div class="row">
-			<div id="footer" class="col-lg-12">
-				<c:import url='/WEB-INF/views/include/footer.jsp' />
+
+		<p class="menu-title">희망도서 신청</p>
+
+		<form id="search_form" action="" method="get">
+			<input type="text" id="wKwd" name="wKwd" value="${wKwd}">
+			<input type="submit" value="찾기">
+		</form>
+				
+		<div id="board">
+			<table class="table table-bordered">
+				<tr>
+					<th class="th-board-no active">번호</th>
+					<th class="th-board-title active">제목</th>
+					<th class="th-board-writer active">글쓴이</th>
+					<th class="active">추천수</th>
+					<th class="active">작성일</th>
+					<th class="active">승인</th>
+				</tr>
+
+				<c:forEach var='vo' items='${listpage }'>
+					<tr>
+						<td class="board-no">${vo.no }</td>
+						<td class="board-title"><a href="/readingbetter/service/wishbookview?no=${vo.no }">${vo.title }</a></td>
+						<td>${vo.name }</td>
+						<td>${vo.recommend }</td>
+						<td>${vo.regDate }</td>
+						<td>
+						<c:choose>
+							<c:when test="${vo.accept == 0 }">대기</c:when>
+							<c:when test="${vo.accept == 1 }">승인</c:when>
+							<c:when test="${vo.accept == 2 }">반려</c:when>
+						</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+					
+			<c:if test="${authUser != null }">
+				<div id="button-set">
+					<a class="btn btn-default" href="/readingbetter/service/wishbookwriteform" role="button">글쓰기</a>
+				</div>
+			</c:if>
+					
+			<!-- begin:paging -->
+			<div class="pager">
+				<ul>
+					<c:if test="${beginPage>1 }">
+						<li>
+							<a href="/readingbetter/service/wishbooklist?pageNo=${beginPage-1 }&wKwd=${wKwd}">◀</a>
+							<input type="hidden" name="pageNo" value="${beginPage-1 }">
+						</li>
+					</c:if>
+
+					<c:forEach begin='${beginPage }' end='${endPage }' step='1' var='i'>
+						<c:choose>
+							<c:when test='${currentPage == i }'>
+								<li class="selected">${i }</li>
+							</c:when>
+							<c:otherwise>
+								<li>
+									<a href="/readingbetter/service/wishbooklist?pageNo=${i }&wKwd=${wKwd}">${i }</a>
+									<input type="hidden" name="pageNo" value="${i}">
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+						
+					<c:if test='${endPage<total }'>
+						<li>
+							<a href="/readingbetter/service/wishbooklist?pageNo=${endPage+1 }&wKwd=${wKwd}">▶</a>
+							<input type="hidden" name="pageNo" value="${endPage+1}">
+						</li>
+					</c:if>
+				</ul>
 			</div>
+			<!-- end:paging -->
 		</div>
 	</div>
+</div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>

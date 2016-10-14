@@ -18,15 +18,21 @@
 <script type="text/javascript" src="/readingbetter/assets/js/main.js"></script>
 </head>
 <body>
+
 <input type="hidden" name="check-attend" value="${checkAttend }">
-	<div class="container-fluid">
-		<c:import url='/WEB-INF/views/include/header.jsp' />
-		<div class="row asideWrap">
-			<div class="col-lg-2" id="navigation">
-				<c:import url='/WEB-INF/views/include/navi_main.jsp' />
-			</div>
-			<div id="content" class="col-lg-10">
-				<div id="main">
+
+<c:import url='/WEB-INF/views/include/header.jsp' />
+	
+<div id="wrap">
+
+	<div id="menu">
+		<c:import url='/WEB-INF/views/include/navi_main.jsp' />
+	</div>
+	
+	<div id="cont">
+		<div id="main">
+			<div class="container-fluid">
+				<div class="row">
 					<div class="col-lg-6">
 						<div id="today_book_box">
 							<h4>오늘의 책</h4>
@@ -39,7 +45,7 @@
 									<li data-target="#carousel-today-book" data-slide-to="3"></li>
 									<li data-target="#carousel-today-book" data-slide-to="4"></li>
 								</ol>
-							
+
 								<!-- Wrapper for slides -->
 								<div class="carousel-inner" role="listbox">
 									<c:forEach var='vo' items='${todayBookList }' varStatus='s'>
@@ -65,11 +71,11 @@
 								</div>
 
 								<!-- Controls -->
-								<a class="left carousel-control" href="#carousel-today-book" role="button" data-slide="prev"> 
+								<a class="left carousel-control" href="#carousel-today-book" role="button" data-slide="prev">
 									<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 									<span class="sr-only">Previous</span>
 								</a>
-								<a class="right carousel-control" href="#carousel-today-book" role="button" data-slide="next"> 
+								<a class="right carousel-control" href="#carousel-today-book" role="button" data-slide="next">
 									<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 									<span class="sr-only">Next</span>
 								</a>
@@ -80,7 +86,8 @@
 							<h4>공지</h4>
 							<ul id="notice_list">
 								<c:forEach items="${listrecent }" var="noticevo">
-									<li><a href="/readingbetter/service/noticeview/${noticevo.no }">${noticevo.title }</a></li>
+									<li>
+										<a href="/readingbetter/service/noticeview/${noticevo.no }">${noticevo.title }</a></li>
 								</c:forEach>
 							</ul>
 						</div>
@@ -111,6 +118,7 @@
 													</c:forEach>
 												</table>
 											</div>
+											
 											<div id="main_honorrank">
 												<label>명예의 전당 Top 5</label>
 												<table class="table table-striped rank">
@@ -129,12 +137,13 @@
 												</table>
 											</div>
 										</div>
+										
 										<div class="item">
 											<div id="main_schoolrank">
 												<label>이 달의 학교 Top 5</label>
 												<table class="table table-striped rank">
 													<tr>
-														<tr>
+													<tr>
 														<th>순위</th>
 														<th>학교명</th>
 														<th>점수</th>
@@ -148,15 +157,17 @@
 													</c:forEach>
 												</table>
 											</div>
+											
 											<div id="main_graderank">
 												<c:choose>
- 													<c:when test="${mainGrade ne null}">
- 														<label>이 달의 우리 학년 Top 5  - ${monthlyMyGradeRank.grade }학년</label>
- 													</c:when>
- 													<c:otherwise>
- 														<label>이 달의 우리 학년 Top 5</label>
- 													</c:otherwise>
- 												</c:choose>
+													<c:when test="${mainGrade ne null}">
+														<label>이 달의 우리 학년 Top 5 - ${monthlyMyGradeRank.grade }학년</label>
+													</c:when>
+													<c:otherwise>
+														<label>이 달의 우리 학년 Top 5</label>
+													</c:otherwise>
+												</c:choose>
+												
 												<table class="table table-striped rank">
 													<colgroup>
 														<col width="20%" />
@@ -202,8 +213,11 @@
 				</div>
 			</div>
 		</div>
-		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>
+</div>
+	
+<c:import url='/WEB-INF/views/include/footer.jsp' />
+
 </body>
 </html>
 

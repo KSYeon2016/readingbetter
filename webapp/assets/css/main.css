@@ -89,6 +89,10 @@ div#radio-group-information   {
 /* sitemap */
 #sitemap .table	{ text-align:left; }
 #sitemap .quiz	{ padding-left:10px; }
+#sitemap {
+	padding-left: 30px;
+	padding-right: 30px;
+}
 
 /* manual */
 #manual #manual-content	{ 

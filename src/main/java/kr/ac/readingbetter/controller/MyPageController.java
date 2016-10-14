@@ -135,6 +135,7 @@ public class MyPageController {
 
 	@RequestMapping("/gifticon")
 	public String Gifticon(HttpSession session, GifticonVo vo, Model model) {
+		
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 		vo.setMemberNo(authUser.getNo());
 		List<GifticonVo> list = mypageService.ListId(vo);
@@ -158,6 +159,9 @@ public class MyPageController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("total", total);
 		model.addAttribute("list", listpage);
+		
 		return "mypage/gifticon";
+		
 	}
+	
 }

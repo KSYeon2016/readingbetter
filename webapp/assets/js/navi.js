@@ -64,4 +64,8 @@ $(function(){
 	if(category == "wishbook"){
 		$(".wishbook").attr("class", "selected-navi");
 	}
+	
+	if(category == "gifticon"){
+		$(".gifticon").attr("class", "selected-navi");
+	}
 });
