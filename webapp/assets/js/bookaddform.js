@@ -70,9 +70,7 @@ $(function(){
 	$("#search-author-result").on("click", ".search-title-result", function() {
 		$("#authorNo").val($(this).text());
 	});
-});
-
-$(function(){
+	
 	$("#btn-publisher").on("click", function(){		
 		$("#btn-publisher").attr('disabled', true);
 		
@@ -103,7 +101,7 @@ $(function(){
 		});
 	});
 	
-	$("#publisher").change(function() {
+	$("#publisherTitle").change(function() {
 		$("#btn-publisher").attr('disabled', false);
 	});
 	
