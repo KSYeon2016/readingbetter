@@ -33,4 +33,14 @@
 		]]>
 	</delete>
 
+	<!-- 상품 수정 -->
+	<update id="update" parameterType="shopvo">
+		<![CDATA[
+			update goods 
+				set title = #{title}, 
+					price = #{price}, 
+					cover = #{cover} 
+				where no = #{no}
+		]]>
+	</update>
 </mapper>

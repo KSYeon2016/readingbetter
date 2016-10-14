@@ -34,7 +34,7 @@
 					<th>사진</th>
 					<th>상품명</th>
 					<th>가격</th>
-					<th>삭제</th>
+					<th></th>
 				</tr>
 			</thead>
 			<c:forEach items="${getGoodsList}" var="shopVo">
@@ -44,7 +44,10 @@
 						<td><img id="img-shop" class="img-thumbnail" src="${shopVo.cover}" /></td>
 						<td>${shopVo.title}</td>
 						<td>${shopVo.price}</td>
-						<td><a href="/readingbetter/admin/shoplist/delete?no=${shopVo.no}">삭제</a></td>
+						<td>
+							<a href="/readingbetter/admin/shoplist/modifyform?no=${shopVo.no}">수정</a>
+							<a href="/readingbetter/admin/shoplist/delete?no=${shopVo.no}">삭제</a>
+						</td>
 					</tr>
 				</tbody>
 			</c:forEach>

@@ -48,4 +48,24 @@ public class AdminShopController {
 		shopService.goodsDelete(no);
 		return "redirect:/admin/shoplist";
 	}
+	
+	// 상품 수정 폼
+	@RequestMapping(value = "/shoplist/modifyform", method = RequestMethod.GET)
+	public String goodsModifyForm(Long no, Model model){
+		
+		ShopVo shopVo = shopService.getByNo(no);
+		
+		model.addAttribute("vo", shopVo);
+		
+		return "admin/shopmodifyform";
+	}
+	
+	// 상품 수정
+	@RequestMapping(value = "/shoplist/modify")
+	public String goodsModify(ShopVo vo){
+		
+		shopService.update(vo);
+		
+		return "redirect:/admin/shoplist";
+	}
 }

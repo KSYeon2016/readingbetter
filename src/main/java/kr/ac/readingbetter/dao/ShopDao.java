@@ -30,4 +30,8 @@ public class ShopDao {
 		ShopVo vo = sqlSession.selectOne("shop.getByNo", no);
 		return vo;
 	}
+	
+	public void update(ShopVo vo){
+		sqlSession.update("shop.update", vo);
+	}
 }

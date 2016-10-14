@@ -38,10 +38,11 @@ public class ShopService {
 	public List<ShopVo> getList(ShopVo vo) {
 		return shopDao.getList(vo);
 	}
+	
 	//기프티콘 추가
-	 		public void gifticonInsert(GifticonVo vo) {
-	 			gifticonDao.gifticonInsert(vo);
-	 		}
+	public void gifticonInsert(GifticonVo vo) {
+		gifticonDao.gifticonInsert(vo);
+	}
 
 	// 상품 추가
 	public void goodsInsert(ShopVo vo) {
@@ -81,5 +82,9 @@ public class ShopService {
 			e.printStackTrace();
 			return;
 		}
+	}
+	
+	public void update(ShopVo vo){
+		shopDao.update(vo);
 	}
 }

@@ -62,39 +62,39 @@ public class ShopController {
 	}
 
 	// 구입 차감 모달
-		@ResponseBody
-		@RequestMapping(value = "/shop/buy", method = RequestMethod.POST)
-		public ScoresVo shopbuy(HttpSession session,GifticonVo gifticonVo,
-				HistoryVo historyVo, @RequestBody ShopVo vo) throws Exception {
-			// 로그인 정보로 scores 호출
-			MemberVo authUser = (MemberVo) session.getAttribute("authUser");
-			ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
+	@ResponseBody
+	@RequestMapping(value = "/shop/buy", method = RequestMethod.POST)
+	public ScoresVo shopbuy(HttpSession session, GifticonVo gifticonVo, HistoryVo historyVo, @RequestBody ShopVo vo)
+			throws Exception {
+		// 로그인 정보로 scores 호출
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
 
-			// scores update
-			int point = scoresVo.getPoint();
-			point = point - vo.getPrice();
-			scoresVo.setPoint(point);
-			scoresVo.setMemberNo(authUser.getNo());
-			scoresService.scoreUpdate(scoresVo);
+		// scores update
+		int point = scoresVo.getPoint();
+		point = point - vo.getPrice();
+		scoresVo.setPoint(point);
+		scoresVo.setMemberNo(authUser.getNo());
+		scoresService.scoreUpdate(scoresVo);
 
-			// 이메일로 기프티콘 전송
-			shopService.sendEmail(authUser, vo);
+		// 이메일로 기프티콘 전송
+		shopService.sendEmail(authUser, vo);
 
-			// history insert
-			historyVo.setTitle(vo.getTitle());
-			historyVo.setScore(0);
-			historyVo.setPoint(vo.getPrice());
-			historyVo.setMemberNo(authUser.getNo());
-			historyVo.setIdentity(1);
-			historyVo.setKeyNo(vo.getNo());		
-			historyService.insertHistory(historyVo);
-			
-			gifticonVo.setMemberNo(authUser.getNo());
-			gifticonVo.setCover("http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/barcode"+vo.getNo() + ".jpg");
-			gifticonVo.setTitle(vo.getTitle());
-			shopService.gifticonInsert(gifticonVo);
-			
-			
-			return scoresVo;
-		}
+		// history insert
+		historyVo.setTitle(vo.getTitle());
+		historyVo.setScore(0);
+		historyVo.setPoint(vo.getPrice());
+		historyVo.setMemberNo(authUser.getNo());
+		historyVo.setIdentity(1);
+		historyVo.setKeyNo(vo.getNo());
+		historyService.insertHistory(historyVo);
+
+		gifticonVo.setMemberNo(authUser.getNo());
+		gifticonVo.setCover(
+				"http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/barcode/barcode" + vo.getNo() + ".jpg");
+		gifticonVo.setTitle(vo.getTitle());
+		shopService.gifticonInsert(gifticonVo);
+
+		return scoresVo;
+	}
 }

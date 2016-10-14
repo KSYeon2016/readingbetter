@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div>
-	<p id="category">책 목록</p>
+	<p id="category">독서활동</p>
 	<ul>
 		<li><a href="/readingbetter/book/booklist" class="selected-navi">책 목록</a></li>
 	</ul>

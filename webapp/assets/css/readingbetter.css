@@ -10,7 +10,7 @@ ul, ol			{ list-style-type: none }
 	padding: 10px;
 }
 
-.asideWrap {height: 100%;}
+.asideWrap { height: 100%; }
 #aside {
 	background-color: #D9F0F4;
 	height: 100%;
@@ -72,7 +72,11 @@ div#header .tbl-category {
 }
 
 /* navigation */
-div#navigation   { background-color:#D9F0F4; height: 100%; font-size:15px; }
+div#navigation   { 
+	background-color:#D9F0F4; 
+	height: 100%; 
+	font-size:15px;
+}
 div#navigation ul   { width:100%;}
 div#navigation li   { width:100%; background-color:#D9F0F4; border:1px solid #DADADA;}
 div#navigation li a   { display:block; color:#4F4F4F; width:100%; padding:5px 10px;}
