@@ -41,13 +41,13 @@
 			<div id="table" class="col-lg-6">
 				<p id="title">이번 달 전체 순위</p>
 				<br>
-				<table id="ltable" class="table table-striped">
+				<table id="ltable" class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>아이디</th>
 						<th>점수</th>
@@ -65,13 +65,13 @@
 			<div id="table" class="col-lg-6">
 				<p id="title">이번 달 학교별 순위</p>
 				<br>
-				<table id="rtable" class="table table-striped">
+				<table id="rtable" class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>학교명</th>
 						<th>점수</th>
@@ -89,13 +89,13 @@
 			<div id="table" class="col-lg-6">
 				<p id="title">이번 달 우리 학년 순위</p>
 				<br>
-				<table id="ltable" class="table table-striped">
+				<table id="ltable" class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>아이디</th>
 						<th>점수</th>
@@ -129,13 +129,13 @@
 			<div id="table" class="col-lg-6">
 				<p id="title">명예의 전당</p>
 				<br>
-				<table id="rtable" class="table table-striped">
+				<table id="rtable" class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>아이디</th>
 						<th>점수</th>

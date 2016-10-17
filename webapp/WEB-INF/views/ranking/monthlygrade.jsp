@@ -46,13 +46,13 @@
 				</c:choose>
 				<br>
 
-				<table class="table table-striped">
+				<table class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>아이디</th>
 						<th>점수</th>
@@ -71,13 +71,13 @@
 					<div id="mygraderank">
 						<p id="title">나의 순위</p>
 						<br>
-						<table class="table table-striped">
+						<table class="table">
 							<colgroup>
 								<col width="20%" />
 								<col width="40%" />
 								<col width="40%" />
 							</colgroup>
-							<tr>
+							<tr class="active">
 								<th>순위</th>
 								<th>아이디</th>
 								<th>점수</th>

@@ -37,13 +37,13 @@
 			<div id="rank-table" class="col-lg-6">
 				<P id="title">이번 달 학교 순위</P>
 				<br>
-				<table class="table table-striped">
+				<table class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>학교명</th>
 						<th>점수</th>
@@ -60,13 +60,13 @@
 				<br>
 				<p id="title">우리 학교 순위</p>
 				<br>
-				<table class="table table-striped">
+				<table class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>학교명</th>
 						<th>점수</th>

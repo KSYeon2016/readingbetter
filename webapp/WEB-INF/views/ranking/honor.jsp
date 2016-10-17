@@ -53,13 +53,13 @@
 			<div id="honor-table" class="col-lg-6">
 				<p id="title">명예의 전당 - Top 10</p>
 				<br>
-				<table id="rtable" class="table table-striped">
+				<table id="rtable" class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>아이디</th>
 						<th>점수</th>
@@ -78,13 +78,13 @@
 			<div>
 				<p id="title">나의 순위</p>
 				<br>
-				<table id="myhonor" class="table table-striped">
+				<table id="myhonor" class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>아이디</th>
 						<th>점수</th>

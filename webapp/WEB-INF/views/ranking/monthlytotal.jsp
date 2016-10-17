@@ -37,13 +37,13 @@
 					
 			<div id="rank-table" class="col-lg-6">
 				<P id="title">이번 달 전체 순위</P><br>						
-				<table class="table table-striped">
+				<table class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>아이디</th>
 						<th>점수</th>
@@ -58,13 +58,13 @@
 				</table><br>
 						
 				<p id="title">나의 순위</p><br>
-				<table class="table table-striped">
+				<table class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="40%" />
 						<col width="40%" />
 					</colgroup>
-					<tr>
+					<tr class="active">
 						<th>순위</th>
 						<th>아이디</th>
 						<th>점수</th>
