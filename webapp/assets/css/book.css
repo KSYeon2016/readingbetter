@@ -42,7 +42,7 @@
 #solvequiz #img-solvequiz	{ width:300px; height:200px; margin-top:10px; }
 
 /* review */
-#review	{ width:100%; }
+#review	{ width: 900px; margin:20px auto; }
 #review #img-book { width:250px; height:auto; border:1px solid #333; margin:10px; }
 #review #img-singo { width: 20px; }
 #review .form-group { width: 100%; }

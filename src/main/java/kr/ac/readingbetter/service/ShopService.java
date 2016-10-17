@@ -70,7 +70,7 @@ public class ShopService {
 			message.setSubject("ReadingBetter에서 구입하신 기프티콘을 보내드립니다", "UTF-8");
 			String htmlContent = "<img style='height:200px; weight:200px' src=\"" + shopVo.getCover() + "\"><br>"
 					+ "<div>구입하신 상품 <strong>" + shopVo.getTitle() + "</strong>의 기프티콘을 발송하였습니다.</div><br>"
-					+ "<img style='height:200px; weight:200px' src=\"http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/barcode"
+					+ "<img style='height:200px; weight:200px' src=\"http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/barcode/barcode"
 					+ shopVo.getNo() + ".jpg\">";
 			message.setText(htmlContent, "UTF-8", "html");
 			message.addRecipient(RecipientType.TO, new InternetAddress(vo.getEmail()));

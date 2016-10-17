@@ -71,7 +71,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">이메일</label>
 						<div class="col-sm-6">
-							<input type="Email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="aa11@naver.com">
+							<input type="Email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="kg00003@naver.com">
 						</div>
 
 						<div class="col-sm-1">
