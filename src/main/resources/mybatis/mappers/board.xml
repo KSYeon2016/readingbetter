@@ -65,7 +65,14 @@
 	<!-- 문의게시판 내용 보기 -->
 	<select id="contents" parameterType="Long" resultType="boardvo">
 		<![CDATA[
-			select no, title, content, group_no as groupNo, position, accept from board where no=#{no}
+			select no, 
+				   title, 
+				   content, 
+				   group_no as groupNo, 
+				   position, 
+				   accept 
+				from board 
+				where no = #{no}
 		]]>
 	</select>
 

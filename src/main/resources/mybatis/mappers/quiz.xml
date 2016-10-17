@@ -6,18 +6,37 @@
 	<!-- 퀴즈 리스트, 책 테이블에서  책 이름 가져옴 -->
 	<select id="list" parameterType="quizvo" resultType="quizvo">
 		<![CDATA[
-			select a.no, b.title, a.quiz, a.ex1, a.ex2, a.ex3, a.ex4, a.answer, 
-			a.accept, a.book_no as bookNo from quiz a, book b 
-			where a.book_no=b.no order by b.title
+			select a.no, 
+				   b.title, 
+				   a.quiz, 
+				   a.ex1, 
+				   a.ex2, 
+				   a.ex3, 
+				   a.ex4, 
+				   a.answer, 
+				   a.accept, 
+				   a.book_no as bookNo 
+				from quiz a, book b 
+				where a.book_no = b.no 
+				order by b.title
 		]]>
 	</select>
 
 	<!-- 기본키에 따른 조회, 책 테이블에서  책 이름 가져옴 -->
 	<select id="getByNo" parameterType="long" resultType="quizvo">
 		<![CDATA[
-			select a.no, b.title, a.quiz, a.ex1, a.ex2, a.ex3, a.ex4, a.answer, 
-			a.accept, a.book_no as bookNo from quiz a, book b 
-			where a.book_no=b.no and a.no=#{no}
+			select a.no, 
+				   b.title, 
+				   a.quiz, 
+				   a.ex1, 
+				   a.ex2, 
+				   a.ex3, 
+				   a.ex4, 
+				   a.answer, 
+				   a.accept, 
+				   a.book_no as bookNo 
+				from quiz a, book b 
+				where a.book_no = b.no and a.no = #{no}
 		]]>
 	</select>
 	

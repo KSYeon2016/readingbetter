@@ -19,23 +19,36 @@
 	
 	<select id="list" parameterType="historyvo" resultType="historyvo">
 		<![CDATA[
-			select no,title,score,point,reg_date as regDate, 
-			member_no as memberNo,identity,key_no from history 
-			where member_no=#{memberNo} order by reg_date desc
+			select no, 
+				   title, 
+				   score,
+				   point,
+				   reg_date as regDate, 
+				   member_no as memberNo,
+				   identity,
+				   key_no 
+				from history 
+				where member_no = #{memberNo} 
+				order by reg_date desc
 		]]>
 	</select>
 	
 	<select id="listpage" parameterType="historyvo" resultType="historyvo">
 		<![CDATA[
-		select * from(
-		select rownum as rnum,c.*
-  		from(
-        select no,title,score,point,reg_date as regDate, 
-			member_no as memberNo,identity,key_no from history 
-			where member_no=#{memberNo}
-     			 order by reg_date desc
-        		)c)
-        	where (#{pageNo}-1)*5+1 <= rnum  and rnum <= #{pageNo}*5		
+			select * 
+				from(select rownum as rnum, c.*
+	  					from(select no,
+	  								title,
+	  								score,
+	  								point,
+	  								reg_date as regDate, 
+									member_no as memberNo,
+									identity,
+									key_no 
+								from history 
+								where member_no = #{memberNo}
+	     						order by reg_date desc)c)
+	        	where (#{pageNo}-1)*5 + 1 <= rnum and rnum <= #{pageNo}*5		
 		]]>
 	</select>
 

@@ -6,34 +6,54 @@
 	<!-- 댓글 리스트, 회원 테이블에서 아이디 가져옴 -->
 	<select id="list" parameterType="commentsvo" resultType="commentsvo">
 		<![CDATA[
-			select a.no, a.content, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.state, 
-			a.notice_no as noticeNo, a.member_no as memberNo, b.id 
-			from comments a, member b
-			where b.no=a.member_no order by a.no desc
+			select a.no, 
+				   a.content, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.state, 
+				   a.notice_no as noticeNo, 
+				   a.member_no as memberNo, 
+				   b.id 
+				from comments a, member b
+				where b.no = a.member_no 
+				order by a.no desc
 		]]>
 	</select>
 	
 	<!-- 기본키에 따른 댓글 조회, 회원 테이블에서 아이디 가져옴 -->
 	<select id="getByNo" parameterType="long" resultType="commentsvo">
 		<![CDATA[
-			select a.no, a.content, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.state, 
-			a.notice_no as noticeNo, a.member_no as memberNo, b.id 
-			from comments a, member b
-			where b.no=a.member_no and a.no=#{no}
+			select a.no, 
+				   a.content, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.state, 
+				   a.notice_no as noticeNo, 
+				   a.member_no as memberNo, 
+				   b.id 
+				from comments a, member b
+				where b.no = a.member_no and 
+					  a.no = #{no}
 		]]>
 	</select>
 	
 	<!-- 페이징, 공지에 따른 댓글 조회, 신고받은 댓글 제외, 회원 테이블에서 아이디 가져옴 -->
 	<select id="getByNoticeNo" parameterType="commentsvo" resultType="commentsvo">
 		<![CDATA[
-			select no, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, 
-			state, notice_no as noticeNo, member_no as memberNo, id, rn from
-			(select c.*, rownum as rn from
-			(select a.*, b.id from comments a, member b where b.no=a.member_no 
-			and a.notice_no=#{noticeNo} and a.state=0 order by a.no desc) c)
-			where (#{commentsPage}-1)*5+1 <= rn and rn <= #{commentsPage}*5
+			select no, 
+				   content, 
+				   to_char(reg_date, 'yyyy-mm-dd') as regDate, 
+				   state, 
+				   notice_no as noticeNo, 
+				   member_no as memberNo, 
+				   id, 
+				   rn 
+				from (select c.*, rownum as rn 
+						from (select a.*, b.id 
+								from comments a, member b 
+								where b.no = a.member_no and 
+									  a.notice_no = #{noticeNo} and 
+									  a.state=0 
+								order by a.no desc) c)
+				where (#{commentsPage} - 1) * 5 + 1 <= rn and rn <= #{commentsPage} * 5
 		]]>
 	</select>
 	
@@ -48,7 +68,7 @@
 	<insert id="insert" parameterType="commentsvo">
 		<![CDATA[
 			insert into comments 
-			values(seq_comments.nextval,#{content},sysdate,0,#{noticeNo},#{memberNo})
+				values(seq_comments.nextval,#{content},sysdate,0,#{noticeNo},#{memberNo})
 		]]>
 	</insert>
 	

@@ -16,7 +16,12 @@
 	<!-- 희망 도서 검색 -->
 	<select id="listkwd" parameterType="wishbookvo" resultType="wishbookvo">
 		<![CDATA[
-			select w.no, w.title, m.NAME, w.recommend, w.accept, to_char(w.reg_date, 'yyyy-mm-dd') as regDate
+			select w.no, 
+				   w.title, 
+				   m.NAME, 
+				   w.recommend, 
+				   w.accept, 
+				   to_char(w.reg_date, 'yyyy-mm-dd') as regDate
 				from wishbook w, member m
 				where w.MEMBER_NO = m.NO and 
 					  title like '%' || #{wKwd} || '%' 
@@ -64,10 +69,15 @@
 	<!-- 기본키에 따른 희망도서 조회 -->
 	<select id="getByNo" parameterType="long" resultType="wishbookvo">
 		<![CDATA[
-			select w.title, w.publisher, w.reason, 
-			to_char(w.reg_date, 'yyyy-mm-dd') as regDate, w.recommend, 
-			w.accept, m.name from wishbook w, member m 
-			where w.MEMBER_NO=m.NO and w.no=#{no}
+			select w.title, 
+				   w.publisher, 
+				   w.reason, 
+				   to_char(w.reg_date, 'yyyy-mm-dd') as regDate, 
+				   w.recommend, 
+				   w.accept, 
+				   m.name 
+				from wishbook w, member m 
+				where w.MEMBER_NO = m.NO and w.no = #{no}
 		]]>
 	</select>
 	

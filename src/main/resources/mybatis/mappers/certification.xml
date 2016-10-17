@@ -6,8 +6,9 @@
 	<!-- 회원번호와 책번호에 따른 조회 -->
 	<select id="selectCertification" parameterType="certificationvo" resultType="certificationvo">
 		<![CDATA[
-			select no from certification 
-			where member_no=#{memberNo} and book_no=#{bookNo}
+			select no 
+				from certification 
+				where member_no = #{memberNo} and book_no = #{bookNo}
 		]]>
 	</select>
 	
@@ -15,7 +16,7 @@
 	<insert id="insertCertification" parameterType="certificationvo">
 		<![CDATA[
 			insert into certification 
-			values(seq_certification.nextval, #{memberNo}, #{bookNo})
+				values(seq_certification.nextval, #{memberNo}, #{bookNo})
 		]]>
 	</insert>
 

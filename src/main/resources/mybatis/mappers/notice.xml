@@ -58,28 +58,28 @@
 	<insert id="insert" parameterType="noticevo">
 		<![CDATA[
 			insert into notice 
-			values(seq_notice.nextval,#{title},#{content},sysdate,0, #{memberNo})
+				values(seq_notice.nextval, #{title}, #{content}, sysdate, 0, #{memberNo})
 		]]>
 	</insert>
 	
 	<!-- 공지 내용 수정 -->
 	<update id="update" parameterType="noticevo">
 		<![CDATA[
-			update notice set title=#{title}, content=#{content} where no=#{no}
+			update notice set title = #{title}, content = #{content} where no = #{no}
 		]]>
 	</update>
 	
 	<!-- 조회수 업데이트 -->
 	<update id="viewCount" parameterType="noticevo">
 		<![CDATA[
-			update notice set view_count=view_count+1 where no=#{no}
+			update notice set view_count = view_count + 1 where no = #{no}
 		]]>
 	</update>
 	
 	<!-- 공지 목록 최근 5개 (메인페이지용) -->
 	<select id="listrecent"  resultType="noticevo">
 		<![CDATA[	
-			select no, title from notice where rownum<=5 order by no desc
+			select no, title from notice where rownum <= 5 order by no desc
 		]]>
 	</select>
 </mapper>

@@ -92,8 +92,8 @@
 	<!-- 리뷰 추가 -->
 	<insert id="insert" parameterType="reviewvo">
 		<![CDATA[
-			insert into review values
-			(seq_review.nextval,#{review},sysdate,0,#{bookNo},#{memberNo})
+			insert into review 
+				values(seq_review.nextval,#{review},sysdate,0,#{bookNo},#{memberNo})
 		]]>
 	</insert>
 	

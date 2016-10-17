@@ -6,16 +6,19 @@
 	<!-- 전체 카드 목록/검색 내용 조회 -->
 	<select id="getList" parameterType="cardvo" resultType="cardvo">
 		<![CDATA[
-			select no, title, skill, bonus, cover from card 
-			where title like '%' || #{title} || '%' order by no desc
+			select no, title, skill, bonus, cover 
+				from card 
+				where title like '%' || #{title} || '%' 
+				order by no desc
 		]]>
 	</select>
 	
 	<!-- 번호로 카드 조회 (수정 폼에서 이용) -->
 	<select id="getByNo" parameterType="long" resultType="cardvo">
 		<![CDATA[
-			SELECT NO, TITLE, CONTENT, SKILL, BONUS, COVER FROM CARD 
-			where no=#{no}
+			SELECT NO, TITLE, CONTENT, SKILL, BONUS, COVER 
+				FROM CARD 
+				where no = #{no}
 		]]>
 	</select>
 	
@@ -23,8 +26,10 @@
 	<select id="selectCardByRandom" resultType="cardvo">
 		<![CDATA[
 			select title, content, skill, bonus, cover 
-			from (select no, title, content, skill, bonus, cover from card order by dbms_random.value) 
-			where rownum=1
+				from (select no, title, content, skill, bonus, cover 
+						from card 
+						order by dbms_random.value) 
+				where rownum = 1
 		]]>
 	</select>
 
@@ -32,7 +37,7 @@
 	<insert id="insert" parameterType="cardvo">
 		<![CDATA[
 			INSERT INTO "CARD" 
-			VALUES(SEQ_CARD.NEXTVAL, #{title}, #{content}, #{skill}, #{bonus}, #{cover})
+				VALUES(SEQ_CARD.NEXTVAL, #{title}, #{content}, #{skill}, #{bonus}, #{cover})
 		]]>
 	</insert>
 
@@ -46,8 +51,13 @@
 	<!-- 카드 수정 -->
 	<update id="update" parameterType="cardvo">
 		<![CDATA[
-			UPDATE "CARD" SET TITLE=#{title}, CONTENT=#{content}, 
-			SKILL=#{skill}, BONUS=#{bonus}, COVER=#{cover} WHERE NO=#{no}
+			UPDATE "CARD" 
+				SET TITLE = #{title}, 
+					CONTENT = #{content}, 
+					SKILL = #{skill}, 
+					BONUS = #{bonus}, 
+					COVER = #{cover} 
+				WHERE NO = #{no}
 		]]>
 	</update>
 	

@@ -6,19 +6,32 @@
 	<!-- 신고 리스트, 회원 테이블에서 id 가져옴 -->
 	<select id="list" parameterType="accusationvo" resultType="accusationvo">
 		<![CDATA[
-			select a.no, a.reason, to_char(a.reg_date, 'yyyy-mm-dd') as regDate,
-			a.accept, a.member_no as memberNo, a.IDENTITY, a.key_no as keyNo, 
-			b.id from accusation a,member b
-			where b.no=a.member_no order by a.no desc
+			select a.no, 
+				   a.reason, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate,
+				   a.accept, 
+				   a.member_no as memberNo, 
+				   a.IDENTITY, 
+				   a.key_no as keyNo, 
+				   b.id 
+				from accusation a, member b
+				where b.no = a.member_no 
+				order by a.no desc
 		]]>
 	</select>
 	
 	<select id="getByNo" parameterType="long" resultType="accusationvo">
 		<![CDATA[
-			select a.no, a.reason,to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
-			a.accept, a.member_no as memberNo, a.IDENTITY, a.key_no as keyNo, 
-			b.id from accusation a,member b
-			where b.no=a.member_no and a.no=#{no}
+			select a.no, 
+				   a.reason,
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.accept, 
+				   a.member_no as memberNo, 
+				   a.IDENTITY, 
+				   a.key_no as keyNo, 
+				   b.id 
+				from accusation a, member b
+				where b.no = a.member_no and a.no = #{no}
 		]]>
 	</select>
 	
@@ -32,16 +45,28 @@
 	<!-- 리뷰에서 들어온 신고 -->
 	<insert id="insertReview" parameterType="accusationvo">
       <![CDATA[
-         insert into accusation values
-         (seq_accusation.nextval,#{reason},sysdate,0,#{memberNo},1,#{keyNo})
+         insert into accusation 
+         	values(seq_accusation.nextval, 
+       			   #{reason}, 
+      			   sysdate,
+       			   0,
+       			   #{memberNo},
+       			   1,
+       			   #{keyNo})
       ]]>
    </insert>
 
 	<!-- 공지 댓글에서 들어온 신고 -->
 	<insert id="insertComments" parameterType="accusationvo">
 		<![CDATA[
-			insert into accusation values
-			(seq_accusation.nextval,#{reason},sysdate,0,#{memberNo},2,#{keyNo})
+			insert into accusation 
+				values(seq_accusation.nextval,
+					   #{reason},
+					   sysdate,
+					   0,
+					   #{memberNo},
+					   2,
+					   #{keyNo})
 		]]>
 	</insert>
 	
