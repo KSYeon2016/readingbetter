@@ -23,40 +23,41 @@
 				order by w.no desc
 		]]>
 	</select>
-	
+
 	<!-- 페이징 -->
 	<select id="listPage" parameterType="wishbookvo" resultType="wishbookvo">
 		<![CDATA[
-			select * from (select rownum as rnum, 
-								  w.no, 
-								  w.title, 
-								  m.NAME, 
-								  w.recommend, 
-								  w.accept, 
-								  to_char(w.reg_date, 'yyyy-mm-dd') as regDate
+			select * 
+				from(select rownum as rnum, c.* 
+						from (select w.no, 
+									 w.title, 
+									 m.NAME, 
+									 w.recommend, 
+									 w.accept, 
+									 to_char(w.reg_date, 'yyyy-mm-dd') as regDate
 								from wishbook w, member m
 								where w.MEMBER_NO = m.NO 
-     							order by w.no desc) 
- 				where (#{pageNo} - 1) * 10 + 1 <= rnum and rnum <= #{pageNo} * 10   				
+								order by w.no desc) c) 
+			where (#{pageNo} - 1) * 10 + 1 <= rnum and rnum <= #{pageNo} * 10
 		]]>
 	</select>
 	
 	<!-- 페이징, 도서 검색 -->
 	<select id="listkwdpage" parameterType="wishbookvo" resultType="wishbookvo">
 		<![CDATA[
-		select rownum as rnum, c.* 
-			from ((select rownum as rnum, 
-						  w.no, 
-						  w.title, 
-						  m.NAME, 
-						  w.recommend, 
-						  w.accept,
-						  to_char(w.reg_date, 'yyyy-mm-dd') as regDate
-					from wishbook w, member m
-					where w.MEMBER_NO = m.NO 
-						and title like '%' || #{wKwd} || '%' 
-					order by w.no desc) c)
-			where (#{pageNo}-1)*10+1<=rnum and rnum<=#{pageNo}*10   				
+				select * 
+					from (select rownum as rnum, c.* 
+							from (select  w.no, 
+								 		  w.title, 
+								  		  m.NAME, 
+								 		  w.recommend, 
+								 		  w.accept, 
+								 		  to_char(w.reg_date, 'yyyy-mm-dd') as regDate
+									from wishbook w, member m
+									where w.MEMBER_NO = m.NO and 
+										  title like '%' || #{wKwd} || '%' 
+     								order by w.no desc) c) 
+				where (#{pageNo} - 1) * 10 + 1 <= rnum and rnum <= #{pageNo} * 10
 		]]>
 	</select>
 	
