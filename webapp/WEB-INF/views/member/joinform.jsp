@@ -38,14 +38,14 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">이름</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="inputName" placeholder="Name" name="name">
+							<input type="text" class="form-control" id="inputName" placeholder="Name" name="name" value="김아무개">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-3 control-label">아이디</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="inputID" placeholder="ID" name="id">
+							<input type="text" class="form-control" id="inputID" placeholder="ID" name="id" value="aa11">
 						</div>
 
 						<div class="col-sm-1">
@@ -57,21 +57,21 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">비밀번호</label>
 						<div class="col-sm-6">
-							<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="pw">
+							<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="pw" value="aa11">
 						</div>
 					</div>
 							
 					<div class="form-group">
 						<label class="col-sm-3 control-label">비밀번호 확인</label>
 						<div class="col-sm-6">
-							<input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password">
+							<input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password" value="aa11">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-3 control-label">이메일</label>
 						<div class="col-sm-6">
-							<input type="Email" class="form-control" id="inputEmail" placeholder="Email" name="email">
+							<input type="Email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="aa11@naver.com">
 						</div>
 
 						<div class="col-sm-1">
@@ -83,7 +83,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">전화번호</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="inputPhone" placeholder="PhoneNumber" name="tel">
+							<input type="text" class="form-control" id="inputPhone" placeholder="PhoneNumber" name="tel" value="0101110000">
 						</div>
 					</div>
 

@@ -74,10 +74,11 @@
 					<th>인증</th>
 					<th>날짜</th>
 				</tr>
-
+				
+				<c:set var="listLength"	value="${fn:length(historylist) }" />
 				<c:forEach var='vo' items='${historylist}' varStatus='s'>
 					<tr>
-						<td>${vo.no}</td>
+						<td>${listLength - s.index }</td>
 						<td>
 							<c:choose>
                    				 <c:when test="${vo.identity == 0}">문제풀기</c:when>

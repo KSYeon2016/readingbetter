@@ -62,7 +62,7 @@ public class AdminAccusationService {
 		} else if (vo.getAccept().equals("2")){
 			accusationDao.update(vo);
 			
-			if(vo.getIdentity().equals("1")){
+			if(vo.getIdentity() == 1){
 				reviewDao.updateStateToZero(vo);
 			} else {
 				commentsDao.updateStateToZero(vo);
@@ -73,7 +73,7 @@ public class AdminAccusationService {
 			accusationDao.update(vo);
 			memberDao.updatePenalty(vo);
 			
-			if(vo.getIdentity().equals("1")){
+			if(vo.getIdentity() == 1){
 				reviewDao.updateStateToZero(vo);
 			} else {
 				commentsDao.updateStateToZero(vo);
