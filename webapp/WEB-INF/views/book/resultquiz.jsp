@@ -92,6 +92,7 @@
 					</c:when>
 					<c:otherwise>
 						<h6>퀴즈 결과는 문제를 푼 뒤에 확인할 수 있습니다.</h6>
+						<a class="btn btn-default" href="/readingbetter/book/solvequizform?no=${param.no }" type="button">퀴즈풀기</a>
 						<a class="btn btn-default" href="/readingbetter/book/booklist" type="button">책 목록으로</a>
 					</c:otherwise>
 				</c:choose>

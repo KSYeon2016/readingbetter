@@ -6,48 +6,73 @@
 	<!-- 리뷰 리스트, 회원 테이블에서 id 가져옴 -->
 	<select id="list" parameterType="reviewvo" resultType="reviewvo">
 		<![CDATA[
-			select a.no, a.review, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.state, 
-			a.book_no as bookNo, a.member_no as memberNo, b.id 
-			from review a,member b where b.no=a.member_no
+			select a.no, 
+				   a.review, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.state, 
+				   a.book_no as bookNo, 
+				   a.member_no as memberNo, 
+				   b.id 
+				from review a, member b 
+				where b.no = a.member_no
 		]]>
 	</select>
 
 	<!-- 기본키에 따른 리뷰 조회, 회원 테이블에서 id 가져옴 -->
 	<select id="getByNo" parameterType="long" resultType="reviewvo">
 		<![CDATA[
-			select a.no, a.review, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.state, 
-			a.book_no as bookNo, a.member_no as memberNo, b.id 
-			from review a,member b 
-			where b.no=a.member_no and a.no=#{no}
+			select a.no, 
+				   a.review, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.state, 
+				   a.book_no as bookNo, 
+				   a.member_no as memberNo, 
+				   b.id 
+				from review a,member b 
+				where b.no = a.member_no and a.no = #{no}
 		]]>
 	</select>
 	
 	<!-- 페이징, 책번호에 따른 리뷰 조회, 신고당한 리뷰 제외, 회원 테이블에서 id 가져옴 -->
 	<select id="getByBookNo" parameterType="reviewvo" resultType="reviewvo">
 		<![CDATA[
-			select no, review, to_char(reg_date, 'yyyy-mm-dd') as regDate, 
-			book_no as bookNo, member_no as memberNo, id, rn from
-			(select c.*, rownum as rn from
-			(select a.*, b.id from review a,member b where b.no=a.member_no 
-			and a.book_no=#{bookNo} and a.state=0 order by a.no desc) c) 
-			where (#{reviewPage}-1)*5+1 <= rn and rn <= #{reviewPage}*5
+			select no, 
+				   replace(review, '_', ' ') review, 
+				   to_char(reg_date, 'yyyy-mm-dd') as regDate, 
+				   book_no as bookNo, 
+				   member_no as memberNo, 
+				   id, 
+				   rn 
+				from (select c.*, rownum as rn 
+						from (select a.*, b.id 
+								from review a, member b 
+								where b.no = a.member_no and 
+									  a.book_no = #{bookNo} and 
+									  a.state = 0 
+								order by a.no desc) c)
+				where (#{reviewPage} - 1) * 5 + 1 <= rn and rn <= #{reviewPage} * 5
+			
 		]]>
 	</select>
 	
-	<!-- 페이징, 책번호에 따른 리뷰 조회, 신고당한 리뷰 제외, 회원 테이블에서 id 가져옴 --> 
-
-
- 
+	<!-- 페이징, 책번호에 따른 리뷰 조회, 신고당한 리뷰 제외, 회원 테이블에서 id 가져옴 -->
 	<select id="getListApp" parameterType="reviewvo" resultType="reviewvo">  
-		<![CDATA[  
-			select no, review, to_char(reg_date, 'yyyy-mm-dd') as regDate,   
-			book_no as bookNo, member_no as memberNo, id, rn from  
-			(select c.*, rownum as rn from  
-			(select a.*, b.id from review a,member b where b.no=a.member_no   
-			and a.book_no=#{bookNo} and a.state=0 order by a.no desc)c)  
-		]]>  
+		<![CDATA[
+ 			select no, 
+ 				   review, 
+ 				   to_char(reg_date, 'yyyy-mm-dd') as regDate, 
+ 				   book_no as bookNo, 
+ 				   member_no as memberNo, 
+ 				   id, 
+ 				   rn 
+ 				from (select c.*, rownum as rn 
+ 						from (select a.*, b.id 
+ 								from review a, member b 
+ 								where b.no = a.member_no and 
+ 									  a.book_no = #{bookNo} and 
+ 									  a.state = 0 
+ 								order by a.no desc) c)   
+ 		]]> 
 	</select> 
 	
 	<!-- 책번호에 따른 리뷰 총 수, 신고당한 리뷰 제외 -->

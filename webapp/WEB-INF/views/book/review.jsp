@@ -39,7 +39,7 @@
 
 			<div>
 				<img id="img-book" class="img-thumbnail" src="${vo.cover }">
-				<table class="table">
+				<table class="table tbl-bookinfo">
 					<tr>
 						<td>제목</td>
 						<br>
@@ -63,11 +63,11 @@
 					<c:choose>
 						<c:when test="${not empty sessionScope.authUser}">
 							<colgroup>
-								<col width="30%" />
-								<col width="10%" />
+								<col width="60%" />
 								<col width="20%" />
 								<col width="10%" />
-								<col width="10%" />
+								<col width="5%" />
+								<col width="5%" />
 							</colgroup>
 						</c:when>
 						<c:otherwise>
@@ -105,7 +105,7 @@
 						<c:otherwise>
 	  						<c:forEach var='reviewVo' items='${list}' varStatus='s'>	
 								<tr>
-									<td>${reviewVo.review }</td>
+									<td class="board-title">${reviewVo.review }</td>
 									<td>${reviewVo.id }</td>
 									<td>${reviewVo.regDate }</td>
 									
