@@ -70,6 +70,15 @@ public class MainController {
 		List<ScoresVo> mainSchool = scoresService.mainSchool(vo);
 		model.addAttribute("mainSchool", mainSchool);
 		
+		// 로그인 한 회원의 학교 랭킹
+		if (authUser != null) {// 로그인을 했을 때
+			String id = authUser.getId(); // 로그인 한 회원의 아이디를 받아옴
+			if (id != null) { // 학교 번호가 null이 아닐 경우에만 vo에 랭킹 정보 삽입
+				vo = scoresService.mySchoolRank(id);
+				model.addAttribute("mySchoolRank", vo);
+			}
+		}
+		
 		// 메인에 학년 랭킹 상위 5명 출력
 		if (authUser != null) { // 로그인을 했을 경우에만 vo에 랭킹 삽입
 			String id = authUser.getId();
@@ -81,6 +90,7 @@ public class MainController {
 			model.addAttribute("monthlyMyGradeRank", vo);
 		}
 		
+		// 누적 출석일 가져오기
 		if(authUser != null){
 			int attCount = memberService.selectAttCount(authUser.getNo());
 			model.addAttribute("attCount", attCount);

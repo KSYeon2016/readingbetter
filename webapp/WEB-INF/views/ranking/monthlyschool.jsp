@@ -49,11 +49,22 @@
 						<th>점수</th>
 					</tr>
 					<c:forEach items="${monthlySchool }" var="rankingvo">
-						<tr>
-							<td>${rankingvo.rank }</td>
-							<td>${rankingvo.title }</td>
-							<td>${rankingvo.schoolScore }</td>
-						</tr>
+						<c:choose>
+							<c:when test="${mySchoolRank.title == rankingvo.title }">
+								<tr class="warning">
+									<td>${rankingvo.rank }</td>
+									<td>${rankingvo.title }</td>
+									<td>${rankingvo.schoolScore }</td>
+								<tr>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td>${rankingvo.rank }</td>
+									<td>${rankingvo.title }</td>
+									<td>${rankingvo.schoolScore }</td>
+								<tr>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</table>
 

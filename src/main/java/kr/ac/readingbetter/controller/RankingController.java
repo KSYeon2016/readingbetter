@@ -25,6 +25,8 @@ public class RankingController {
 	// 요약 페이지 및 랭킹 출력
 	@RequestMapping("/summary")
 	public String summary(ScoresVo vo, Model model, HttpSession session) {
+		
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 
 		// 전체 랭킹
 		List<ScoresVo> monthlyRank = scoresService.monthlyRank(vo);
@@ -33,9 +35,17 @@ public class RankingController {
 		// 학교 랭킹
 		List<ScoresVo> monthlySchool = scoresService.schoolRank(vo);
 		model.addAttribute("monthlySchool", monthlySchool);
+		
+		// 로그인 한 회원의 학교 랭킹
+		if (authUser != null) {// 로그인을 했을 때
+			String id = authUser.getId(); // 로그인 한 회원의 아이디를 받아옴
+			if (id != null) { // 학교 번호가 null이 아닐 경우에만 vo에 랭킹 정보 삽입
+				vo = scoresService.mySchoolRank(id);
+				model.addAttribute("mySchoolRank", vo);
+			}
+		}
 
 		// 학년 랭킹 (로그인 한 회원의 학년 랭킹)
-		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 		if (authUser != null) { // 로그인을 했을 경우에만 vo에 랭킹 삽입
 			String id = authUser.getId();
 			List<ScoresVo> monthlyMyGrade = scoresService.monthlyMyGrade(id);
