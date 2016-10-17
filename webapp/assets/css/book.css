@@ -9,13 +9,12 @@
 #list #book-table { 
 	width:900px;
 	border:1px solid #333;
-	font-size:15px;
+	font-size: 18px;
 	text-align:center;
-	margin:0 auto;
 }
 #list #book-table,
 #list #book-table td { padding:5px; }
-#list .img-thumbnail   { max-width:150px; width:auto; max-height:150px; }
+#list .img-thumbnail { max-width:180px; width:auto; max-height:180px; }
 #list .table-right	{ text-align:right; }
 #list .table-left	{ text-align:left; }
 

@@ -65,11 +65,22 @@
 						<th>점수</th>
 					</tr>
 					<c:forEach items="${honor }" end="10" var="rankingvo">
-						<tr>
-							<td>${rankingvo.rank }</td>
-							<td>${rankingvo.id }</td>
-							<td>${rankingvo.totalScore }</td>
-						<tr>
+						<c:choose>
+							<c:when test="${rankingvo.id == authUser.id }">
+								<tr class="warning">
+									<td>${rankingvo.rank }</td>
+									<td>${rankingvo.id }</td>
+									<td>${rankingvo.totalScore }</td>
+								<tr>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td>${rankingvo.rank }</td>
+									<td>${rankingvo.id }</td>
+									<td>${rankingvo.totalScore }</td>
+								<tr>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</table>
 				<br> <br>

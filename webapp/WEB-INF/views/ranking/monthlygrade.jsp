@@ -58,11 +58,22 @@
 						<th>점수</th>
 					</tr>
 					<c:forEach items="${monthlygrade }" var="scoresvo">
-						<tr>
-							<td>${scoresvo.rank }</td>
-							<td>${scoresvo.id }</td>
-							<td>${scoresvo.score }</td>
-						</tr>
+						<c:choose>
+							<c:when test="${scoresvo.id == authUser.id }">
+								<tr class="warning">
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.id }</td>
+									<td>${scoresvo.score }</td>
+								<tr>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.id }</td>
+									<td>${scoresvo.score }</td>
+								<tr>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</table>
 				<br>

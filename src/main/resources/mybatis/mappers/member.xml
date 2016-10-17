@@ -15,8 +15,8 @@
 	<select id="selectAuthUser" parameterType="membervo" resultType="membervo">
 		<![CDATA[
 			select no, name, id, position
-            from member
-            where id=#{id} and pw=#{pw}
+				from member
+				where id = #{id} and pw = #{pw}
 		]]>
 	</select>
 

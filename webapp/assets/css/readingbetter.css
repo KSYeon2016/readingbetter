@@ -58,7 +58,7 @@ ul, ol			{ list-style-type: none }
 }
 
 #menu {
-	width: 200px;
+	width: 15%;
 	float: left;
 	position: absolute;
 	top: 0px;
@@ -70,7 +70,7 @@ ul, ol			{ list-style-type: none }
 }
 
 #cont {
-	margin-left: 200px;
+	margin-left: 15%;
 	display: block;
 }
 

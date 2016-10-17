@@ -11,12 +11,12 @@
 	
 	<select id="listid" parameterType="gifticonvo" resultType="gifticonvo">
 		<![CDATA[
-			select c.no,
-				   c.cover,
-				   c.get_date,
-				   c.member_no,
-				   c.title,
-				   to_date(Sysdate) - to_date(c.get_date) as limit,
+			select c.no, 
+				   c.cover, 
+				   c.get_date, 
+				   c.member_no, 
+				   c.title, 
+				   to_date(Sysdate) - to_date(c.get_date) as limit, 
 				   c.get_date as getDate 
 				from (select no,
 							 cover,

@@ -53,11 +53,22 @@
 						<th>점수</th>
 					</tr>
 					<c:forEach items="${monthlyRank }" var="scoresvo">
-						<tr>
-							<td>${scoresvo.rank }</td>
-							<td>${scoresvo.id }</td>
-							<td>${scoresvo.monthlyScore }</td>
-						<tr>
+						<c:choose>
+							<c:when test="${scoresvo.id == authUser.id }">
+								<tr class="warning">
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.id }</td>
+									<td>${scoresvo.monthlyScore }</td>
+								<tr>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.id }</td>
+									<td>${scoresvo.monthlyScore }</td>
+								<tr>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</table>
 			</div>
@@ -105,11 +116,22 @@
 							<c:choose>
 								<c:when test="${monthlyMyGrade ne null}">
 									<c:forEach items="${monthlyMyGrade}" var="scoresvo">
-										<tr>
-											<td>${scoresvo.rank }</td>
-											<td>${scoresvo.id }</td>
-											<td>${scoresvo.score }</td>
-										</tr>
+										<c:choose>
+											<c:when test="${scoresvo.id == authUser.id }">
+												<tr class="warning">
+													<td>${scoresvo.rank }</td>
+													<td>${scoresvo.id }</td>
+													<td>${scoresvo.score }</td>
+												<tr>
+											</c:when>
+											<c:otherwise>
+												<tr>
+													<td>${scoresvo.rank }</td>
+													<td>${scoresvo.id }</td>
+													<td>${scoresvo.score }</td>
+												<tr>
+											</c:otherwise>
+										</c:choose>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
@@ -141,12 +163,22 @@
 						<th>점수</th>
 					</tr>
 					<c:forEach items="${honor }" end="10" var="scoresvo">
-						<tr>
-							<td>${scoresvo.rank }</td>
-							<td>${scoresvo.id }</td>
-							<td>${scoresvo.totalScore }</td>
-						<tr>
-						</tr>
+						<c:choose>
+							<c:when test="${scoresvo.id == authUser.id }">
+								<tr class="warning">
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.id }</td>
+									<td>${scoresvo.totalScore }</td>
+								<tr>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.id }</td>
+									<td>${scoresvo.totalScore }</td>
+								<tr>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 				</table>
 				<br>
