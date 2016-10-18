@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%
+	pageContext.setAttribute( "newLine", "\n" );
+%>
 <!doctype html>
 <html>
 <head>
@@ -55,7 +58,7 @@
 						<td colspan=8 class="active"></td>
 					</tr>
 					<tr>
-						<td id="notice-content" colspan=8 rowspan=5>${vo.content }</td>
+						<td class="board-content" id="notice-content" colspan=8 rowspan=5>${fn:replace(vo.content, newLine, "<br>") }</td>
 					</tr>
 				</table>
 						

@@ -47,7 +47,7 @@
 						<th class="active" colspan=2>내용</th>
 					</tr>
 					<tr>
-						<td id="content" colspan=2>${contents.content }</td>
+						<td class="board-content" id="content" colspan=2>${fn:replace(contents.content, newLine, "<br>") }</td>
 					</tr>
 				</table>
 

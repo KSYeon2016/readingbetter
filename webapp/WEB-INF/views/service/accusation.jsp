@@ -56,10 +56,10 @@
 							<td colspan=2>${vo.id }</td>
 						</tr>
 						<tr>
-							<th  class="active" colspan=6>글 내용</th>
+							<th class="active" colspan=6>글 내용</th>
 						</tr>
 						<tr>
-							<td id="content" colspan=6>${vo.content }</td>
+							<td class="board-content" id="content" colspan=6>${vo.content }</td>
 						</tr>
 						<tr>
 							<th  class="active" colspan=6>신고 이유</th>

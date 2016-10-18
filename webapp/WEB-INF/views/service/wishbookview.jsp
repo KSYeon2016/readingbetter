@@ -58,7 +58,7 @@
 						<td>${vo.publisher }</td>
 					</tr>
 					<tr>
-						<td colspan="4">${vo.reason }<br>
+						<td class="board-content" colspan="4">${fn:replace(vo.reason, newLine, "<br>") }<br>
 						<br></td>
 					</tr>
 				</table>
