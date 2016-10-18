@@ -93,7 +93,7 @@
 						<c:otherwise>
 							<c:forEach var='commentsVo' items='${list}'>
 								<tr>
-									<td id="review-content">${commentsVo.content }</td>
+									<td id="review-content" class="board-content">${commentsVo.content }</td>
 									<td>${commentsVo.id }</td>
 									<td>${commentsVo.regDate }</td>
 									<c:if test='${not empty sessionScope.authUser}'>

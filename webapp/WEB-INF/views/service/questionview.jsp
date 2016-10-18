@@ -38,7 +38,7 @@
 			<p class="menu-title">문의 게시판</p>
 
 			<div id="board">
-				<table id="board" class="table table-bordered">
+				<table class="table table-bordered">
 					<tr>
 						<th class="active">제목</th>
 						<td>${contents.title }</td>

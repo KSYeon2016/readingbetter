@@ -58,6 +58,8 @@
 				</table>
 			</div><br>
 
+		</div>
+		
 			<div id="board">
 				<table class="tbl-ex">
 					<c:choose>
@@ -168,7 +170,6 @@
 					</form>
 				</c:if>
 			</div>
-		</div>
 	</div>
 </div>
 	

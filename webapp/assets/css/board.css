@@ -116,7 +116,7 @@ th.th-board-title {
 	width: 50%;
 }
 
-.board-content {
+td.board-content {
 	text-align: left;
 }
 
@@ -167,7 +167,7 @@ input#kwd	{
 /* 댓글 */
 .tbl-ex th, 
 .tbl-ex td   { 
-   padding:1px;    
+   padding: 2px;    
 }
 
 #img-singo {
