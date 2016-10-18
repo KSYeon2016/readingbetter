@@ -21,15 +21,26 @@
 				<a class="btn btn-default" href="/readingbetter/admin/quizaddbook" role="button">등록</a>
 			</div>
 			<table class="table table-bordered" id="board">
+				<colgroup>
+					<col width="10%" />
+					<col width="20%" />
+					<col width="40%" />
+					<col width="20%" />
+					<col width="10%" />
+				</colgroup>
 				<tr class="active">
 					<th>번호</th>
 					<th>제목</th>
+					<th>문제</th>
+					<th>정답</th>
 					<th>상태</th>
 				</tr>
 				<c:forEach var='vo' items='${list}' varStatus='s'>
 				<tr>
-					<td>${vo.no}</td>
+					<td>${vo.no }</td>
 					<td>${vo.title }</td>
+					<td>${vo.quiz }</td>
+					<td>${vo.answer }</td>
 					<td>
 						<a href="/readingbetter/admin/quizview/${vo.no }">
 							<c:choose>

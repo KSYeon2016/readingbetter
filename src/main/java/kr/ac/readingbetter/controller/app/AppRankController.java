@@ -16,8 +16,6 @@ public class AppRankController {
 	@Autowired
 	private ScoresService scoresService;
 
-	/* ---------- 한 달 랭킹 시작 ---------- */
-
 	// 한 달 랭킹 상위 5명
 	@ResponseBody
 	@RequestMapping(value = "monthlyrank", method = RequestMethod.GET)
@@ -33,11 +31,7 @@ public class AppRankController {
 		vo = scoresService.mymonthlyRank(memberNo);
 		return vo;
 	}
-	/* ---------- 한 달 랭킹 끝 ---------- */
-
 	
-	/* ---------- 학교 랭킹 시작 ---------- */
-
 	// 학교 랭킹 상위 5곳
 	@ResponseBody
 	@RequestMapping(value = "schoolrank", method = RequestMethod.GET)
@@ -53,11 +47,6 @@ public class AppRankController {
 		vo = scoresService.mySchoolRank(id);
 		return vo;
 	}
-
-	/* ---------- 학교랭킹 끝 ---------- */
-
-	
-	/* ---------- 명예의 전당 시작 ---------- */
 
 	// 명예의 전당 상위 5명
 	@ResponseBody
@@ -75,5 +64,4 @@ public class AppRankController {
 		return vo;
 	}
 	
-	/* ---------- 명예의 전당 끝 ---------- */
 }

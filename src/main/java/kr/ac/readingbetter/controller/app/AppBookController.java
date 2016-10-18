@@ -47,7 +47,7 @@ public class AppBookController {
 
 	@ResponseBody
 	@RequestMapping(value = "insertreview", method = RequestMethod.GET)
-	public String InsertReview(
+	public void InsertReview(
 			Long bookNo, 
 			String review, 
 			Long memberNo, 
@@ -56,7 +56,6 @@ public class AppBookController {
 		vo.setReview(review);
 		vo.setMemberNo(memberNo);
 		reviewService.insert(vo);
-		return "";
 	}
 
 	// 신고 하기

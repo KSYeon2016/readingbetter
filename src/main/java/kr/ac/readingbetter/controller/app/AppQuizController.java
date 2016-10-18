@@ -41,12 +41,11 @@ public class AppQuizController {
 	@Autowired
 	private CardService cardService;
 
-	
-
 	@ResponseBody
 	@RequestMapping(value = "insertquiz", method = RequestMethod.GET)
-	public String InsertQuiz(@ModelAttribute QuizVo vo,
-		Long bookNo,String quiz,String ex1,String ex2,String ex3,String ex4,String answer ) {
+	public void InsertQuiz(@ModelAttribute QuizVo vo, Long bookNo, 
+			String quiz, String ex1, String ex2, String ex3, String ex4, 
+			String answer) {
 		vo.setBookNo(bookNo);
 		vo.setQuiz(quiz);
 		vo.setEx1(ex1);
@@ -55,7 +54,6 @@ public class AppQuizController {
 		vo.setEx4(ex4);
 		vo.setAnswer(answer);
 		quizService.quizAdd(vo);
-		return "";
 	}
 
 	@ResponseBody
@@ -65,12 +63,9 @@ public class AppQuizController {
 		return list;
 	}
 
-	
-
 	@ResponseBody
 	@RequestMapping(value = "historyScores", method = RequestMethod.GET)
-	public String InsertHistory(HistoryVo historyVo,Long memberNo,Long bookNo,
-			Integer score,Integer point) {
+	public void InsertHistory(HistoryVo historyVo, Long memberNo, Long bookNo, Integer score, Integer point) {
 		// history insert
 		historyVo.setScore(score);
 		historyVo.setPoint(point);
@@ -80,23 +75,19 @@ public class AppQuizController {
 		BookVo vo = bookService.getByNo(bookNo);
 		historyVo.setTitle(vo.getTitle());
 		historyService.insertHistory(historyVo);
+		
 		// scores update
 		scoresService.updateScores(historyVo);
-		return "";
-
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "cert", method = RequestMethod.GET)
-	public String InsertCert(CertificationVo certVo,Long memberNo,Long bookNo) {
-		//certification insert
+	public void InsertCert(CertificationVo certVo, Long memberNo, Long bookNo) {
+		// certification insert
 		certVo.setBookNo(bookNo);
 		certVo.setMemberNo(memberNo);
-		certificationService.insertCertification(certVo);		
-		return "";
-
+		certificationService.insertCertification(certVo);
 	}
-
 
 	@ResponseBody
 	@RequestMapping(value = "certification", method = RequestMethod.GET)
@@ -104,8 +95,8 @@ public class AppQuizController {
 		certVo.setMemberNo(memberNo);
 		certVo.setBookNo(bookNo);
 		CertificationVo certVo2 = certificationService.selectCertification(certVo);
+		
 		return certVo2;
-
 	}
 
 	@ResponseBody
@@ -113,7 +104,7 @@ public class AppQuizController {
 	public CardVo Card() {
 		// select card by random
 		CardVo cardVo = cardService.selectCardByRandom();
+		
 		return cardVo;
-
 	}
 }
