@@ -19,12 +19,12 @@
 	<select id="monthlyRank" parameterType="scoresvo" resultType="scoresvo">
 		<![CDATA[
 			select rank, id, monthlyscore 
-				from (select rank() over(order by score desc) as rank, 
-							 id, 
-							 score as monthlyScore 
-						from scores, member 
-						where member.no = scores.member_no) 
-				where rownum <= 10
+            from (select rank() over(order by score desc) as rank, 
+                      id,
+                      score as monthlyScore 
+                  from scores, member 
+                  where member.no = scores.member_no and not (position=0)) 
+            where rownum <= 10
 		]]>
 	</select>
 
@@ -39,7 +39,7 @@
 							 id, 
 							 score as monthlyScore 
 						from scores, member 
-						where member.no = scores.member_no) 
+						where member.no = scores.member_no and not (position=0)) 
 				where rownum <= 5
 		]]>
 	</select>
@@ -70,7 +70,7 @@
 							 id, 
 							 scores.total_score as totalscore 
 						from scores, member 
-						where member.no = scores.member_no) 
+						where member.no = scores.member_no and not (position=0)) 
 				where rownum <= 10
 		]]>
 	</select>
@@ -85,7 +85,7 @@
 							 id, 
 							 scores.total_score as totalscore 
 						from scores, member 
-						where member.no = scores.member_no) 
+						where member.no = scores.member_no and not (position=0)) 
 				where rownum <= 5
 		]]>
 	</select>
@@ -114,7 +114,7 @@
 							 id, 
 							 scores.total_score as totalscore 
 						from scores, member 
-						where member.no = scores.member_no) 
+						where member.no = scores.member_no and not (position=0)) 
 				where rownum <= 3 
 				order by rank asc
 		]]>
@@ -129,7 +129,7 @@
 							 schoolscore 
 						from (select b.school_no,sum(a.score) as SchoolScore 
 								from scores a, member b 
-								where b.no = a.member_no 
+								where b.no = a.member_no
 								group by school_no, b.school_no) a, school b 
 						where b.no = a.school_no and NOT (title = '기타') 
 						order by rank asc) 
@@ -184,7 +184,7 @@
 							 b.grade as grade, 
 							 a.score as score 
 						from scores a, member b 
-						where b.no = a.member_no and grade = #{grade}) 
+						where b.no = a.member_no and grade = #{grade} and not (position=0)) 
 				where rownum <= 10
 		]]>
 	</select>
@@ -198,7 +198,7 @@
 			             b.grade as grade,
 			             a.score as score
 			        from scores a,member b
-			       where b.no=a.member_no
+			       where b.no=a.member_no and not (b.position=0)
 			         and grade = (select grade from member where id=#{id}))
 			where rownum <= 10
 	      ]]>
@@ -213,7 +213,7 @@
 			             b.grade as grade,
 			             a.score as score
 			        from scores a,member b
-			       where b.no=a.member_no
+			       where b.no=a.member_no and not (b.position=0)
 			         and grade = (select grade from member where id=#{id}))
 			where rownum <= 5
 	      ]]>

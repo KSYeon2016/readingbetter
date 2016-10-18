@@ -128,6 +128,11 @@ public class MainController {
 			scoresService.insertScores(authUser.getNo());
 		}
 		
+		// 관리자는 출석체크 X
+		if (authUser.getPosition() == 0){
+			return "main";
+		}
+		
 		// 출석체크
 		int check = memberService.attendAction(authUser.getNo());
 		

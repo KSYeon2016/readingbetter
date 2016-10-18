@@ -21,6 +21,9 @@
 			<input type="text" id="title" name="title">
 			<input type="submit" value="찾기">
 		</form>
+		<div id="button-set">
+ 			<a href="/readingbetter/admin/cardaddform" class="btn btn-default">추가</a>
+ 		</div>
 		<table class="table table-bordered" id="board">
 			<tr class="active">
 				<th>번호</th>
@@ -44,7 +47,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a class="btn btn-default" href="/readingbetter/admin/cardaddform" role="button">추가</a>
 	</div>
 </body>
 </html>
