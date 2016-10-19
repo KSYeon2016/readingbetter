@@ -39,22 +39,42 @@
 
 			<div class="form-group">
 				<div class="col-sm-6">
-					<img id="img-solvequiz" class="img-thumbnail" src="${vo.cover }"><br>
-					<table id="table-solve" class="table">
-						<tr>
-							<td>제목</td>
-							<br>
-							<td>${vo.title }</td>
+					<table id="table-solve">
+						<tr id="top">
+							<td colspan="2"></td>
 						</tr>
-						<tr>
-							<td>출판사</td>
-							<br>
-							<td>${vo.publisherTitle }</td>
+						<tr id="line">
+							<td colspan="2">
+								<img id="img-solvequiz" class="img-thumbnail" src="${vo.cover }"><br>
+							</td>
 						</tr>
-						<tr>
-							<td>추천 학년</td>
-							<br>
-							<td>${vo.recommend }학년</td>
+						<tr id="line">
+							<td>&nbsp;</td>
+							<td></td>
+						</tr>
+						<tr id="line">
+							<td id="line_b" colspan="2">
+								<table id="book_info">
+									<tr>
+										<th id="w_line">제목</th>
+										<td>${vo.title }</td>
+									</tr>
+									<tr>
+										<td colspan="2"></td>
+									</tr>
+									<tr>
+										<th id="w_line">출판사</th>
+										<td>${vo.publisherTitle }</td>
+									</tr>
+									<tr>
+										<td colspan="2"></td>
+									</tr>
+									<tr>
+										<th>추천 학년</th>
+										<td>${vo.recommend }학년</td>
+									</tr>
+								</table>
+							</td>
 						</tr>
 					</table>
 				</div>

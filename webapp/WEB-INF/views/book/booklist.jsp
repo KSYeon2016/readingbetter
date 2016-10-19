@@ -49,49 +49,50 @@
 			<c:forEach var='vo' items='${listpage}' varStatus='s'>
 				<table id="book-table">
 					<colgroup>
-                        <col width="30%" />
-                        <col width="10%" />
-                        <col width="20%" />
-                        <col width="40%" />
-                     </colgroup>                
-                     <tr>
-                        <td rowspan="4">
-                           <img class="img-thumbnail" src="${vo.cover }">
-                        </td>
-                        <td colspan="3">${vo.title }</td>
-                     </tr>
-                     <tr>
-                        <td class="table-right">작가</td>
-                        <td class="table-left">${vo.authorName }</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td class="table-right">출판사</td>
-                        <td class="table-left">${vo.publisherTitle }</td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td class="table-right">추천학년</td>
-                        <td class="table-left">${vo.recommend }</td>
-                        <c:choose>
-                           <c:when test="${not empty sessionScope.authUser}">
-                              <td>
-                                 <a class="btn btn-default" href="/readingbetter/book/buybook?title=${vo.title }">책 구매</a>
-                                 <a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
-                                 <a class="btn btn-default btn-solve" data-no="${vo.no }" role="button">문제풀기</a>
-                                 <a class="btn btn-default" href="/readingbetter/book/makequizform/${vo.no}" role="button">문제내기</a>
-                              </td>
-                           </c:when>
-                           <c:otherwise>
-                              <td>
-                                 <a class="btn btn-default" href="/readingbetter/book/buybook?title=${vo.title }">책 구매</a>
-                                 <a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
-                                 <a class="btn btn-default disabled" role="button">문제풀기</a>
-                                 <a class="btn btn-default disabled" role="button">문제내기</a>
-                              </td>                           
-                           </c:otherwise>
-                        </c:choose>
-                     </tr>      
+						<col width="30%" />
+						<col width="10%" />
+						<col width="20%" />
+						<col width="40%" />
+					</colgroup>
+					<tr>
+						<td id="title" colspan="4">${vo.title }</td>
+					</tr>
+					<tr>
+						<td rowspan="4"><img class="img-thumbnail" src="${vo.cover }"></td>
+						<td class="table-right">작&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가:</td>
+						<td class="table-left">${vo.authorName }</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="table-right">출&nbsp;&nbsp;판&nbsp;&nbsp;사:</td>
+						<td class="table-left">${vo.publisherTitle }</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="table-right">추천&nbsp;학년:</td>
+						<td class="table-left">${vo.recommend }</td>
+						<c:choose>
+							<c:when test="${not empty sessionScope.authUser}">
+								<td rowspan="2">
+									<a class="btn btn-default" href="/readingbetter/book/buybook?title=${vo.title }">책 구매</a>
+									<a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
+									<a class="btn btn-default btn-solve" data-no="${vo.no }" role="button">문제풀기</a>
+									<a class="btn btn-default" href="/readingbetter/book/makequizform/${vo.no}" role="button">문제내기</a>
+								</td>
+							</c:when>
+							<c:otherwise>
+								<td rowspan="2">
+									<a class="btn btn-default" href="/readingbetter/book/buybook?title=${vo.title }">책 구매</a>
+									<a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
+									<a class="btn btn-default disabled" role="button">문제풀기</a>
+									<a class="btn btn-default disabled" role="button">문제내기</a></td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
 				</table>
 				<br>
 			</c:forEach>

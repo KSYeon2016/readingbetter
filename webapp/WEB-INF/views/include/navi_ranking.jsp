@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript" src="/readingbetter/assets/js/navi.js"></script>
 <div>
-	<p id="category">순위</p>
+	<p id="category"><img id="text" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/ranking.png"></p>
 	<ul>
 		<li><a href="/readingbetter/ranking/summary" class="summary">순위 한눈에 보기</a></li>
 		<li><a href="/readingbetter/ranking/monthlytotal" class="monthlytotal">이번 달 전체 순위</a></li>

@@ -3,21 +3,53 @@
 @import "readingbetter.css";
 
 /* booklist */
-#list	{ margin:20px auto;	width:900px; }
-#list h2	{ text-align: left; margin-bottom:30px; }
-#list #search-form { text-align:center; margin-bottom:20px; }
-#list #book-table { 
-	width:900px;
-	border:1px solid #333;
-	font-size: 18px;
-	text-align:center;
+#list {
+   margin: 20px auto;
+   width: 900px;
 }
-#list #book-table,
-#list #book-table td { padding:5px; }
-#list .img-thumbnail { max-width:180px; width:auto; max-height:180px; }
-#list .table-right	{ text-align:right; }
-#list .table-left	{ text-align:left; }
 
+#list h2 {
+   text-align: left;
+   margin-bottom: 5px;
+}
+
+#list #search-form {
+   text-align: center;
+   margin-bottom: 5px;
+}
+
+#list #book-table {
+   width: 900px;
+   background-color: #bdedff;
+   border-radius: 10px;
+   font-size: 15px;
+   text-align: center;
+   margin: 0 auto;
+}
+
+#list #book-table, #list #book-table td {
+   padding: 5px;
+}
+
+#list #title {
+   border-bottom:2px solid #ffffff; 
+   font-weight: bold;
+}
+
+#list .img-thumbnail {
+   max-width: 150px;
+   width: auto;
+   max-height: 150px;
+}
+
+#list .table-right {
+   text-align: right;
+   
+}
+
+#list .table-left {
+   text-align: left;
+}
 
 /* makequiz */
 #makequiz #radio-group	{ 
@@ -31,15 +63,79 @@
 #makequiz #quiz-content	{ margin-top:50px; }
 
 /* solvequiz */
-#solvequiz #radio-group   { 
-   text-align :left;
-   margin:10px auto;
-   width: 90%;
+#solvequiz #radio-group {
+	text-align: left;
+	width: 85%;
+	margin: 10px auto;
 }
-#solvequiz h4   { font-weight:bold; padding:5px; line-height: 150%; }
-#solvequiz #table-solve	{ text-align:center; }
-#solvequiz .col-lg-6 { height:100%; padding:10px 0; }
-#solvequiz #img-solvequiz	{ width:300px; height:200px; margin-top:10px; }
+
+#solvequiz h4 {
+	line-height: 150%;
+	font-weight: bold;
+	background-color: #bdedff;
+	padding: 5px;
+}
+
+#solvequiz #table-solve {
+	width: 500px;
+	text-align: center;
+	border-collapse: collapse !important;
+	max-width: 100%;
+	margin: auto;
+	padding: auto;
+	vertical-align: top;
+}
+
+#solvequiz #book_info {
+	width: 400px;
+	text-align: center;
+	border-collapse: collapse !important;
+	margin: 10px auto;
+	padding: 5px;
+	font-size: 1em;
+	border: 2px solid #bdedff;
+}
+
+#solvequiz #w_line {
+	border-bottom: 2px solid #ffffff;
+}
+
+#solvequiz #book_info td {
+	border-top: 2px solid #bdedff;
+}
+
+#solvequiz #book_info th {
+	width: 100px;
+	text-align: center;
+	border-collapse: collapse !important;
+	padding: 8px;
+	font: 1.1em bold;
+	font-weight: bold;
+	background-color: #bdedff;
+}
+
+#solvequiz #line {
+	border-left: 5px solid #ffc00e;
+	border-right: 5px solid #ffc00e;
+}
+
+#solvequiz #line_b {
+	border-bottom: 5px solid #ffc00e;
+}
+
+#solvequiz #top {
+	height: 100px;
+	background-image:
+		url("http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/top.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #ffc00e;
+}
+
+#solvequiz #img-solvequiz {
+	width: 300px;
+	margin: 10px;
+}
 
 /* review */
 #review	{ width: 900px; margin:20px auto; }
