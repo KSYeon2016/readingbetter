@@ -32,12 +32,14 @@
 	</div>
 	
 	<div id="cont">
-		<div id="honor">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/ranking/summary">순위</a> > 명예의 전당
 			</div>
-
+		</div>
+		
+		<div id="honor">
 			<div id="top3" class="col-lg-6">
 				<p id="title">★ Reading Better Top 3 ★</p>
 				<div id="graph"></div>

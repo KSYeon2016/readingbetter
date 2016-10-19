@@ -28,13 +28,15 @@
 	</div>
 	
 	<div id="cont">
-		<div id="monthlygrade">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/ranking/summary">순위</a> > 
 				<a href="/readingbetter/ranking/monthlygrade">이번 달 학년 순위</a> > 3학년
 			</div>
-
+		</div>
+		
+		<div id="monthlygrade">
 			<div id="rank-table" class="col-lg-6">
 				<c:choose>
 					<c:when test="${param.grade ne 0 }">

@@ -28,15 +28,16 @@
 	</div>
 	
 	<div id="cont">
-		<div id="history">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/mypage/info">내 정보</a> > 나의 활동
 			</div>
 
 			<p class="menu-title">나의 활동</p>
-			<br>
-
+		</div>
+		
+		<div id="history">
 			<div class="col-lg-6">
 				<div id="profile">
 					<img id="img" class="img-circle" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/pikachu.png">

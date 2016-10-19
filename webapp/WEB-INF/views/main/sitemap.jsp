@@ -41,13 +41,17 @@
 				</tr>
 				<tr>
 					<td>
-						<a href="/readingbetter/book/booklist">책목록</a><br>ㄴ문제 풀기<br>ㄴ문제 내기
+						<a href="/readingbetter/book/booklist">책목록</a><br>
+						ㄴ책 구매<br>
+						ㄴ리뷰 보기<br>
+						ㄴ문제 풀기<br>
+						ㄴ문제 내기
 					</td>
 					<td>
 						<a href="/readingbetter/ranking/summary">순위 한눈에 보기</a><br>
 						<a href="/readingbetter/ranking/monthlytotal">이번달 전체 순위</a><br>
 						<a href="/readingbetter/ranking/monthlyschool">이번달 학교별 순위</a><br>
-						<a href="/readingbetter/ranking/monthlygrade">이번달 학년별 순위</a><br>
+						<a href="/readingbetter/ranking/monthlygrade?grade=1">이번달 학년별 순위</a><br>
 						<a href="/readingbetter/ranking/honor">명예의 전당</a><br>
 					</td>
 					<td>
@@ -81,11 +85,12 @@
 						<c:when test="${not empty authUser }">
 							<td>
 								<a href="/readingbetter/mypage/info">내 정보 보기</a><br>
-								<a href="/readingbetter/mypage/history">내 활동</a>
+								<a href="/readingbetter/mypage/history">내 활동</a><br>
+								<a href="/readingbetter/mypage/gifticon">기프티콘</a>
 							</td>
 							<td>
 								<a href="/readingbetter/service/noticelist">공지</a><br>
-								<a href="/readingbetter/service/questionlist">문의 사항</a><br>
+								<a href="/readingbetter/service/questionlist">문의 게시판</a><br>
 								<a href="/readingbetter/service/wishbooklist">희망 도서 신청</a><br>
 							</td>
 							<td></td>
@@ -93,7 +98,7 @@
 						<c:otherwise>
 							<td>
 								<a href="/readingbetter/service/noticelist">공지</a><br>
-								<a href="/readingbetter/service/questionlist">문의 사항</a><br>
+								<a href="/readingbetter/service/questionlist">문의 게시판</a><br>
 								<a href="/readingbetter/service/wishbooklist">희망 도서 신청</a><br>
 							</td>
 							<td></td>

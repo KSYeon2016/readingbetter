@@ -32,12 +32,14 @@
 	</div>
 	
 	<div id="cont">
-		<div id="summary">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
-				<a href="/readingbetter/ranking/summary">순위</a> > 순위 한눈에 보기/검색
+				<a href="/readingbetter/ranking/summary">순위</a> > 순위 한눈에 보기
 			</div>
-
+		</div>
+		
+		<div id="summary">
 			<div id="table" class="col-lg-6">
 				<p id="title">이번 달 전체 순위</p>
 				<br>

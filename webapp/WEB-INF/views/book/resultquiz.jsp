@@ -33,7 +33,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="resultquiz">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/book/booklist">독서활동</a> > 
@@ -41,8 +41,9 @@
 			</div>
 
 			<p class="menu-title">퀴즈 결과</p>
-			<br>
-
+		</div>
+		
+		<div id="resultquiz">
 			<form class="form-horizontal">
 				<img id="img-result" class="img-thumbnail" src="${bookVo.cover }"><br>
 				<table class="table">

@@ -30,7 +30,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="review">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/service/noticelist">고객센터</a> > 
@@ -38,8 +38,9 @@
 			</div>
 
 			<p class="menu-title">신고</p>
-			<br>
-
+		</div>
+		
+		<div id="review">
 			<div>
 				<form method="post" action="../insertComments" id="comments-accusation">
 					<input type="hidden" name="keyNo" value="${vo.no }">

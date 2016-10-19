@@ -28,7 +28,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="questionwrite">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/service/noticelist">고객센터</a> > 
@@ -36,7 +36,9 @@
 			</div>
 
 			<p class="menu-title">문의 게시판</p>
-
+		</div>
+		
+		<div id="questionwrite">
 			<form action="/readingbetter/service/questionwrite/write" method="post">
 				<div id="board">
 					<table id="board" class="table table-bordered">

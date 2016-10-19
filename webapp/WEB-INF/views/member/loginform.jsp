@@ -26,14 +26,15 @@
 	<div id="menu"></div>
 	
 	<div id="cont">
-		<div id="login">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 로그인
 			</div>
 
 			<p class="menu-title">로그인</p>
-			<br>
-				
+		</div>
+		
+		<div id="login">
 			<div id="radio-group">
 				<c:if test="${param.error != null }">
 					<h6 style="color: red;">아이디 혹은 비밀번호가 틀립니다</h6>

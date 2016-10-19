@@ -31,7 +31,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="noticeview">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/service/noticelist">고객센터</a> > 
@@ -39,7 +39,9 @@
 			</div>
 
 			<p class="menu-title">공지</p>
-
+		</div>
+		
+		<div id="noticeview">
 			<div id="board">
 				<table class="table table-bordered">
 					<tr>

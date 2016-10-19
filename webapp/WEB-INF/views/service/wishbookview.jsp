@@ -30,7 +30,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="wishbookview">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/service/noticelist">고객센터</a> > 
@@ -38,7 +38,9 @@
 			</div>
 
 			<p class="menu-title">희망도서 정보</p>
-
+		</div>
+		
+		<div id="wishbookview">
 			<div id="board">
 				<table class="table table-bordered">
 					<colgroup>

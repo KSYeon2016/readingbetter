@@ -32,13 +32,16 @@
 	</div>
 	
 	<div id="cont">
-		<div id="list">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/book/booklist">독서활동</a> > 책 구매
 			</div>
 			
 			<p class="menu-title">책 구매</p>
+		</div>
+		
+		<div id="list">
 			<p><b>${param.title }</b> 상품 검색 결과입니다</p>
 			<p><b>이미지</b>를 누르면 해당 상품 페이지로 이동합니다</p>
 			

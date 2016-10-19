@@ -26,13 +26,15 @@
 	<div id="menu"></div>
 	
 	<div id="cont">
-		<div id="findjoin">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 아이디 비밀번호 찾기
 			</div>
 
 			<p class="menu-title">아이디/비밀번호 찾기</p>
-					
+		</div>
+		
+		<div id="findjoin">
 			<div id="radio-group">
 				<form class="form-horizontal" action="" method="POST">
 					<br>

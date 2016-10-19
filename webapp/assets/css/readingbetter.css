@@ -86,6 +86,12 @@ ul, ol			{ list-style-type: none }
 	background-color: #F3FAFB;
 }
 
+#basic-menu {
+	width: 90%;
+	margin: 10px auto;
+	margin-bottom: 30px;
+}
+
 .small-menu,
 .menu-title {
    text-align: right;

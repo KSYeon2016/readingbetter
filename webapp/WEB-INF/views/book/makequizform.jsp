@@ -28,7 +28,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="makequiz">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/book/booklist">독서활동</a> > 
@@ -36,7 +36,9 @@
 			</div>
 
 			<p class="menu-title">문제 내기</p>
-
+		</div>
+		
+		<div id="makequiz">
 			<div id="quiz-content" class="col-lg-6">
 				<input type="hidden" name="no" value="${vo.no}">
 				<img id="img" class="img-thumbnail" src="${vo.cover}"><br>

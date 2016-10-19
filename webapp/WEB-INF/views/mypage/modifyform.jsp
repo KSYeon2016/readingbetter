@@ -30,7 +30,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="chage">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/mypage/info">내정보</a> > 
@@ -38,7 +38,9 @@
 			</div>
 
 			<p class="menu-title">내 정보 수정</p>
-
+		</div>
+		
+		<div id="chage">
 			<div id="radio-group">
 				<form id="modify-form" class="form-horizontal" action="/readingbetter/mypage/modify" method="POST">
 					<div class="form-group">

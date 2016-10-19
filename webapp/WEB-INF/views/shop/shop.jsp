@@ -28,12 +28,15 @@
 	</div>
 	
 	<div id="cont">
-		<div id="shop">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 상점
 			</div>
 
 			<p class="menu-title">상점</p>
+		</div>
+		
+		<div id="shop">
 			<p id="myPoint">내 캔디수 : ${scoresVo.point }</p>
 
 			<div class="imggroup">

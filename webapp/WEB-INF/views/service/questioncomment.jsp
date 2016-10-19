@@ -28,13 +28,15 @@
 	</div>
 	
 	<div id="cont">
-		<div id="questionwrite">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > <a href="/readingbetter/service/noticelist">고객센터</a> > <a href="/readingbetter/service/questionlist">문의 게시판 </a> > 답글 작성
 			</div>
 
 			<p class="menu-title">문의 답글 작성</p>
-
+		</div>
+		
+		<div id="questionwrite">
 			<form action="/readingbetter/service/questioncomment/write?group=${contents.groupNo }&no=${contents.no}" method="post">
 				<table id="board" class="table table-bordered">
 					<tr>

@@ -32,14 +32,16 @@
 	</div>
 	
 	<div id="cont">
-		<div id="list">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/book/booklist">독서활동</a> > 책목록
 			</div>
 			
 			<p class="menu-title">책 목록</p>
-					
+		</div>
+		
+		<div id="list">
 			<form id="search_form" action="" method="get">
 				<input type="text" id="bkwd" name="bkwd" value="${bkwd }">
 				<input id="btn-s" type="submit" value="찾기">

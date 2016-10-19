@@ -28,12 +28,14 @@
 	</div>
 	
 	<div id="cont">
-		<div class="small-menu">
-			<a href="/readingbetter/main">홈</a> > 
-			<a href="/readingbetter/service/noticelist">고객센터</a> > 문의 게시판
+		<div id="basic-menu">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > 
+				<a href="/readingbetter/service/noticelist">고객센터</a> > 문의 게시판
+			</div>
+	
+			<p class="menu-title">문의 게시판</p>
 		</div>
-
-		<p class="menu-title">문의 게시판</p>
 				
 		<form id="search_form" action="" method="get">
 			<input type="text" name="borKwd" value="${borKwd }">

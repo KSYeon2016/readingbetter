@@ -26,13 +26,15 @@
 	<div id="menu"></div>
 	
 	<div id="cont">
-		<div id="join">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 회원가입
 			</div>
 
 			<p class="menu-title">회원가입</p>
-
+		</div>
+		
+		<div id="join">
 			<div id="radio-group">
 				<form class="form-horizontal" id="join-form" action="/readingbetter/member/join" method="POST">
 					<div class="form-group">

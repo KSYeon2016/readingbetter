@@ -28,15 +28,18 @@
 	</div>
 	
 	<div id="cont">
-		<div id="wishbookwrite">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/service/noticelist">고객센터</a> > 
 				<a href="/readingbetter/service/wishbooklist"> 희망도서 신청</a> > 글쓰기
 			</div>
-
+			
+			<p class="menu-title">희망도서 신청</p>
+		</div>
+		
+		<div id="wishbookwrite">
 			<form action="/readingbetter/service/wishbookwrite" method="post">
-				<p class="menu-title">희망도서 신청</p>
 				<div id="board">
 					<table class="table table-bordered ">
 						<tr>

@@ -28,13 +28,15 @@
 	</div>
 	
 	<div id="cont">
-		<div class="small-menu">
-			<a href="/readingbetter/main">홈</a> > 
-			<a href="/readingbetter/service/noticelist">고객센터</a> > 희망도서 신청
+		<div id="basic-menu">
+			<div class="small-menu">
+				<a href="/readingbetter/main">홈</a> > 
+				<a href="/readingbetter/service/noticelist">고객센터</a> > 희망도서 신청
+			</div>
+	
+			<p class="menu-title">희망도서 신청</p>
 		</div>
-
-		<p class="menu-title">희망도서 신청</p>
-
+		
 		<form id="search_form" action="" method="get">
 			<input type="text" id="wKwd" name="wKwd" value="${wKwd}">
 			<input type="submit" value="찾기">

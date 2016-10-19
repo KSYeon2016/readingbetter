@@ -28,14 +28,16 @@
 	</div>
 	
 	<div id="cont">
-		<div id="info">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/mypage/info">내정보</a> > 내정보 보기
 			</div>
 
 			<p class="menu-title">내 정보 보기</p>
-
+		</div>
+		
+		<div id="info">
 			<div id="radio-group">
 				<form class="form-horizontal">
 					<img id="img-mypage" class="img-circle" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/pikachu.png"><br>

@@ -28,7 +28,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="solvequiz">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/book/booklist">독서활동</a> > 
@@ -36,7 +36,9 @@
 			</div>
 
 			<p class="menu-title">문제 풀기</p>
-
+		</div>
+		
+		<div id="solvequiz">
 			<div class="form-group">
 				<div class="col-sm-6">
 					<table id="table-solve">

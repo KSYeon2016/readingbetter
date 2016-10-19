@@ -28,7 +28,7 @@
 	</div>
 	
 	<div id="cont">
-		<div id="review">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/book/booklist">독서활동</a> > 
@@ -36,7 +36,9 @@
 			</div>
 
 			<p class="menu-title">리뷰</p>
-
+		</div>
+		
+		<div id="review">
 			<div>
 				<img id="img-book" class="img-thumbnail" src="${vo.cover }">
 				<table class="table tbl-bookinfo">

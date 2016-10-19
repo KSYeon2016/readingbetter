@@ -29,12 +29,14 @@
 	</div>
 	
 	<div id="cont">
-		<div id="monthlytotal">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/ranking/summary">순위</a> > 이번 달 전체 순위
 			</div>
-					
+		</div>
+		
+		<div id="monthlytotal">
 			<div id="rank-table" class="col-lg-6">
 				<P id="title">이번 달 전체 순위</P><br>						
 				<table class="table">

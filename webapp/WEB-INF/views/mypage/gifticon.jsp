@@ -29,16 +29,16 @@
 	</div>
 	
 	<div id="cont">
-		<div id="history">
+		<div id="basic-menu">
 			<div class="small-menu">
 				<a href="/readingbetter/main">홈</a> > 
 				<a href="/readingbetter/mypage/info">내 정보</a> > 기프키콘
 			</div>
 
 			<p class="menu-title">나의 기프티콘 보기</p>
-			<br>
-				
-			<br> <br>
+		</div>
+		
+		<div id="history">
 			<table id="history-table" class="table table-striped">
 				<tr>
 					<th>번호</th>
