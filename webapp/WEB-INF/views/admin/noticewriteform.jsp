@@ -35,7 +35,7 @@
 			<tr>
 				<td id="content" colspan=2>
 					<!-- <textarea id="content" name="content" class="form-control"></textarea> -->
-					<textarea name="content" id="ir1" rows="10" cols="100">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
+					<textarea name="content" id="ir1" rows="10" cols="100"></textarea>
 					<script type="text/javascript">
 					var oEditors = [];
 					nhn.husky.EZCreator.createInIFrame({

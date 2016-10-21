@@ -15,6 +15,8 @@
 <!-- /공통 -->
 
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/se/js/HuskyEZCreator.js" charset="utf-8"></script>
+
 </head>
 <body>
 <input type="hidden" class="category" value="wishbook">
@@ -39,8 +41,8 @@
 		</div>
 		
 		<div id="wishbookwrite">
-			<form action="/readingbetter/service/wishbookwrite" method="post">
-				<div id="board">
+			<div id="board">
+				<form id="frm" action="/readingbetter/service/wishbookwrite" method="post">
 					<table class="table table-bordered ">
 						<tr>
 							<th class="active">책 제목</th>
@@ -59,17 +61,27 @@
 						</tr>
 						<tr>
 							<td colspan=4>
-								<textarea class="form-control" rows="10" placeholder="내용을 입력하세요." name="reason"></textarea>
+								<!-- <textarea class="form-control" rows="10" placeholder="내용을 입력하세요." name="reason"></textarea> -->
+								<textarea name="reason" id="ir1" rows="10" cols="100"></textarea>
+								<script type="text/javascript">
+								var oEditors = [];
+								nhn.husky.EZCreator.createInIFrame({
+								    oAppRef: oEditors,
+								    elPlaceHolder: "ir1",
+								    sSkinURI: "/readingbetter/se/SmartEditor2Skin.html",
+								    fCreator: "createSEditor2"
+								});
+								</script>
 							</td>
 						</tr>
 					</table>
-							
-					<div id="buttonalign">
-						<button type="submit" class="btn btn-default">작성</button>
-						<br><br>
-					</div>
-				</div>
-			</form>
+				</form>
+				
+				<div id="buttonalign">
+					<button id="sbmt" class="btn btn-default">작성</button>
+					<br><br>
+				</div>	
+			</div>
 		</div>
 	</div>
 </div>
@@ -78,3 +90,11 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+$("#sbmt").click(function(){
+	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+	
+	$("#frm").submit();
+})
+</script>
