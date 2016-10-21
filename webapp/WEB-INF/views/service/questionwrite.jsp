@@ -15,6 +15,8 @@
 <!-- /공통 -->
 
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/se/js/HuskyEZCreator.js" charset="utf-8"></script>
+
 </head>
 <body>
 <input type="hidden" class="category" value="question">
@@ -39,9 +41,9 @@
 		</div>
 		
 		<div id="questionwrite">
-			<form action="/readingbetter/service/questionwrite/write" method="post">
-				<div id="board">
-					<table id="board" class="table table-bordered">
+			<div id="board">
+				<form id="frm" action="/readingbetter/service/questionwrite/write" method="post">
+					<table class="table table-bordered">
 						<tr>
 							<th id="celltitle" class="active">제목</th>
 							<td><input type="text" class="form-control" name="title" placeholder="필수 입력"></td>
@@ -51,16 +53,26 @@
 						</tr>
 						<tr>
 							<td id="content" colspan=2>
-								<textarea id="sub" class="form-control" name="content" placeholder="내용을 입력하세요."></textarea>
+								<!-- <textarea id="sub" class="form-control" name="content" placeholder="내용을 입력하세요."></textarea> -->
+								<textarea name="content" id="ir1" rows="10" cols="100"></textarea>
+								<script type="text/javascript">
+								var oEditors = [];
+								nhn.husky.EZCreator.createInIFrame({
+								    oAppRef: oEditors,
+								    elPlaceHolder: "ir1",
+								    sSkinURI: "/readingbetter/se/SmartEditor2Skin.html",
+								    fCreator: "createSEditor2"
+								});
+								</script>
 							</td>
 						</tr>
 					</table>
-				</div>
-
+				</form>
+				
 				<div id="buttonalign">
-					<button type="submit" class="btn btn-default">제출</button>
+					<button id="sbmt" class="btn btn-default">제출</button>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 </div>
@@ -69,3 +81,11 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+$("#sbmt").click(function(){
+	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+	
+	$("#frm").submit();
+})
+</script>

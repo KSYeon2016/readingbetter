@@ -209,7 +209,7 @@ div.form-group {
 }
 
 /* 버튼 정렬, 위치 지정*/
-#wishbookwrite #buttonalign {
+#buttonalign {
    text-align: right;
 }
 
