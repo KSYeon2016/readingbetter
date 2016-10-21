@@ -101,6 +101,9 @@ public class MainController {
 		
 		model.addAttribute("todayBookList", todayBookList);
 		
+		//랭킹 월 초기화
+		scoresService.MonthReset(vo);
+		
 		return "main/main";
 	}
 	////////////////////////////////////////////////////////////////////////////

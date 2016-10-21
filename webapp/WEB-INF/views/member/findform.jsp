@@ -42,14 +42,14 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">이름</label>
 						<div class="col-sm-6">
-							<input type="text" id="inputNameForId" class="form-control" placeholder="Name">
+							<input type="text" id="inputNameForId" class="form-control" placeholder="Name" value="김아무개">
 						</div>
 					</div>
 						
 					<div class="form-group">
 						<label class="col-sm-3 control-label">이메일</label>
 						<div class="col-sm-6">
-							<input type="Email" id="inputEmailForId" class="form-control" placeholder="Email">
+							<input type="Email" id="inputEmailForId" class="form-control" placeholder="Email" value="kg00003@naver.com">
 						</div>
 					</div>
 
@@ -67,21 +67,21 @@
 					<div class="form-group">
 						<label for="inputID" class="col-sm-3 control-label">아이디</label>
 						<div class="col-sm-6">
-							<input type="text" id="inputIdForPw" class="form-control" id="inputID" placeholder="ID">
+							<input type="text" id="inputIdForPw" class="form-control" id="inputID" placeholder="ID" value="aa11">
 						</div>
 					</div>
 							
 					<div class="form-group">
 						<label for="inputName" class="col-sm-3 control-label">이름</label>
 						<div class="col-sm-6">
-							<input type="text" id="inputNameForPw" class="form-control" id="inputPassword" placeholder="Name">
+							<input type="text" id="inputNameForPw" class="form-control" id="inputPassword" placeholder="Name" value="김아무개">
 						</div>
 					</div>
 							
 					<div class="form-group">
 						<label for="inputEmail" class="col-sm-3 control-label">이메일</label>
 						<div class="col-sm-6">
-							<input type="Email" id="inputEmailForPw" class="form-control" id="inputEmail" placeholder="Email">
+							<input type="Email" id="inputEmailForPw" class="form-control" id="inputEmail" placeholder="Email" value="kg00003@naver.com">
 						</div>
 					</div>
 

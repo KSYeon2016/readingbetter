@@ -274,4 +274,12 @@
 			update scores set point=point+#{point} where member_no=#{memberNo}
 		]]>
 	</update>
+	
+	<!-- 월별 점수 초기화 -->
+	<update id="updateMonth" parameterType="scoresvo">
+		<![CDATA[
+			update scores 
+				set score = 0
+		]]>
+	</update>
 </mapper>

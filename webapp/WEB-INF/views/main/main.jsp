@@ -192,6 +192,9 @@
 											
 											<div id="main_graderank">
 												<c:choose>
+													<c:when test="${monthlyMyGradeRank.grade eq 0 }">
+														<label>일반 회원 랭킹</label>
+													</c:when>
 													<c:when test="${mainGrade ne null}">
 														<label>이 달의 우리 학년 Top 5 - ${monthlyMyGradeRank.grade }학년</label>
 													</c:when>

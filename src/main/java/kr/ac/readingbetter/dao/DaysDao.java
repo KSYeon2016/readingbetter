@@ -15,6 +15,12 @@ public class DaysDao {
 		return result;
 	}
 	
+	public Integer selectMonth(){
+		Integer result = sqlSession.selectOne("days.selectMonth");
+
+		return result;
+	}
+	
 	public void insertDays(){
 		sqlSession.insert("days.insertDays");
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.ac.readingbetter.dao.DaysDao;
 import kr.ac.readingbetter.dao.ScoresDao;
 import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.ScoresVo;
@@ -15,6 +16,9 @@ public class ScoresService {
 	@Autowired
 	private ScoresDao scoresDao;
 
+	@Autowired
+	private DaysDao daysDao;
+	
 	// 전체 랭킹
 	public List<ScoresVo> monthlyRank(ScoresVo vo) {
 		return scoresDao.monthlyRank(vo);
@@ -103,5 +107,14 @@ public class ScoresService {
 	// 로그인 후 내 점수 정보 출력
 	public ScoresVo myScores(Long no) {
 		return scoresDao.myScores(no);
+	}
+	
+	//랭킹 초기화
+	public void MonthReset(ScoresVo vo){
+		Integer result = daysDao.selectMonth();
+		
+		if(result != null){
+			scoresDao.MonthUpdate(vo);
+		}
 	}
 }

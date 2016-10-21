@@ -17,4 +17,12 @@
 		]]>
 	</select>
 	
+	<select id="selectMonth" resultType ="java.lang.Integer">
+		<![CDATA[
+			select no 
+				from days 
+				where to_char(today, 'dd') = 1
+		]]>
+	</select>
+	
 </mapper>
