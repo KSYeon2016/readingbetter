@@ -17,4 +17,13 @@
 					  to_char(att_date, 'yyyy-mm-dd') = to_char(sysdate, 'yyyy-mm-dd')
 		]]>
 	</select>
+	
+	<select id="checkreset"  resultType="long">
+		<![CDATA[
+			 select count(no) 
+			 	from attend 
+				where to_char(att_date, 'yyyy-mm-dd') = to_char(sysdate, 'yyyy-mm-dd')
+		]]>
+	</select>
+	
 </mapper>

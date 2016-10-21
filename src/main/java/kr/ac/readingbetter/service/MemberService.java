@@ -116,6 +116,17 @@ public class MemberService {
 		return vo;
 	}
 	
+	// 리셋 확인
+	public int checkreset() {
+		// 등록 확인 없으면
+		Long checkReset = attendDao.checkreset();
+		if (checkReset == null) {
+			return 0;
+		}
+		// 있으면
+		return 1;
+	}
+	
 	public int attendAction(Long no){
 		Integer bonus = 10;
 		

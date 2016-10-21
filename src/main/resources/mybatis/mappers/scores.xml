@@ -3,6 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="scores">
+
 	<!-- 메인 페이지 로그인 후 내 점수 정보 출력 -->
 	<select id="myScores" parameterType="Long" resultType="scoresvo">
 		<![CDATA[
@@ -12,6 +13,21 @@
 				   score as monthlyScore
 				from scores s, member m 
 				where m.no = s.MEMBER_NO and no = #{no}
+		]]>
+	</select>
+	
+	<!-- 한 달 점수 랭킹 전체 -->
+	<select id="monthlyRankReset" parameterType="scoresvo" resultType="scoresvo">
+		<![CDATA[
+			select rank, id, monthlyscore, member_no as memberNo, point
+            	from (select rank() over(order by score desc) as rank, 
+                      		 id,
+                      		 member_no,
+                      		 score as monthlyScore,
+                      		 point
+					from scores, member 
+                 	where member.no = scores.member_no and not (position = 0)) 
+            
 		]]>
 	</select>
 	
@@ -282,4 +298,28 @@
 				set score = 0
 		]]>
 	</update>
+	
+	<!-- 월별 인간 캔디 주기 -->
+	<update id="resetPoint" parameterType="scoresvo">
+ 		<![CDATA[
+ 			update scores set point = #{point} where member_no = #{memberNo}
+ 		]]>
+	</update>
+	
+	<!-- 월별 상위 캔디 주기 1등-->
+	<select id="pointTop"  parameterType="java.lang.Long" resultType="java.lang.Long">
+ 		<![CDATA[
+			select count(*) 
+				from (select rank, id, score ,member_no as memberNo,point
+            			from (select rank() over(order by score desc) as rank, 
+                      				 id,
+                      				 score,
+                      				 member_no,
+                      				 point
+								from scores, member 
+								where member.no = scores.member_no and not (position = 0)) 
+			where rank = #{rank}) c
+ 		]]>
+	</select>
+	
 </mapper>

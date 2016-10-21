@@ -17,6 +17,7 @@ import kr.ac.readingbetter.service.MemberService;
 import kr.ac.readingbetter.service.NoticeService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.BookVo;
+import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.NoticeVo;
 import kr.ac.readingbetter.vo.ScoresVo;
@@ -40,7 +41,7 @@ public class MainController {
 	// 메인
 	// 메인 화면 열기
 	@RequestMapping("")
-	public String Main(ScoresVo vo, NoticeVo nvo, Model model, HttpSession session) {
+	public String Main(ScoresVo vo, NoticeVo nvo, Model model, HttpSession session, HistoryVo histroyVo) {
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 		
 		// 로그인 후 나의 점수 정보 출력
@@ -101,8 +102,12 @@ public class MainController {
 		
 		model.addAttribute("todayBookList", todayBookList);
 		
-		//랭킹 월 초기화
-		scoresService.MonthReset(vo);
+		// 0이면 새로 출석, 1이면 이미 출석
+		int check = memberService.checkreset();
+		if (check == 0) {
+			// 랭킹 월 초기화
+			scoresService.MonthReset(vo, histroyVo);
+		}
 		
 		return "main/main";
 	}

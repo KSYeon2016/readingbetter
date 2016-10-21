@@ -91,7 +91,7 @@
 						<td>${vo.score }</td>
 						<td>
 							<c:choose>
-                   				 <c:when test="${vo.identity == 0 || vo.identity == 3 }">+${vo.point }</c:when>
+                   				 <c:when test="${vo.identity == 0 || vo.identity == 3 || vo.identity == 4}">+${vo.point }</c:when>
                    				 <c:when test="${vo.identity == 1}">-${vo.point }</c:when>
 	           				</c:choose>
 						</td>

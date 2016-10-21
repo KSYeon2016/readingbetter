@@ -17,4 +17,9 @@ public class AttendDao {
 		Long checkAttend = sqlSession.selectOne("attend.checkAttend", no);
 		return checkAttend;
 	}
+	
+	public Long checkreset(){
+		Long checkAttend = sqlSession.selectOne("attend.checkreset");
+		return checkAttend;
+	}
 }

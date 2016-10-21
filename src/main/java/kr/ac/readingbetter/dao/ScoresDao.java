@@ -108,4 +108,23 @@ public class ScoresDao {
 	public ScoresVo myScores(Long no) {
 		return sqlSession.selectOne("myScores", no);
 	}
+	
+	//상위인간 포인트 주기
+	public void resetPoint(ScoresVo vo) {
+		sqlSession.update("scores.resetPoint", vo);
+	}
+	
+	//상위인간 순위별 불러오기
+	public Long pointTop(Long rank){
+		Long count= sqlSession.selectOne("scores.pointTop",rank);
+		return count;
+		
+	}
+	
+	//점수주기위한 전체 출력
+	public List<ScoresVo> monthlyRankReset(ScoresVo vo) {
+		return sqlSession.selectList("scores.monthlyRankReset", vo); 
+
+	}
+	
 }

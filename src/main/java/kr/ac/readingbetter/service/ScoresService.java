@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.DaysDao;
+import kr.ac.readingbetter.dao.HistoryDao;
 import kr.ac.readingbetter.dao.ScoresDao;
 import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.ScoresVo;
@@ -18,6 +19,9 @@ public class ScoresService {
 
 	@Autowired
 	private DaysDao daysDao;
+	
+	@Autowired
+	private HistoryDao historyDao;
 	
 	// 전체 랭킹
 	public List<ScoresVo> monthlyRank(ScoresVo vo) {
@@ -110,11 +114,86 @@ public class ScoresService {
 	}
 	
 	//랭킹 초기화
-	public void MonthReset(ScoresVo vo){
+	public void MonthReset(ScoresVo vo, HistoryVo historyVo){
 		Integer result = daysDao.selectMonth();
-		
 		if(result != null){
+			
+			//초기화 되기 전에 포인트 지급	
+			Long count1 = scoresDao.pointTop(1L);
+			Long count2 = scoresDao.pointTop(2L);
+			Long count3 = scoresDao.pointTop(3L);
+			System.out.println(count1);
+			System.out.println(count2);
+			System.out.println(count3);
+			for(int i=0;i<count1;i++){
+				String top1Id = scoresDao.monthlyRankReset(vo).get(i).getMemberNo().toString();
+				Long top1memberNo= Long.parseLong(top1Id);
+				vo.setMemberNo(top1memberNo);
+				
+				String point=scoresDao.monthlyRankReset(vo).get(i).getPoint().toString();
+				Integer pointInt=Integer.parseInt(point);
+				vo.setPoint(10+pointInt);
+				//history에 기록하기
+				historyVo.setTitle("이달의 랭킹 1등 보상");
+				historyVo.setScore(0);
+				historyVo.setPoint(10);
+				historyVo.setMemberNo(top1memberNo);
+				historyVo.setIdentity(4);
+				historyVo.setKeyNo(0L);
+				historyDao.insertHistory(historyVo);
+				
+				//점수 업데이트
+				scoresDao.resetPoint(vo);
+			}
+			if(count1 < 3){
+				for(int j = 0; j < count2; j++){
+					String top2Id = scoresDao.monthlyRankReset(vo).get((int) (j+count1)).getMemberNo().toString();
+					Long top2memberNo= Long.parseLong(top2Id);
+					vo.setMemberNo(top2memberNo);
+					
+					String point=scoresDao.monthlyRankReset(vo).get(j).getPoint().toString();
+					Integer pointInt=Integer.parseInt(point);
+					vo.setPoint(5 + pointInt);
+					
+					//history에 기록하기
+					historyVo.setTitle("이달의 랭킹 2등 보상");
+					historyVo.setScore(0);
+					historyVo.setPoint(5);
+					historyVo.setMemberNo(top2memberNo);
+					historyVo.setIdentity(4);
+					historyVo.setKeyNo(0L);
+					historyDao.insertHistory(historyVo);
+					
+					//점수 업데이트
+					scoresDao.resetPoint(vo);
+				}
+			}else if(count1 + count2 < 3){
+				for(int k=0; k<count3; k++){
+					String top3Id = scoresDao.monthlyRankReset(vo).get((int) (k+count1+count2)).getMemberNo().toString();
+					Long top3memberNo = Long.parseLong(top3Id);
+					vo.setMemberNo(top3memberNo);
+					
+					String point = scoresDao.monthlyRankReset(vo).get(k).getPoint().toString();
+					Integer pointInt = Integer.parseInt(point);
+					vo.setPoint(3 + pointInt);
+					
+					//history에 기록하기
+					historyVo.setTitle("이달의 랭킹 3등 보상");
+					historyVo.setScore(0);
+					historyVo.setPoint(3);
+					historyVo.setMemberNo(top3memberNo);
+					historyVo.setIdentity(4);
+					historyVo.setKeyNo(0L);
+					historyDao.insertHistory(historyVo);
+					
+					//점수 업데이트
+					scoresDao.resetPoint(vo);
+				}
+			}
+			
+			//초기화
 			scoresDao.MonthUpdate(vo);
 		}
 	}
+	
 }
