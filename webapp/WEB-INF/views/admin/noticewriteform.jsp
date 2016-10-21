@@ -11,6 +11,10 @@
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js" charset="utf-8"></script>
+<script type="text/javascript" src="/readingbetter/se/js/HuskyEZCreator.js" charset="utf-8"></script>
+
 </head>
 <body>
 	<c:import url='/WEB-INF/views/admin/header.jsp' />
@@ -18,7 +22,7 @@
 	<br>
 	<h4>공지 쓰기</h4>
 	<div>
-	<form action="noticewrite" method="post">
+	<form id="frm" action="noticewrite" method="post">
 		<input type="hidden" name="memberNo" value="${authUser.no }">
 		<table id="board" class="table table-bordered">
 			<tr>
@@ -30,15 +34,33 @@
 			</tr>
 			<tr>
 				<td id="content" colspan=2>
-					<textarea id="content" name="content" class="form-control"></textarea>
+					<!-- <textarea id="content" name="content" class="form-control"></textarea> -->
+					<textarea name="content" id="ir1" rows="10" cols="100">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
+					<script type="text/javascript">
+					var oEditors = [];
+					nhn.husky.EZCreator.createInIFrame({
+					    oAppRef: oEditors,
+					    elPlaceHolder: "ir1",
+					    sSkinURI: "/readingbetter/se/SmartEditor2Skin.html",
+					    fCreator: "createSEditor2"
+					});
+					</script>
 				</td>
 			</tr>
 		</table>
-		<div id="buttons">
-			<a href="/readingbetter/admin/noticelist" class="btn btn-default">목록</a>
-			<button type="submit" class="btn btn-default">제출</button>
-		</div>
 	</form>
+	<div id="buttons">
+		<a href="/readingbetter/admin/noticelist" class="btn btn-default">목록</a>
+		<button id="sbmt" class="btn btn-default">제출</button>
+	</div>
 	</div>
 </body>
 </html>
+
+<script type="text/javascript">
+$("#sbmt").click(function(){
+	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+	
+	$("#frm").submit();
+})
+</script>
