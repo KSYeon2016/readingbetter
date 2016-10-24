@@ -120,7 +120,7 @@ public class MemberService {
 	public int checkreset() {
 		// 등록 확인 없으면
 		Long checkReset = attendDao.checkreset();
-		if (checkReset == null) {
+		if (checkReset == 0L) {
 			return 0;
 		}
 		// 있으면

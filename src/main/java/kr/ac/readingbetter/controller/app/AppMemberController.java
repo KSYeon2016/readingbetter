@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import kr.ac.readingbetter.service.MemberService;
+import kr.ac.readingbetter.service.ScoresService;
+import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.MemberVo;
+import kr.ac.readingbetter.vo.ScoresVo;
 
 
 
@@ -16,13 +19,32 @@ public class AppMemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private ScoresService scoresService;
 
 	@ResponseBody
 	@RequestMapping(value = "join", method = RequestMethod.GET)
-	public MemberVo historyapp(String id, String pw, MemberVo vo) {
+	public MemberVo historyapp(String id, String pw, MemberVo vo, HistoryVo histroyVo, ScoresVo scoresVo) {
 		vo.setId(id);
 		vo.setPw(pw);
 		MemberVo authUser = memberService.selectAuthUser(vo);
+		memberService.attendAction(authUser.getNo());
+		
+		// 0이면 새로 출석, 1이면 이미 출석
+		int check = memberService.checkreset();
+		if (check == 0) {
+			// 랭킹 월 초기화
+			scoresService.MonthReset(scoresVo, histroyVo);
+		}
+		
+		// 누적 출석일 가져오기
+		if (authUser != null) {
+			int attCount = memberService.selectAttCount(authUser.getNo());
+			authUser.setAttCount(attCount);
+		}
+		
+		authUser.setCheck(check);
 		
 		return authUser;
 	}
