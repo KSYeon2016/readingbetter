@@ -154,7 +154,13 @@ public class BookController {
 
 	// 퀴즈 내기
 	@RequestMapping(value = "/makequizinsert", method = RequestMethod.POST)
-	public String makequizInsert(@ModelAttribute QuizVo vo) {
+	public String makequizInsert(@ModelAttribute QuizVo vo, HttpSession session) {
+		// 로그인 한 회원 정보 불러오기
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		
+		// 로그인 한 회원의 회원 번호 vo에 삽입
+		vo.setMemberNo(authUser.getNo());
+		
 		bookService.quizAdd(vo);
 		
 		return "redirect:/book/booklist";
@@ -191,8 +197,8 @@ public class BookController {
 	
 	@RequestMapping("/resultquiz")
 	public String resultQuiz(
-			@RequestParam(value="count") Integer count,
-			@RequestParam(value="no", required = false, defaultValue = "") Long bookNo,
+			@RequestParam(value = "count") Integer count,
+			@RequestParam(value = "no", required = false, defaultValue = "") Long bookNo,
 			HttpSession session,
 			Model model){
 		MemberVo authUser = (MemberVo)session.getAttribute("authUser");
@@ -326,7 +332,10 @@ public class BookController {
 	// 리뷰
 	// 리뷰 화면 열기
 	@RequestMapping(value = "/review/{no}", method = RequestMethod.GET)
-	public String review(@PathVariable("no") Long no, Model model, ReviewVo reviewVo,
+	public String review(
+			@PathVariable("no") Long no, 
+			Model model, 
+			ReviewVo reviewVo,
 			@RequestParam(value = "reviewPage", required = false, defaultValue = "") String reviewPage) {
 		// 책 정보 불러오기
 		BookVo vo = bookService.getByNo(no);

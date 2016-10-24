@@ -15,7 +15,8 @@
 				   a.ex4, 
 				   a.answer, 
 				   a.accept, 
-				   a.book_no as bookNo 
+				   a.book_no as bookNo, 
+				   a. member_no as memberNo
 				from quiz a, book b 
 				where a.book_no = b.no 
 				order by b.title
@@ -34,7 +35,8 @@
 				   a.ex4, 
 				   a.answer, 
 				   a.accept, 
-				   a.book_no as bookNo 
+				   a.book_no as bookNo, 
+				   a. member_no as memberNo
 				from quiz a, book b 
 				where a.book_no = b.no and a.no = #{no}
 		]]>
@@ -91,7 +93,7 @@
 		<![CDATA[
 			insert into quiz 
 				values(seq_quiz.nextval, #{quiz}, #{ex1}, #{ex2}, #{ex3}, 
-					   #{ex4}, #{answer}, #{accept}, #{bookNo})
+					   #{ex4}, #{answer}, #{accept}, #{bookNo}, #{memberNo})
 		]]>
 	</insert>
 

@@ -79,7 +79,7 @@
 	<!-- 공지 목록 최근 5개 (메인페이지용) -->
 	<select id="listrecent"  resultType="noticevo">
 		<![CDATA[	
-			select no, title from notice where rownum <= 5 order by no desc
+			select no, title from (select * from notice order by REG_DATE desc) where rownum<=5
 		]]>
 	</select>
 </mapper>

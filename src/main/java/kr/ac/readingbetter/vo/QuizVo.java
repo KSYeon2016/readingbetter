@@ -12,6 +12,7 @@ public class QuizVo {
 	private Long bookNo;
 	private String title;
 	private String selected;
+	private Long memberNo;	// 퀴즈 출제자 번호
 
 	public Long getNo() {
 		return no;
@@ -101,10 +102,18 @@ public class QuizVo {
 		this.selected = selected;
 	}
 
+	public Long getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(Long memberNo) {
+		this.memberNo = memberNo;
+	}
+
 	@Override
 	public String toString() {
 		return "QuizVo [no=" + no + ", quiz=" + quiz + ", ex1=" + ex1 + ", ex2=" + ex2 + ", ex3=" + ex3 + ", ex4=" + ex4
 				+ ", answer=" + answer + ", accept=" + accept + ", bookNo=" + bookNo + ", title=" + title
-				+ ", selected=" + selected + "]";
+				+ ", selected=" + selected + ", memberNo=" + memberNo + "]";
 	}
 }

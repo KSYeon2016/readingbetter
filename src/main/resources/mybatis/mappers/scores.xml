@@ -299,7 +299,7 @@
 		]]>
 	</update>
 	
-	<!-- 월별 인간 캔디 주기 -->
+	<!-- 월별 상위 캔디 주기 -->
 	<update id="resetPoint" parameterType="scoresvo">
  		<![CDATA[
  			update scores set point = #{point} where member_no = #{memberNo}
@@ -322,4 +322,10 @@
  		]]>
 	</select>
 	
+	<!-- 퀴즈 승인 시 캔디 추가 지급 -->
+	<update id="pointUpdate" parameterType="Long">
+		<![CDATA[
+			UPDATE SCORES SET POINT = POINT + 1 WHERE MEMBER_NO = #{memberNo}
+		]]>
+	</update>
 </mapper>

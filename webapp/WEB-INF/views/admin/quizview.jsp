@@ -18,6 +18,10 @@
 		<h4>등록 퀴즈 내용</h4>
 		<form action="../quizUpdate" method="post">
 			<input type="hidden" name="no" value="${vo.no }">
+			<input type="hidden" name="memberNo" value="${vo.memberNo }">
+			<input type="hidden" name="bookNo" value="${vo.bookNo }">
+			<input type="hidden" name="preaccept" value="${vo.accept }">
+			
 			<table class="table" id="board">
 				<tr>
 					<td class="active">책제목</td>

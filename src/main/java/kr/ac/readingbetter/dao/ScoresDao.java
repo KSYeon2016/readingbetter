@@ -20,7 +20,7 @@ public class ScoresDao {
 		return sqlSession.selectList("scores.monthlyRank", vo);
 	}
 	
-	//월별 점수 초기화
+	// 월별 점수 초기화
 	public void MonthUpdate(ScoresVo vo) {
 		sqlSession.update("scores.updateMonth", vo);
 	}
@@ -109,22 +109,24 @@ public class ScoresDao {
 		return sqlSession.selectOne("myScores", no);
 	}
 	
-	//상위인간 포인트 주기
+	// 상위 회원 포인트 주기
 	public void resetPoint(ScoresVo vo) {
 		sqlSession.update("scores.resetPoint", vo);
 	}
 	
-	//상위인간 순위별 불러오기
+	// 상위 회원 순위별 불러오기
 	public Long pointTop(Long rank){
 		Long count= sqlSession.selectOne("scores.pointTop",rank);
 		return count;
-		
 	}
 	
-	//점수주기위한 전체 출력
+	// 점수 주기 위한 전체 출력
 	public List<ScoresVo> monthlyRankReset(ScoresVo vo) {
-		return sqlSession.selectList("scores.monthlyRankReset", vo); 
-
+		return sqlSession.selectList("scores.monthlyRankReset", vo);
 	}
 	
+	// 회원 퀴즈 승인 시 캔디 증가
+	public void pointUpdate(Long memberNo) {
+		sqlSession.update("scores.pointUpdate", memberNo);
+	}
 }

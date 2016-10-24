@@ -196,4 +196,7 @@ public class ScoresService {
 		}
 	}
 	
+	public void pointUpdate(Long memberNo) {
+		scoresDao.pointUpdate(memberNo);
+	}
 }
