@@ -31,11 +31,20 @@
 			<div id="login_after">
 				<h5>${authUser.name }님 환영합니다 !</h5>
 				<div id="myinfo_mini">
-					<p>보유 캔디 : <a href="/readingbetter/shop">${myScores.point }개</a></p>
-					<p>누적점수 : <a href="/readingbetter/ranking/honor">${myScores.totalScore }점</a></p>
-					<p>이번 달 점수 : <a href="/readingbetter/ranking/monthlytotal">${myScores.monthlyScore }점</a></p>
-					<p>이번 달 전체 순위 : <a href="/readingbetter/ranking/monthlytotal">${myMonthlyRank.rank}위</a></p>
-					<p>명예의 전당 순위 : <a href="/readingbetter/ranking/honor">${myTotalRank.rank }위</a></p>
+					<c:choose>
+						<c:when test="${authUser.position eq 1 }">
+							<p>보유 캔디 : <a href="/readingbetter/shop">${myScores.point }개</a></p>
+							<p>누적점수 : <a href="/readingbetter/ranking/honor">${myScores.totalScore }점</a></p>
+							<p>이번 달 점수 : <a href="/readingbetter/ranking/monthlytotal">${myScores.monthlyScore }점</a></p>
+							<p>이번 달 전체 순위 : <a href="/readingbetter/ranking/monthlytotal">${myMonthlyRank.rank}위</a></p>
+							<p>명예의 전당 순위 : <a href="/readingbetter/ranking/honor">${myTotalRank.rank }위</a></p>
+						</c:when>
+						<c:otherwise>
+							<p><strong>관리자 계정</strong>으로 접속하셨습니다.</p><br>
+							<p>관리자 계정은 점수 및 순위가</p><br>
+							<p>집계되지 않습니다.</p>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</c:otherwise>
