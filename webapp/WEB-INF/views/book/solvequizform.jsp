@@ -108,7 +108,7 @@
 									<input type="radio" name="selectedRadio${i }" id="options${i }Radios4" value="${list[i].ex4 }">${list[i].ex4 }
 								</label>
 							</div>
-
+							<button class="btn btn-default btn-accusation" value="${list[i].no }">신고하기</button>
 							<input type="hidden" type="text" name="no${i }" value="${list[i].no }">
 						</div>
 					</c:forEach>
@@ -125,3 +125,32 @@
 
 </body>
 </html>
+
+<!-- 퀴즈신고모달 -->
+<div id="accusationModal" class="modal fade accusation-modal" tabindex="-1" role="dialog" aria-labelledby="accusationModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">퀴즈 신고</h4>
+			</div>
+			
+			<div class="modal-body">
+				<input type="hidden" id="accusation-quizNo">
+				<p>신고자</p>
+				<p id="accusation-id">${authUser.id }</p><br>
+				<p>신고문제</p>
+				<p id="accusation-quiz"></p><br>
+				<p>신고이유</p>
+				<input type="text" id="accusation-reason" class="form-control"><br><br>
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" id="accusation-submit" data-dismiss="modal">제출</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

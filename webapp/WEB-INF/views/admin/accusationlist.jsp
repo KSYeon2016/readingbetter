@@ -33,6 +33,7 @@
 						<td>${vo.no}</td>
 						<td>
 							<c:choose>
+								<c:when test="${vo.identity == 0}">퀴즈</c:when>
 		                        <c:when test="${vo.identity == 1}">리뷰</c:when>
 		                        <c:when test="${vo.identity == 2}">댓글</c:when>
 	               			</c:choose>

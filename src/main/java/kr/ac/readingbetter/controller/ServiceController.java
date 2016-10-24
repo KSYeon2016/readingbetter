@@ -175,7 +175,9 @@ public class ServiceController {
 	// 댓글 신고
 	@RequestMapping(value = "/insertComments", method = RequestMethod.POST)
 	public String insertComments(@ModelAttribute AccusationVo vo) {
-		accusationService.insertComments(vo);
+		vo.setIdentity(2L);
+		accusationService.insert(vo);
+		
 		// 신고한 댓글이 있는 공지 상세 화면으로 간다
 		CommentsVo commentsVo = commentsService.commentsAccusation(vo.getKeyNo());
 		commentsService.updateState(commentsVo.getNo());

@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.readingbetter.service.AccusationService;
 import kr.ac.readingbetter.service.BookService;
 import kr.ac.readingbetter.service.CardService;
 import kr.ac.readingbetter.service.CertificationService;
 import kr.ac.readingbetter.service.HistoryService;
 import kr.ac.readingbetter.service.ScoresService;
+import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.CardVo;
 import kr.ac.readingbetter.vo.CertificationVo;
@@ -38,17 +40,20 @@ public class AppQuizController {
 
 	@Autowired
 	private CardService cardService;
+	
+	@Autowired
+	private AccusationService accusationService;
 
 	@ResponseBody
 	@RequestMapping(value = "insertquiz", method = RequestMethod.GET)
 	public void InsertQuiz(@ModelAttribute QuizVo vo, Long bookNo, String quiz, String ex1, String ex2, String ex3,
 			String ex4, String answer) {
 		vo.setBookNo(bookNo);
-		vo.setQuiz(quiz);
-		vo.setEx1(ex1);
-		vo.setEx2(ex2);
-		vo.setEx3(ex3);
-		vo.setEx4(ex4);
+		vo.setQuiz(quiz.replace("_", " "));
+		vo.setEx1(ex1.replace("_", " "));
+		vo.setEx2(ex2.replace("_", " "));
+		vo.setEx3(ex3.replace("_", " "));
+		vo.setEx4(ex4.replace("_", " "));
 		vo.setAnswer(answer);
 		bookService.quizAdd(vo);
 	}
@@ -100,5 +105,20 @@ public class AppQuizController {
 		// select card by random
 		CardVo cardVo = cardService.selectCardByRandom();
 		return cardVo;
+	}
+	
+	// 퀴즈 신고 하기
+	@ResponseBody
+	@RequestMapping(value = "insertQuizAccusation", method = RequestMethod.GET)
+	public void insertQuizAccusation(AccusationVo vo, QuizVo quizVo, String reason, Long memberNo, Long keyNo) {
+		vo.setReason(reason.replace("_", " "));
+		vo.setMemberNo(memberNo);
+		vo.setKeyNo(keyNo);
+		vo.setIdentity(0L);
+		accusationService.insert(vo);
+		
+		quizVo.setAccept("3");
+		quizVo.setNo(vo.getKeyNo());
+		bookService.updateQuizAccept(quizVo);
 	}
 }

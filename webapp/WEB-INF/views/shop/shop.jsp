@@ -43,16 +43,9 @@
 				<c:forEach var='vo' items='${getGoodsList}' varStatus='s'> 
 					<div class="col-lg-3">
 						<!-- Button trigger modal -->
-						<c:choose>
-							<c:when test="${not empty sessionScope.authUser}">
-								<button name=no value="${vo.no }" type="button" class="btn btn-default btn-confirm"  data-toggle="modal" data-target="#myModal">
-									<img id="img-shop" class="img-thumbnail" src="${vo.cover }" />
-								</button>
-							</c:when>
-							<c:otherwise>
-								<img id="img-shop" class="img-thumbnail" src="${vo.cover }" />
-							</c:otherwise>
-						</c:choose>
+						<button name=no value="${vo.no }" type="button" class="btn btn-default btn-confirm"  data-toggle="modal" data-target="#myModal">
+							<img id="img-shop" class="img-thumbnail" src="${vo.cover }" />
+						</button>
 							
 						<table class="table">
 							<tr>

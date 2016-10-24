@@ -29,15 +29,24 @@
 	<div>
 		<table id="board" class="table table-bordered">
 			<tr>
-				<th class="active">신고자</th>
-				<td colspan=2>${vo.id }</td>
-				<th class="active">피신고자</th>
-				<td colspan=2>${vo.accuTarget }</td>
+				<c:choose>
+					<c:when test="${vo.identity == 0}">
+						<th class="active">신고자</th>
+						<td colspan=5>${vo.id }</td>
+					</c:when>
+					<c:otherwise>
+						<th class="active">신고자</th>
+						<td colspan=2>${vo.id }</td>
+						<th class="active">피신고자</th>
+						<td colspan=2>${vo.accuTarget }</td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 			<tr>
 				<th class="active">종류</th>
 				<td>
 					<c:choose>
+						<c:when test="${vo.identity == 0}">퀴즈</c:when>
                         <c:when test="${vo.identity == 1}">리뷰</c:when>
                         <c:when test="${vo.identity == 2}">댓글</c:when>
                      </c:choose>
@@ -75,9 +84,11 @@
 	               		<label class="radio-inline">
 	                    	<input type="radio" name="accept" value=2>반려
 	               		</label>
-	               		<label class="radio-inline">
-	                    	<input type="radio" name="accept" value=3>패널티
-	               		</label>
+	               		<c:if test="${vo.accept != 0}">
+		               		<label class="radio-inline">
+		                    	<input type="radio" name="accept" value=3>패널티
+		               		</label>
+	               		</c:if>
 	            	</td>
 	         	</tr>
          	</c:if>

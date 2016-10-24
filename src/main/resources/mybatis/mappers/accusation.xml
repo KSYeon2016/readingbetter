@@ -42,30 +42,16 @@
 		]]>	
 	</update>
 	
-	<!-- 리뷰에서 들어온 신고 -->
-	<insert id="insertReview" parameterType="accusationvo">
-      <![CDATA[
-         insert into accusation 
-         	values(seq_accusation.nextval, 
-       			   #{reason}, 
-      			   sysdate,
-       			   0,
-       			   #{memberNo},
-       			   1,
-       			   #{keyNo})
-      ]]>
-   </insert>
-
-	<!-- 공지 댓글에서 들어온 신고 -->
-	<insert id="insertComments" parameterType="accusationvo">
+	<!-- 신고받기 -->
+	<insert id="insert" parameterType="accusationvo">
 		<![CDATA[
 			insert into accusation 
-				values(seq_accusation.nextval,
-					   #{reason},
+				values(seq_accusation.nextval, 
+					   #{reason}, 
 					   sysdate,
 					   0,
 					   #{memberNo},
-					   2,
+					   #{identity},
 					   #{keyNo})
 		]]>
 	</insert>
@@ -108,6 +94,21 @@
 										from review r, member m 
 										where r.MEMBER_NO = m.NO) b, member c 
 			where a.KEY_NO = b.NO and a.MEMBER_NO = c.NO and a.NO=#{no}
+  		]]>
+	</select>
+	
+	<select id="getAccusationViewFromQuiz" parameterType="long" resultType="accusationvo">
+		<![CDATA[
+			select a.key_no as keyNo,
+				   a.no, 
+				   a.reason, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.accept, 
+				   a.identity, 
+				   b.quiz as content, 
+				   c.ID 
+				from accusation a, (select no, quiz from quiz) b, member c 
+				where a.KEY_NO = b.NO and a.MEMBER_NO = c.NO and a.NO = #{no}
   		]]>
 	</select>
 	

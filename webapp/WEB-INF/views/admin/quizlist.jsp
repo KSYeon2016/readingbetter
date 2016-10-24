@@ -47,6 +47,7 @@
 								<c:when test="${vo.accept == 0 }">대기</c:when>
 								<c:when test="${vo.accept == 1 }">승인</c:when>
 								<c:when test="${vo.accept == 2 }">반려</c:when>
+								<c:when test="${vo.accept == 3 }">신고</c:when>
 							</c:choose>
 						</a>				
 					</td>

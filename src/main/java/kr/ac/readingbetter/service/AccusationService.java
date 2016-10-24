@@ -28,11 +28,7 @@ public class AccusationService {
 		accusationDao.update(vo);
 	}
 
-	public void insertComments(AccusationVo vo) {
-		accusationDao.insertComments(vo);
-	}
-
-	public void insertReviewAccusation(AccusationVo vo) {
-		accusationDao.insertReviewAccusation(vo);
+	public void insert(AccusationVo vo) {
+		accusationDao.insert(vo);
 	}
 }

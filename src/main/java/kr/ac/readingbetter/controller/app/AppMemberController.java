@@ -29,22 +29,23 @@ public class AppMemberController {
 		vo.setId(id);
 		vo.setPw(pw);
 		MemberVo authUser = memberService.selectAuthUser(vo);
-		memberService.attendAction(authUser.getNo());
-		
-		// 0이면 새로 출석, 1이면 이미 출석
+
+		// 0이면 초기화됨, 1이면 초기화안됨
 		int check = memberService.checkreset();
 		if (check == 0) {
 			// 랭킹 월 초기화
 			scoresService.MonthReset(scoresVo, histroyVo);
 		}
 		
+		// 출석체크
+		int checkAttend = memberService.attendAction(authUser.getNo());
+		authUser.setCheck(checkAttend);
+
 		// 누적 출석일 가져오기
 		if (authUser != null) {
 			int attCount = memberService.selectAttCount(authUser.getNo());
 			authUser.setAttCount(attCount);
 		}
-		
-		authUser.setCheck(check);
 		
 		return authUser;
 	}

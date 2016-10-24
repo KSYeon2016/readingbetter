@@ -29,4 +29,56 @@ $(function() {
 			}
 		});
 	});
+	
+	$(".btn-accusation").click(function() {
+		$("#accusation-reason").val("");
+		$('div.modal').modal();
+		var quizNo = $(this).val();
+		
+		$.ajax({
+			url : "/readingbetter/book/quizAccusationView",
+			type : "POST",
+			data : {
+				"quizNo" : quizNo
+			},
+			dataType : "json",
+			success : function(quizVo) {
+				$("#accusation-quiz").text(quizVo.quiz);
+				$("#accusation-quizNo").val(quizVo.no);
+			},
+			error : function(jqXHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+	
+	$("#accusation-submit").on("click", function() {
+		var quizNo = $("#accusation-quizNo").val();
+		var reason = $("#accusation-reason").val();
+		
+		var vo = {
+			"keyNo" : quizNo, 
+			"reason" : reason,
+		}
+		
+		if (reason == "") {
+			alert("이유를 입력해주세요");
+			$("#accusation-reason").focus();
+			return false;
+		}
+		
+		$.ajax({
+			url : "/readingbetter/book/quizAccusation",
+			type : "POST",
+			data : JSON.stringify(vo),
+			contentType : "application/json",
+			dataType : "json",
+			success : function(vo) {
+				alert("접수되었습니다");
+			},
+			error : function(jqXHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
 });

@@ -87,9 +87,6 @@ public class BookService {
 		List<QuizVo> list = quizDao.selectQuiz(no);
 		return list;
 	}
-	/////////////////////////////////////////////////////////////////////////////
-
-	// 퀴즈내기
 
 	// 퀴즈 추가 - 사용자는 무조건 대기상태여야 한다
 	public void quizAdd(QuizVo vo) {
@@ -183,5 +180,9 @@ public class BookService {
 		}
 		
 		return buyBookList;
+	}
+	
+	public void updateQuizAccept(QuizVo vo) {
+		quizDao.updateQuizAccept(vo);
 	}
 }

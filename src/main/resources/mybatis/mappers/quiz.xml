@@ -79,6 +79,13 @@
 		]]>
 	</update>
 
+	<!-- 퀴즈 신고 상태 업데이트 -->
+	<update id="updateQuizAccept" parameterType="quizvo">
+		<![CDATA[
+			update quiz set accept=#{accept} where no=#{no}
+		]]>
+	</update>
+	
 	<!-- 퀴즈 추가 -->
 	<insert id="insert" parameterType="quizvo">
 		<![CDATA[

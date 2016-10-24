@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.AccusationService;
+import kr.ac.readingbetter.service.AdminQuizService;
 import kr.ac.readingbetter.service.BookService;
 import kr.ac.readingbetter.service.CardService;
 import kr.ac.readingbetter.service.CertificationService;
@@ -57,6 +58,9 @@ public class BookController {
 
 	@Autowired
 	private CertificationService certificationService;
+	
+	@Autowired
+	private AdminQuizService adminQuizService;
 
 	// 책 리스트
 	// 책 리스트 검색, 페이징
@@ -101,7 +105,9 @@ public class BookController {
 	
 	// 책 구매
 	@RequestMapping(value = "/buybook", method = RequestMethod.GET)
-	public String buyBook(Model model, @RequestParam("title") String title, 
+	public String buyBook(
+			Model model, 
+			@RequestParam("title") String title, 
 			@RequestParam(value = "pageNo", required = false, defaultValue="1") int currentPage){
 		// 책 구매 목록
 		List<BuyBookVo> buyBookList = bookService.buyBook(title);
@@ -142,6 +148,7 @@ public class BookController {
 	public String makeQuizForm(@PathVariable("no") Long no, Model model) {
 		BookVo vo = bookService.getByNo(no);
 		model.addAttribute("vo", vo);
+		
 		return "book/makequizform";
 	}
 
@@ -149,6 +156,7 @@ public class BookController {
 	@RequestMapping(value = "/makequizinsert", method = RequestMethod.POST)
 	public String makequizInsert(@ModelAttribute QuizVo vo) {
 		bookService.quizAdd(vo);
+		
 		return "redirect:/book/booklist";
 	}
 	///////////////////////////////////////////////////////////////////////////
@@ -220,14 +228,40 @@ public class BookController {
 		
 		return count;
 	}
+	
+	// 퀴즈 신고 모달 열기 ajax 동작
+	@ResponseBody
+	@RequestMapping(value = "/quizAccusationView", method = RequestMethod.POST)
+	public QuizVo quizAccusationView(Long quizNo) {
+		QuizVo quizVo = adminQuizService.quizView(quizNo);
+		return quizVo;
+	}
+
+	// 퀴즈 신고 ajax 동작
+	@ResponseBody
+	@RequestMapping(value = "/quizAccusation", method = RequestMethod.POST)
+	public AccusationVo quizAccusation(HttpSession session, @RequestBody AccusationVo vo, QuizVo quizVo) {
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");		
+		vo.setMemberNo(authUser.getNo());
+		vo.setIdentity(0L);
+		accusationService.insert(vo);
+		quizVo.setAccept("3");
+		quizVo.setNo(vo.getKeyNo());
+		bookService.updateQuizAccept(quizVo);
+		return vo;
+	}
 
 	// 퀴즈 결과 ajax 동작
-	@RequestMapping(value = "/quizResultAction", method = RequestMethod.POST)
 	@ResponseBody
-	public String[] quizResultAction(HttpSession session, @RequestParam(value = "bookNo") Long bookNo,
-			CertificationVo certVo, @RequestParam(value = "count") Integer count,
-			@RequestParam(value = "skill") String skill, @RequestParam(value = "bonus") Integer bonus,
-			HistoryVo historyVo) {
+	@RequestMapping(value = "/quizResultAction", method = RequestMethod.POST)
+	public String[] quizResultAction(
+			HttpSession session, 
+			CertificationVo certVo, 
+			HistoryVo historyVo,
+			@RequestParam(value = "bookNo") Long bookNo, 
+			@RequestParam(value = "count") Integer count,
+			@RequestParam(value = "skill") String skill, 
+			@RequestParam(value = "bonus") Integer bonus) {
 
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 
@@ -359,7 +393,9 @@ public class BookController {
 	// 신고 하기
 	@RequestMapping(value = "/insertReview", method = RequestMethod.POST)
 	public String insertReviewAccusation(@ModelAttribute AccusationVo vo) {
-		accusationService.insertReviewAccusation(vo);
+		vo.setIdentity(1L);
+		accusationService.insert(vo);
+		
 		// 신고한 리뷰가 있는 화면으로 간다
 		ReviewVo reviewVo = reviewService.getByNo(vo.getKeyNo());
 		reviewService.updateState(reviewVo.getNo());

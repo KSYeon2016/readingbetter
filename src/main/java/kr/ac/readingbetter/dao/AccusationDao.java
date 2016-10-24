@@ -28,12 +28,8 @@ public class AccusationDao {
 		sqlSession.update("accusation.update", vo);
 	}
 
-	public void insertComments(AccusationVo vo) {
-		sqlSession.insert("accusation.insertComments", vo);
-	}
-
-	public void insertReviewAccusation(AccusationVo vo) {
-		sqlSession.insert("accusation.insertReview", vo);
+	public void insert(AccusationVo vo) {
+		sqlSession.insert("accusation.insert", vo);
 	}
 	
 	public Long selectIdentity(Long no){
@@ -48,6 +44,11 @@ public class AccusationDao {
 	
 	public AccusationVo getAccusationViewFromComments(Long no){
 		AccusationVo vo = sqlSession.selectOne("accusation.getAccusationViewFromComments", no);
+		return vo;
+	}
+	
+	public AccusationVo getAccusationViewFromQuiz(Long no){
+		AccusationVo vo = sqlSession.selectOne("accusation.getAccusationViewFromQuiz", no);
 		return vo;
 	}
 	

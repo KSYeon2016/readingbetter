@@ -45,4 +45,8 @@ public class QuizDao {
 	public String selectAnswer(Long no){
 		return sqlSession.selectOne("quiz.selectAnswer", no);
 	}
+	
+	public void updateQuizAccept(QuizVo vo) {
+		sqlSession.update("quiz.updateQuizAccept", vo);
+	}
 }

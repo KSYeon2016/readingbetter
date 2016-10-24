@@ -58,7 +58,7 @@ public class AppBookController {
 		reviewService.insert(vo);
 	}
 
-	// 신고 하기
+	// 리뷰 신고 하기
 	@ResponseBody
 	@RequestMapping(value = "insertReviewAccusation", method = RequestMethod.GET)
 	public void insertReviewAccusation(
@@ -66,10 +66,11 @@ public class AppBookController {
 			String reason, 
 			Long memberNo, 
 			Long keyNo) {
-		vo.setReason(reason);
+		vo.setReason(reason.replace("_", " "));
 		vo.setMemberNo(memberNo);
 		vo.setKeyNo(keyNo);
-		accusationService.insertReviewAccusation(vo);
+		vo.setIdentity(1L);
+		accusationService.insert(vo);
 		ReviewVo reviewVo = reviewService.getByNo(vo.getKeyNo());
 		reviewService.updateState(reviewVo.getNo());
 	}
