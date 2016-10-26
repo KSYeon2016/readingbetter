@@ -3,40 +3,6 @@ body			{ font:13px "맑은 고딕", 돋움, 굴림; text-align:center; }
 html, body		{ height :100% !important;}
 ul, ol			{ list-style-type: none }
 
-/* .container-fluid {height: 83%;}
-#header {
-	height: 100%;
-	background-color: #B6E1EA;
-	padding: 10px;
-}
-
-.asideWrap { height: 100%; }
-#aside {
-	background-color: #D9F0F4;
-	height: 100%;
-	width: 200px;
-}
-
-#header {
-	position:relative;
-	z-index:20;
-	overflow:hidden;
-	background-image:
-		url("http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/bg_header.png");
-	background-repeat: repeat;
-	
-}
-
-#content {
-	width: 82%;
-	height: auto;
-}
-
-#footer {
-	height: 60px;
-	background-color: #F3FAFB;
-} */
-
 #header {
 	position: relative;
 	z-index: 20;

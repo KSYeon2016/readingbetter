@@ -120,19 +120,22 @@ public class MyPageController {
 		if (endPage > total) {
 			endPage = total;
 		}
-
+		
+		Integer count = historyService.countHistory(authUser.getNo());
+		
 		model.addAttribute("beginPage", beginPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("total", total);
+		model.addAttribute("pageLength", pageLength);
 
 		model.addAttribute("historylist", listpage);
+		model.addAttribute("countList", count);
 
 		return "mypage/history";
 	}
 
-	///////// 기프티콘 보기
-
+	// 기프티콘 보기
 	@RequestMapping("/gifticon")
 	public String Gifticon(HttpSession session, GifticonVo vo, Model model) {
 		

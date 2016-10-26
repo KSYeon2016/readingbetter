@@ -76,10 +76,9 @@
 					<th>날짜</th>
 				</tr>
 				
-				<c:set var="listLength"	value="${fn:length(historylist) }" />
 				<c:forEach var='vo' items='${historylist}' varStatus='s'>
 					<tr>
-						<td>${listLength - s.index }</td>
+						<td>${countList - (pageLength * (currentPage - 1)) - s.index }</td>
 						<td>
 							<c:choose>
                    				 <c:when test="${vo.identity == 0}">문제 풀기</c:when>

@@ -12,7 +12,8 @@
 	
 	<select id="checkAttend" parameterType="long" resultType="long">
 		<![CDATA[
-			select no from attend 
+			select no 
+				from attend 
 				where member_no=#{no} and 
 					  to_char(att_date, 'yyyy-mm-dd') = to_char(sysdate, 'yyyy-mm-dd')
 		]]>

@@ -27,4 +27,9 @@ public class HistoryService {
 		List<HistoryVo> list = historyDao.getListPage(vo);
 		return list;
 	}
+	
+	public Integer countHistory(Long no){
+		Integer count = historyDao.countHistory(no);
+		return count;
+	}
 }

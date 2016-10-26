@@ -50,6 +50,8 @@ public class ServiceController {
 	@RequestMapping(value = "/noticelist", method = RequestMethod.GET)
 	public String noticeList(Model model, NoticeVo vo,
 			@RequestParam(value = "noticePage", required = false, defaultValue = "") String noticePage) {
+		int pageLength = 10;
+		
 		// noticePage가 null값일때 1로 고정
 		if (noticePage == null || "".equals(noticePage)) {
 			noticePage = "1";
@@ -57,7 +59,7 @@ public class ServiceController {
 
 		// 공지 전체 개수
 		int count = noticeService.listCount();
-
+		
 		// 공지 추가하기
 		vo.setNoticePage(noticePage);
 		List<NoticeVo> list = noticeService.listPage(vo);
@@ -67,9 +69,9 @@ public class ServiceController {
 		int currentPage = Integer.parseInt(noticePage);
 
 		if (count % 5 != 0) {
-			totalPage = count / 10 + 1;
+			totalPage = count / pageLength + 1;
 		} else {
-			totalPage = count / 10;
+			totalPage = count / pageLength;
 		}
 
 		int pageGroupNum = 1;
@@ -90,11 +92,14 @@ public class ServiceController {
 			endPage = totalPage;
 		}
 
+		model.addAttribute("countList", count);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("beginPage", beginPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("list", list);
+		model.addAttribute("pageLength", pageLength);
+		
 		return "service/noticelist";
 	}
 
@@ -311,7 +316,6 @@ public class ServiceController {
 		@RequestMapping("/wishbooklist")
 		public String wishBookList(Model model, WishbookVo wishbookVo) {
 			
-			
 			if (wishbookVo.getPageNo() == null) {
 				wishbookVo.setPageNo(1);
 			}
@@ -336,7 +340,6 @@ public class ServiceController {
 
 			int currentBlock = (int) Math.ceil((double) wishbookVo.getPageNo() / 5);
 
-			
 			beginPage = (currentBlock - 1) * 5 + 1;
 
 			int total = (int) Math.ceil((double) list.size() / pageLength);

@@ -2,20 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="history">
-
-	<insert id="insertHistory" parameterType="historyvo">
-		<![CDATA[
-			insert into history values(
-				seq_history.nextval, 
-				#{title},
-				#{score}, 
-				#{point}, 
-				sysdate,
-				#{memberNo}, 
-				#{identity}, 
-				#{keyNo})
-		]]>
-	</insert>
 	
 	<select id="list" parameterType="historyvo" resultType="historyvo">
 		<![CDATA[
@@ -51,11 +37,32 @@
 	        	where (#{pageNo}-1)*5 + 1 <= rnum and rnum <= #{pageNo}*5		
 		]]>
 	</select>
-
+	
+	<select id="countHistory" parameterType="long" resultType="Integer">
+		<![CDATA[
+			select count(*) from history where MEMBER_NO=#{no}
+		]]>
+	</select>
+	
+	<insert id="insertHistory" parameterType="historyvo">
+		<![CDATA[
+			insert into history values(
+				seq_history.nextval, 
+				#{title},
+				#{score}, 
+				#{point}, 
+				sysdate,
+				#{memberNo}, 
+				#{identity}, 
+				#{keyNo})
+		]]>
+	</insert>
+	
 	<insert id="insertAttBonus" parameterType="historyvo">
 		<![CDATA[
 			insert into history 
 				values(seq_history.nextval, '출석체크', 0, #{point}, sysdate, #{memberNo}, 3, 0)
 		]]>
 	</insert>
+	
 </mapper>

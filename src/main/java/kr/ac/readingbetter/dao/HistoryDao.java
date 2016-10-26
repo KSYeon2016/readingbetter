@@ -31,4 +31,9 @@ public class HistoryDao {
 	public void insertAttBonus(HistoryVo vo){
 		sqlSession.insert("history.insertAttBonus", vo);
 	}
+	
+	public Integer countHistory(Long no){
+		Integer count = sqlSession.selectOne("history.countHistory", no);
+		return count;
+	}
 }
