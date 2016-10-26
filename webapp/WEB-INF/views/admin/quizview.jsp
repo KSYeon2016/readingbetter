@@ -65,22 +65,22 @@
 					<td class="active">정답</td>
 					<td colspan="5">
 						<select class="form-control" name="answer">
-						<c:if test="${vo.answer==vo.ex1 }">
-							<option selected >1</option>
-						</c:if>
-						<option >1</option>
-						<c:if test="${vo.answer==vo.ex2 }">
-							<option selected >2</option>
-						</c:if>
-						<option >2</option>
-						<c:if test="${vo.answer==vo.ex3 }">
-							<option selected >3</option>
-						</c:if>
-						<option >3</option>
-						<c:if test="${vo.answer==vo.ex4 }">
-							<option selected >4</option>
-						</c:if>
-						<option >4</option>		
+							<c:if test="${vo.answer==vo.ex1 }">
+								<option selected >1</option>
+							</c:if>
+							<option >1</option>
+							<c:if test="${vo.answer==vo.ex2 }">
+								<option selected >2</option>
+							</c:if>
+							<option >2</option>
+							<c:if test="${vo.answer==vo.ex3 }">
+								<option selected >3</option>
+							</c:if>
+							<option >3</option>
+							<c:if test="${vo.answer==vo.ex4 }">
+								<option selected >4</option>
+							</c:if>
+							<option >4</option>		
 						</select>
 					</td>
 				</tr>

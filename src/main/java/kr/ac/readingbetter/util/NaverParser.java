@@ -1,4 +1,4 @@
-package kr.ac.readingbetter.parser;
+package kr.ac.readingbetter.util;
 
 import java.io.InputStream;
 import java.util.ArrayList;

@@ -17,7 +17,7 @@ import kr.ac.readingbetter.dao.BookDao;
 import kr.ac.readingbetter.dao.DaysDao;
 import kr.ac.readingbetter.dao.QuizDao;
 import kr.ac.readingbetter.dao.ToBookDao;
-import kr.ac.readingbetter.parser.NaverParser;
+import kr.ac.readingbetter.util.NaverParser;
 import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.BuyBookVo;
