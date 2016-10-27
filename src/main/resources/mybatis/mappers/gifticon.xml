@@ -17,7 +17,7 @@
 				   c.member_no, 
 				   c.title, 
 				   to_date(Sysdate) - to_date(c.get_date) as limit, 
-				   c.get_date as getDate 
+				   to_char(c.get_date, 'yyyy-mm-dd') as getDate 
 				from (select no,
 							 cover,
 							 member_no,

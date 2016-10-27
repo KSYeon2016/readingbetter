@@ -2,6 +2,8 @@ package kr.ac.readingbetter.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import kr.ac.readingbetter.service.HistoryService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.HistoryVo;
+import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.QuizVo;
 
 @Controller
@@ -51,6 +54,7 @@ public class AdminQuizController {
 		preAccept = vo.getAccept();	// 수정 전 퀴즈의 승인 상태
 		
 		model.addAttribute("vo", vo);
+		
 		return "admin/quizview";
 	}
 	
@@ -77,6 +81,7 @@ public class AdminQuizController {
 				historyService.insertHistory(hvo);
 			}
 		}
+		
 		return "redirect:/admin/quizlist";
 	}
 	
@@ -85,6 +90,7 @@ public class AdminQuizController {
 	public String quizAddBook(Model model) {
 		List<BookVo> bookList = bookService.getList();
 		model.addAttribute("bookList", bookList);
+		
 		return "admin/quizaddbook";
 	}
 
@@ -93,13 +99,17 @@ public class AdminQuizController {
 	public String quizAddForm(@PathVariable("no") Long no, Model model) {
 		BookVo bookVo = bookService.getByNo(no);
 		model.addAttribute("bookVo", bookVo);
+		
 		return "admin/quizaddform";
 	}
 	
 	// 퀴즈 추가
 	@RequestMapping(value = "/quizadd", method = RequestMethod.POST)
-	public String quizAddAdmin(@ModelAttribute QuizVo vo) {
+	public String quizAddAdmin(@ModelAttribute QuizVo vo, HttpSession session) {
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		vo.setMemberNo(authUser.getNo());
 		adminQuizService.quizAdd(vo);
+		
 		return "redirect:/admin/quizlist";
 	}
 }
