@@ -84,11 +84,9 @@
 	               		<label class="radio-inline">
 	                    	<input type="radio" name="accept" value=2>반려
 	               		</label>
-	               		<c:if test="${vo.accept != 0}">
-		               		<label class="radio-inline">
-		                    	<input type="radio" name="accept" value=3>패널티
-		               		</label>
-	               		</c:if>
+		           		<label class="radio-inline">
+		                  	<input type="radio" name="accept" value=3>패널티
+		           		</label>
 	            	</td>
 	         	</tr>
          	</c:if>
