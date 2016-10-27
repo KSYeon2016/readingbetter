@@ -74,29 +74,63 @@
 			<tr>
 				<td id="content" colspan=6>${vo.reason }</td>
 			</tr>
-			<c:if test="${vo.accept == 0}">
-				<tr>
-	            	<td class="active">승인여부</td>
-	            	<td colspan="5">
-	               		<label class="radio-inline">
-	                    	<input type="radio" name="accept" value=1>승인
-	               		</label>
-	               		<label class="radio-inline">
-	                    	<input type="radio" name="accept" value=2>반려
-	               		</label>
-		           		<label class="radio-inline">
-		                  	<input type="radio" name="accept" value=3>패널티
-		           		</label>
-	            	</td>
-	         	</tr>
-         	</c:if>
+			<tr>
+	            <td class="active">승인여부</td>
+	            <td colspan="5">
+	            <c:choose>
+	            	<c:when test="${vo.accept == 0}">
+		            	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=0 checked>대기
+		               	</label>
+		               	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=1>승인
+		               	</label>
+		               	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=2>반려
+		               	</label>
+		               	<label class="radio-inline">
+			                <input type="radio" name="accept" value=3>패널티
+			            </label>
+	               	</c:when>
+	               	<c:when test="${vo.accept == 1}">
+		            	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=0>대기
+		               	</label>
+		               	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=1 checked>승인
+		               	</label>
+		               	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=2>반려
+		               	</label>
+		               	<label class="radio-inline">
+			                <input type="radio" name="accept" value=3>패널티
+			            </label>
+	               	</c:when>
+	               	<c:when test="${vo.accept == 2}">
+		            	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=0>대기
+		               	</label>
+		               	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=1>승인
+		               	</label>
+		               	<label class="radio-inline">
+		                    <input type="radio" name="accept" value=2 checked>반려
+		               	</label>
+			            <label class="radio-inline">
+			                <input type="radio" name="accept" value=3>패널티
+			            </label>
+	               	</c:when>
+	               	<c:otherwise>
+	               	페널티
+	               	</c:otherwise>
+	               	</c:choose>
+	            </td>
+	         </tr>
 		</table>
 			
 		<div id="buttons">
 			<a href="/readingbetter/admin/accusationlist" class="btn btn-default">목록</a>
-			<c:if test="${vo.accept == 0}">
-				<input class="btn btn-default" type="button" id="btn-accept" value="완료">
-			</c:if>
+			<input class="btn btn-default" type="button" id="btn-accept" value="완료">
 		</div>
 	</div>
 </body>

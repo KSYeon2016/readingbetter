@@ -14,6 +14,7 @@ import kr.ac.readingbetter.dao.MemberDao;
 import kr.ac.readingbetter.dao.ScoresDao;
 import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.MemberVo;
+import kr.ac.readingbetter.vo.ScoresVo;
 
 @Service
 public class MemberService {
@@ -164,5 +165,9 @@ public class MemberService {
 	public int selectAttCount(Long no){
 		int attCount = memberDao.selectAttCount(no);
 		return attCount;
+	}
+	
+	public void updatePoint(ScoresVo vo){
+		scoresDao.scoreUpdate(vo);
 	}
 }

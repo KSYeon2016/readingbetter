@@ -84,27 +84,50 @@
 						</select>
 					</td>
 				</tr>
-				<c:choose>
-					<c:when test="${vo.accept == 0 }">
-						<tr>
-							<td class="active">승인여부</td>
-							<td colspan="5">
+				<tr>
+					<td class="active">승인여부</td>
+					<td colspan="5">
+						<c:choose>
+							<c:when test="${vo.accept == 0 }">
 								<label class="radio-inline">
-								  	<input type="radio" name="accept" value=0 checked>대기
+									  <input type="radio" name="accept" value=0 checked>대기
 								</label>
 								<label class="radio-inline">
-								  	<input type="radio" name="accept" value=1>승인
+									  <input type="radio" name="accept" value=1>승인
 								</label>
 								<label class="radio-inline">
-								  	<input type="radio" name="accept" value=2>반려
+									  <input type="radio" name="accept" value=2>반려
 								</label>
-							</td>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<input type="hidden" name="accept" value="${vo.accept }">
-					</c:otherwise>
-				</c:choose>
+							</c:when>
+							<c:when test="${vo.accept == 1 }">
+								<label class="radio-inline">
+									  <input type="radio" name="accept" value=0>대기
+								</label>
+								<label class="radio-inline">
+									  <input type="radio" name="accept" value=1 checked>승인
+								</label>
+								<label class="radio-inline">
+									  <input type="radio" name="accept" value=2>반려
+								</label>
+							</c:when>
+							<c:when test="${vo.accept == 2 }">
+								<label class="radio-inline">
+									  <input type="radio" name="accept" value=0>대기
+								</label>
+								<label class="radio-inline">
+									  <input type="radio" name="accept" value=1>승인
+								</label>
+								<label class="radio-inline">
+									  <input type="radio" name="accept" value=2 checked>반려
+								</label>
+							</c:when>
+							<c:otherwise>
+								신고상태
+								<input type="hidden" name="accept" value="${vo.accept}">
+							</c:otherwise>
+						</c:choose>
+					</td>
+				</tr>
 			</table>
 	
 			<a class="btn btn-default" href="/readingbetter/admin/quizlist" role="button">목록</a> 

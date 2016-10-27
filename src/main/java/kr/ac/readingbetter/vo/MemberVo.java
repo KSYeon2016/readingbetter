@@ -18,6 +18,7 @@ public class MemberVo {
 	private Long memberNo;
 	private Integer check;
 	private Integer attCount;
+	private Integer point;
 	
 	public Long getNo() {
 		return no;
@@ -122,11 +123,19 @@ public class MemberVo {
 		this.attCount = attCount;
 	}
 	
+	public Integer getPoint() {
+		return point;
+	}
+	public void setPoint(Integer point) {
+		this.point = point;
+	}
+	
 	@Override
 	public String toString() {
 		return "MemberVo [no=" + no + ", id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", tel="
 				+ tel + ", lastDate=" + lastDate + ", position=" + position + ", penalty=" + penalty + ", grade="
 				+ grade + ", classNo=" + classNo + ", schoolNo=" + schoolNo + ", kwd=" + kwd + ", schoolName="
-				+ schoolName + ", memberNo=" + memberNo + ", check=" + check + ", attCount=" + attCount + "]";
+				+ schoolName + ", memberNo=" + memberNo + ", check=" + check + ", attCount=" + attCount + ", point="
+				+ point + "]";
 	}
 }

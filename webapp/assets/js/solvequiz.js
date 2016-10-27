@@ -11,8 +11,6 @@ $(function() {
 			answerList.push(obj);
 		}
 		
-		console.log(answerList);
-		
 		$.ajax({
 			url : "countquiz",
 			type : "POST",
@@ -31,7 +29,7 @@ $(function() {
 	});
 	
 	$(".btn-accusation").click(function() {
-		$("#accusation-reason").val("");
+		$("#accusation-reason").empty();
 		$('div.modal').modal();
 		var quizNo = $(this).val();
 		

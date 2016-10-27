@@ -11,6 +11,9 @@
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/memberlist.js"></script>
 </head>
 <body>
 <c:import url='/WEB-INF/views/admin/header.jsp'></c:import>
@@ -26,16 +29,20 @@
 			<tr class="active">
 				<th>번호</th>
 				<th>아이디</th>
-				<th>이름</th>
 				<th>경고</th>
+				<th>캔디</th>
 				<th>삭제</th>
 			</tr>
 			<c:forEach var='vo' items='${list }' varStatus='s'>
 				<tr>
 					<td>${vo.no }</td>
 					<td>${vo.id }</td>
-					<td>${vo.name }</td>
 					<td>${vo.penalty }</td>
+					<td>
+						<input type="hidden" class="memberNo" value="${vo.no }">
+						<input type="text" class="point" value="${vo.point }">
+						<button class="btn btn-default point-add">변경</button>
+					</td>
 					<td><a href="/readingbetter/admin/memberlist/delete/${vo.no }">삭제</a></td>
 				</tr>
 			</c:forEach>

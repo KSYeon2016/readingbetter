@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.MemberService;
 import kr.ac.readingbetter.vo.MemberVo;
+import kr.ac.readingbetter.vo.ScoresVo;
 
 @Controller
 @RequestMapping("/admin/memberlist")
@@ -34,5 +36,14 @@ public class AdminMemberController {
 	public String memberDelete(@PathVariable("no") Long no, @ModelAttribute MemberVo vo){
 		memberService.delete(vo);
 		return "redirect:/admin/memberlist";
+	}
+	
+	// 포인트 업데이트
+	@ResponseBody
+	@RequestMapping(value = "/updatePoint", method = RequestMethod.POST)
+	public void updatePoint(Integer point, Long memberNo, ScoresVo vo) {
+		vo.setPoint(point);
+		vo.setMemberNo(memberNo);
+		memberService.updatePoint(vo);
 	}
 }
