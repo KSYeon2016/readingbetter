@@ -116,15 +116,14 @@ public class ScoresService {
 	//랭킹 초기화
 	public void MonthReset(ScoresVo vo, HistoryVo historyVo){
 		Integer result = daysDao.selectMonth();
+		
 		if(result != null){
 			
 			//초기화 되기 전에 포인트 지급	
 			Long count1 = scoresDao.pointTop(1L);
 			Long count2 = scoresDao.pointTop(2L);
 			Long count3 = scoresDao.pointTop(3L);
-			System.out.println(count1);
-			System.out.println(count2);
-			System.out.println(count3);
+
 			for(int i=0;i<count1;i++){
 				String top1Id = scoresDao.monthlyRankReset(vo).get(i).getMemberNo().toString();
 				Long top1memberNo= Long.parseLong(top1Id);
@@ -133,6 +132,7 @@ public class ScoresService {
 				String point=scoresDao.monthlyRankReset(vo).get(i).getPoint().toString();
 				Integer pointInt=Integer.parseInt(point);
 				vo.setPoint(10+pointInt);
+				
 				//history에 기록하기
 				historyVo.setTitle("이달의 랭킹 1등 보상");
 				historyVo.setScore(0);
@@ -145,6 +145,7 @@ public class ScoresService {
 				//점수 업데이트
 				scoresDao.resetPoint(vo);
 			}
+			
 			if(count1 < 3){
 				for(int j = 0; j < count2; j++){
 					String top2Id = scoresDao.monthlyRankReset(vo).get((int) (j+count1)).getMemberNo().toString();

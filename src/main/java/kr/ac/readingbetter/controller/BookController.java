@@ -223,7 +223,7 @@ public class BookController {
 	
 	@RequestMapping(value="/countquiz", method=RequestMethod.POST)
 	@ResponseBody
-	public Integer resultQuiz(
+	public Integer countResult(
 			@RequestBody List<AnswerVo> answerList,
 			HttpSession session){
 		if (session.getAttribute("complete") != null) {

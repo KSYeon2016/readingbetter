@@ -313,49 +313,49 @@ public class ServiceController {
 
 	// 희망도서
 	// 희망도서 리스트
-		@RequestMapping("/wishbooklist")
-		public String wishBookList(Model model, WishbookVo wishbookVo) {
+	@RequestMapping("/wishbooklist")
+	public String wishBookList(Model model, WishbookVo wishbookVo) {
 			
-			if (wishbookVo.getPageNo() == null) {
-				wishbookVo.setPageNo(1);
-			}
-
-			if (wishbookVo.getwKwd() == null) {
-				wishbookVo.setwKwd("");
-				List<WishbookVo> listpage = wishbookService.listPage(wishbookVo);
-				model.addAttribute("listpage", listpage);
-			}
-
-			String wKwd = wishbookVo.getwKwd();
-			wishbookVo.setwKwd(wKwd);
-			
-			//페이징
-			int currentPage = wishbookVo.getPageNo();
-			int pageLength = 10;
-			int beginPage;
-
-			List<WishbookVo> list = wishbookService.listkwd(wishbookVo);
-			List<WishbookVo> listkwd = wishbookService.listKwdPage(wishbookVo);
-			model.addAttribute("listpage", listkwd);
-
-			int currentBlock = (int) Math.ceil((double) wishbookVo.getPageNo() / 5);
-
-			beginPage = (currentBlock - 1) * 5 + 1;
-
-			int total = (int) Math.ceil((double) list.size() / pageLength);
-			int endPage = currentBlock * 5;
-			if (endPage > total) {
-				endPage = total;
-			}
-
-			model.addAttribute("wKwd", wKwd);
-			model.addAttribute("beginPage", beginPage);
-			model.addAttribute("currentPage", currentPage);
-			model.addAttribute("endPage", endPage);
-			model.addAttribute("total", total);
-
-			return "service/wishbooklist";
+		if (wishbookVo.getPageNo() == null) {
+			wishbookVo.setPageNo(1);
 		}
+
+		if (wishbookVo.getwKwd() == null) {
+			wishbookVo.setwKwd("");
+			List<WishbookVo> listpage = wishbookService.listPage(wishbookVo);
+			model.addAttribute("listpage", listpage);
+		}
+
+		String wKwd = wishbookVo.getwKwd();
+		wishbookVo.setwKwd(wKwd);
+			
+		//페이징
+		int currentPage = wishbookVo.getPageNo();
+		int pageLength = 10;
+		int beginPage;
+
+		List<WishbookVo> list = wishbookService.listkwd(wishbookVo);
+		List<WishbookVo> listkwd = wishbookService.listKwdPage(wishbookVo);
+		model.addAttribute("listpage", listkwd);
+
+		int currentBlock = (int) Math.ceil((double) wishbookVo.getPageNo() / 5);
+
+		beginPage = (currentBlock - 1) * 5 + 1;
+
+		int total = (int) Math.ceil((double) list.size() / pageLength);
+		int endPage = currentBlock * 5;
+		if (endPage > total) {
+			endPage = total;
+		}
+
+		model.addAttribute("wKwd", wKwd);
+		model.addAttribute("beginPage", beginPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("total", total);
+
+		return "service/wishbooklist";
+	}
 	
 	// 희망도서 쓰기 화면 열기
 	@RequestMapping("/wishbookwriteform")

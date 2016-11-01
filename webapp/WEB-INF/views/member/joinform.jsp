@@ -40,14 +40,14 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">이름</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="inputName" placeholder="Name" name="name" value="김아무개">
+							<input type="text" class="form-control" id="inputName" placeholder="Name" name="name" value="">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-3 control-label">아이디</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="inputID" placeholder="ID" name="id" value="aa11">
+							<input type="text" class="form-control" id="inputID" placeholder="ID" name="id" value="">
 						</div>
 
 						<div class="col-sm-1">
@@ -59,21 +59,21 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">비밀번호</label>
 						<div class="col-sm-6">
-							<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="pw" value="aa11">
+							<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="pw" value="">
 						</div>
 					</div>
 							
 					<div class="form-group">
 						<label class="col-sm-3 control-label">비밀번호 확인</label>
 						<div class="col-sm-6">
-							<input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password" value="aa11">
+							<input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password" value="">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-sm-3 control-label">이메일</label>
 						<div class="col-sm-6">
-							<input type="Email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="kg00003@naver.com">
+							<input type="Email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="">
 						</div>
 
 						<div class="col-sm-1">
@@ -85,7 +85,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">전화번호</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="inputPhone" placeholder="PhoneNumber" name="tel" value="0101110000">
+							<input type="text" class="form-control" id="inputPhone" placeholder="PhoneNumber" name="tel" value="">
 						</div>
 					</div>
 
