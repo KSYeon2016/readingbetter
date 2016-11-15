@@ -17,6 +17,9 @@ import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.ReviewVo;
 
+/**
+ * 앱 독서활동
+ */
 @Controller
 @RequestMapping("/bookapp")
 public class AppBookController {
@@ -30,6 +33,7 @@ public class AppBookController {
 	@Autowired
 	private AccusationService accusationService;
 	
+	// 책 리스트
 	@ResponseBody
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public List<BookVo> List(BookVo bookvo) {
@@ -37,6 +41,7 @@ public class AppBookController {
 		return list;
 	}
 
+	// 리뷰 보기
 	@ResponseBody
 	@RequestMapping(value = "review", method = RequestMethod.GET)
 	public List<ReviewVo> Review(Long bookNo, ReviewVo reviewVo) {
@@ -45,6 +50,7 @@ public class AppBookController {
 		return list;
 	}
 
+	// 리뷰 쓰기
 	@ResponseBody
 	@RequestMapping(value = "insertreview", method = RequestMethod.GET)
 	public void InsertReview(
@@ -58,7 +64,7 @@ public class AppBookController {
 		reviewService.insert(vo);
 	}
 
-	// 리뷰 신고 하기
+	// 리뷰 신고하기
 	@ResponseBody
 	@RequestMapping(value = "insertReviewAccusation", method = RequestMethod.GET)
 	public void insertReviewAccusation(

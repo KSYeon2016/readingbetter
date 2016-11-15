@@ -34,6 +34,9 @@ import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.QuizVo;
 import kr.ac.readingbetter.vo.ReviewVo;
 
+/**
+ * 독서활동 카테고리
+ */
 @Controller
 @RequestMapping("/book")
 public class BookController {
@@ -62,8 +65,9 @@ public class BookController {
 	@Autowired
 	private AdminQuizService adminQuizService;
 
-	// 책 리스트
-	// 책 리스트 검색, 페이징
+	/*
+	 * 책 리스트
+	 */
 	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
 	public String bookListPage(BookVo bookvo, Model model) {
 		int pageLength =5;
@@ -77,6 +81,7 @@ public class BookController {
 			bookvo.setBkwd("");
 		}
 		
+		// 검색
 		String bkwd = bookvo.getBkwd();
 		bookvo.setBkwd(bkwd);
 		List<BookVo> list = bookService.getListService(bookvo);
@@ -84,6 +89,7 @@ public class BookController {
 
 		model.addAttribute("listpage", listkwd);
 
+		// 페이징
 		int currentBlock = (int) Math.ceil((double) bookvo.getPageNo() / pageLength);
 
 		int currentPage = bookvo.getPageNo();
@@ -140,9 +146,10 @@ public class BookController {
 		
 		return "book/buybook";
 	}
-	///////////////////////////////////////////////////////////////////////////
 
-	// 퀴즈 내기
+	/*
+	 * 퀴즈 내기
+	 */
 	// 퀴즈 내기 화면 열기
 	@RequestMapping(value = "/makequizform/{no}", method = RequestMethod.GET)
 	public String makeQuizForm(@PathVariable("no") Long no, Model model) {
@@ -165,9 +172,10 @@ public class BookController {
 		
 		return "redirect:/book/booklist";
 	}
-	///////////////////////////////////////////////////////////////////////////
 
-	// 퀴즈 풀기
+	/*
+	 * 퀴즈 풀기
+	 */
 	// 퀴즈 존재 여부 확인
 	@RequestMapping(value = "/existquiz", method = RequestMethod.POST)
 	@ResponseBody
@@ -195,6 +203,7 @@ public class BookController {
 		return "book/solvequizform";
 	}
 	
+	// 퀴즈 결과 화면 열기
 	@RequestMapping("/resultquiz")
 	public String resultQuiz(
 			@RequestParam(value = "count") Integer count,
@@ -221,6 +230,7 @@ public class BookController {
 		return "book/resultquiz";
 	}
 	
+	// 맞은 개수 카운팅
 	@RequestMapping(value="/countquiz", method=RequestMethod.POST)
 	@ResponseBody
 	public Integer countResult(
@@ -327,9 +337,10 @@ public class BookController {
 
 		return returnValue;
 	}
-	///////////////////////////////////////////////////////////////////////////
 
-	// 리뷰
+	/*
+	 * 리뷰
+	 */
 	// 리뷰 화면 열기
 	@RequestMapping(value = "/review/{no}", method = RequestMethod.GET)
 	public String review(

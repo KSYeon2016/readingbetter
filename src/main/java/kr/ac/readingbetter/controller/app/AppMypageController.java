@@ -15,6 +15,9 @@ import kr.ac.readingbetter.vo.GifticonVo;
 import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.ScoresVo;
 
+/**
+ * 앱 나의 활동
+ */
 @Controller
 @RequestMapping("/mypageapp")
 public class AppMypageController {
@@ -36,6 +39,7 @@ public class AppMypageController {
 		return vo;
 	}
 	
+	// 히스토리
 	@ResponseBody
 	@RequestMapping(value = "history", method = RequestMethod.GET)
 	public List<HistoryVo> List(HistoryVo historyvo, Long no) {

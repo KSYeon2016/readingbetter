@@ -63,6 +63,7 @@ public class MemberService {
 		return vo;
 	}
 
+	// 회원가입
 	public void insertMember(MemberVo vo) {
 		memberDao.insertMember(vo);
 		
@@ -128,6 +129,7 @@ public class MemberService {
 		return 1;
 	}
 	
+	// 출석체크
 	public int attendAction(Long no){
 		Integer bonus = 10;
 		

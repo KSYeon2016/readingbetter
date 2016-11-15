@@ -61,6 +61,7 @@ public class AdminBookService {
 		bookDao.insert(vo);
 	}
 	
+	// 도서 수정
 	public void modify(BookVo vo){
 		Long authorNo = authorDao.selectAuthor(vo.getAuthorName());
 		

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.ScoresVo;
 
+/**
+ * 앱 랭킹
+ */
 @Controller
 @RequestMapping("/rankapp")
 public class AppRankController {

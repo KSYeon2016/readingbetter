@@ -113,7 +113,7 @@ public class ScoresService {
 		return scoresDao.myScores(no);
 	}
 	
-	//랭킹 초기화
+	// 한 달 랭킹 초기화
 	public void MonthReset(ScoresVo vo, HistoryVo historyVo){
 		Integer result = daysDao.selectMonth();
 		

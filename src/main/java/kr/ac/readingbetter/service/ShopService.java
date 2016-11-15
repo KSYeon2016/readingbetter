@@ -59,6 +59,7 @@ public class ShopService {
 		return shop;
 	}
 
+	// 상품 구매 시 기프티콘 메일로 발송
 	public void sendEmail(MemberVo vo, ShopVo shopVo) throws Exception {
 		// 로그인한 회원 정보 불러오기
 		vo = memberDao.selectMyinfo(vo.getNo());

@@ -1,4 +1,5 @@
 package kr.ac.readingbetter.controller.app;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +11,9 @@ import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.ScoresVo;
 
-
-
+/**
+ * 앱 사용자 활동
+ */
 @Controller
 @RequestMapping("/memberapp")
 
@@ -23,6 +25,7 @@ public class AppMemberController {
 	@Autowired
 	private ScoresService scoresService;
 
+	// 회원가입
 	@ResponseBody
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public MemberVo historyapp(String id, String pw, MemberVo vo, HistoryVo histroyVo, ScoresVo scoresVo) {
@@ -50,6 +53,7 @@ public class AppMemberController {
 		return authUser;
 	}
 	
+	// 로그인
 	@ResponseBody
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public void joinApp(MemberVo memberVo, String name, String id, String pw, String email, String tel) {

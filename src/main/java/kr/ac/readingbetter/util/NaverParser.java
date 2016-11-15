@@ -13,6 +13,9 @@ import org.w3c.dom.NodeList;
 
 import kr.ac.readingbetter.vo.BuyBookVo;
 
+/**
+ * 네이버 쇼핑 API 응답 결과 파싱
+ */
 public class NaverParser {
 	public static String getContent(Element element, String tagName){
 		NodeList list = element.getElementsByTagName(tagName);

@@ -22,6 +22,9 @@ import kr.ac.readingbetter.vo.CertificationVo;
 import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.QuizVo;
 
+/**
+ * 앱 퀴즈 풀기
+ */
 @Controller
 @RequestMapping("/quizapp")
 public class AppQuizController {
@@ -44,6 +47,7 @@ public class AppQuizController {
 	@Autowired
 	private AccusationService accusationService;
 
+	// 퀴즈 내기
 	@ResponseBody
 	@RequestMapping(value = "insertquiz", method = RequestMethod.GET)
 	public void InsertQuiz(@ModelAttribute QuizVo vo, Long bookNo, String quiz, String ex1, String ex2, String ex3,
@@ -58,6 +62,7 @@ public class AppQuizController {
 		bookService.quizAdd(vo);
 	}
 
+	// 퀴즈 풀기
 	@ResponseBody
 	@RequestMapping(value = "solvequiz", method = RequestMethod.GET)
 	public List<QuizVo> solveQuizForm(Long no) {
@@ -65,6 +70,7 @@ public class AppQuizController {
 		return list;
 	}
 
+	// 퀴즈 결과 동작
 	@ResponseBody
 	@RequestMapping(value = "historyScores", method = RequestMethod.GET)
 	public void InsertHistory(HistoryVo historyVo, Long memberNo, Long bookNo, Integer score, Integer point) {
@@ -77,10 +83,12 @@ public class AppQuizController {
 		BookVo vo = bookService.getByNo(bookNo);
 		historyVo.setTitle(vo.getTitle());
 		historyService.insertHistory(historyVo);
+		
 		// scores update
 		scoresService.updateScores(historyVo);
 	}
 
+	// 인증 성공 시 동작
 	@ResponseBody
 	@RequestMapping(value = "cert", method = RequestMethod.GET)
 	public void InsertCert(CertificationVo certVo, Long memberNo, Long bookNo) {
@@ -90,6 +98,7 @@ public class AppQuizController {
 		certificationService.insertCertification(certVo);
 	}
 
+	// 인증 여부 확인
 	@ResponseBody
 	@RequestMapping(value = "certification", method = RequestMethod.GET)
 	public CertificationVo certification(CertificationVo certVo, Long memberNo, Long bookNo) {
@@ -99,6 +108,7 @@ public class AppQuizController {
 		return certVo2;
 	}
 
+	// 추가점수 카드 가져오기
 	@ResponseBody
 	@RequestMapping(value = "card", method = RequestMethod.GET)
 	public CardVo Card() {
@@ -107,7 +117,7 @@ public class AppQuizController {
 		return cardVo;
 	}
 	
-	// 퀴즈 신고 하기
+	// 퀴즈 신고하기
 	@ResponseBody
 	@RequestMapping(value = "insertQuizAccusation", method = RequestMethod.GET)
 	public void insertQuizAccusation(AccusationVo vo, QuizVo quizVo, String reason, Long memberNo, Long keyNo) {

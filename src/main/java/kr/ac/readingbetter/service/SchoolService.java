@@ -26,6 +26,7 @@ public class SchoolService {
 
 	public List<SchoolVo> selectSchoolTitle() {
 		List<SchoolVo> list = schoolDao.selectSchoolTitle();
+		
 		return list;
 	}
 }

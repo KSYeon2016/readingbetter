@@ -13,11 +13,11 @@
 				<!-- <form action="/readingbetter/main/login" method="post"> -->
 					<div class="form-group">
 						<label for="id">아이디:</label>
-						<input type="text" class="form-control input-sm" id="id" name="id">
+						<input type="text" class="form-control input-sm" id="id" name="id" value="1234">
 					</div>
 					<div class="form-group">
 						<label for="pw">비밀번호:</label>
-						<input type="password" class="form-control input-sm" id="pw" name="pw">
+						<input type="password" class="form-control input-sm" id="pw" name="pw" value="1234">
 					</div>
 					<!--<div class="checkbox">
 					<label><input type="checkbox"> Remember me</label></div> -->

@@ -21,6 +21,9 @@ import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.ScoresVo;
 import kr.ac.readingbetter.vo.ShopVo;
 
+/**
+ * 상점 카테고리
+ */
 @Controller
 public class ShopController {
 

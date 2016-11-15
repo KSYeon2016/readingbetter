@@ -18,10 +18,11 @@ public class ReviewService {
 		List<ReviewVo> list = reviewDao.getList(vo);
 		return list;
 	}
-	public List<ReviewVo> getListApp(ReviewVo vo) {  
-				List<ReviewVo> list = reviewDao.getListApp(vo); 
-				return list;  
-			} 
+
+	public List<ReviewVo> getListApp(ReviewVo vo) {
+		List<ReviewVo> list = reviewDao.getListApp(vo);
+		return list;
+	}
 
 	public void reviewDelete(Long no) {
 		reviewDao.reviewDelete(no);

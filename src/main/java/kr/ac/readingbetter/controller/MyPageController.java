@@ -20,6 +20,9 @@ import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.ScoresVo;
 
+/**
+ * 나의 정보 카테고리
+ */
 @Controller
 @RequestMapping("/mypage")
 public class MyPageController {
@@ -36,7 +39,9 @@ public class MyPageController {
 	@Autowired
 	private HistoryService historyService;
 
-	// 내 정보
+	/*
+	 * 내 정보
+	 */
 	// 회원 정보 화면 열기
 	@RequestMapping("/info")
 	public String Info(HttpSession session, Model model) {
@@ -69,6 +74,7 @@ public class MyPageController {
 		return "mypage/modifyform";
 	}
 
+	// 내 정보 수정
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(MemberVo vo, HttpSession session) {
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
@@ -77,14 +83,15 @@ public class MyPageController {
 		return "redirect:/mypage/info";
 	}
 
+	// 학교 찾기
 	@RequestMapping("/findform")
 	public String FindForm() {
 		return "mypage/findform";
 	}
 
-	////////////////////////////////////////////////////////////////////////////
-
-	// 내 활동
+	/*
+	 * 내 활동
+	 */
 	// 히스토리 화면 열기
 	@RequestMapping("/history")
 	public String History(HttpSession session, Model model, HistoryVo historyvo, CertificationVo certificationvo) {
@@ -108,6 +115,8 @@ public class MyPageController {
 		}
 		List<HistoryVo> list = historyService.getList(historyvo);
 		List<HistoryVo> listpage = historyService.getListPage(historyvo);
+		
+		// 페이징
 		int pageLength = 5;
 		int beginPage;
 		int currentBlock = (int) Math.ceil((double) historyvo.getPageNo() / pageLength);
@@ -135,7 +144,9 @@ public class MyPageController {
 		return "mypage/history";
 	}
 
-	// 기프티콘 보기
+	/*
+	 * 기프티콘
+	 */
 	@RequestMapping("/gifticon")
 	public String Gifticon(HttpSession session, GifticonVo vo, Model model) {
 		

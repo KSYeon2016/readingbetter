@@ -152,6 +152,7 @@ public class BookService {
 		return todayBookList;
 	}
 	
+	// 책구매 리스트 가져오기
 	public List<BuyBookVo> buyBook(String title){
 		InputStream content = null;
 		List<BuyBookVo> buyBookList = new ArrayList<>();

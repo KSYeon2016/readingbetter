@@ -14,6 +14,9 @@ import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.ScoresVo;
 
+/**
+ * 랭킹 카테고리
+ */
 @Controller
 @RequestMapping("/ranking")
 public class RankingController {
@@ -21,7 +24,6 @@ public class RankingController {
 	@Autowired
 	private ScoresService scoresService;
 
-	/* 페이지 */
 	// 요약 페이지 및 랭킹 출력
 	@RequestMapping("/summary")
 	public String summary(ScoresVo vo, Model model, HttpSession session) {
@@ -136,6 +138,7 @@ public class RankingController {
 			vo = scoresService.myTotalRank(no);
 			model.addAttribute("myTotalRank", vo);
 		}
+		
 		return "ranking/honor";
 	}
 }

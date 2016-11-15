@@ -16,6 +16,9 @@ import kr.ac.readingbetter.service.SchoolService;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.SchoolVo;
 
+/**
+ * 사용자 로그인전 활동(로그인, 회원가입, 아이디/비번 찾기 등)
+ */
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -26,15 +29,18 @@ public class MemberController {
 	@Autowired
 	private SchoolService schoolService;
 
-	// 로그인
+	/*
+	 * 로그인
+	 */
 	// 로그인 화면 열기
 	@RequestMapping("/loginform")
 	public String loginForm() {
 		return "member/loginform";
 	}
-	////////////////////////////////////////////////////////////////////////////
 	
-	// 회원가입
+	/*
+	 * 회원가입
+	 */
 	// 회원가입 화면 열기
 	@RequestMapping("/joinform")
 	public String joinForm(Model model) {
@@ -89,9 +95,10 @@ public class MemberController {
 		memberService.insertMember(vo);
 		return "redirect:/main";
 	}
-	////////////////////////////////////////////////////////////////////////////
 	
-	// 아이디/비번 찾기
+	/*
+	 * 아이디/비밀번호 찾기
+	 */
 	// 아이디/비번 찾기 화면 열기
 	@RequestMapping("/findform")
 	public String FindForm() {

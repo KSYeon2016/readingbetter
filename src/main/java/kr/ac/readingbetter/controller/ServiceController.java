@@ -26,6 +26,9 @@ import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.NoticeVo;
 import kr.ac.readingbetter.vo.WishbookVo;
 
+/**
+ * 고객센터 카테고리
+ */
 @Controller
 @RequestMapping("/service")
 public class ServiceController {
@@ -45,7 +48,9 @@ public class ServiceController {
 	@Autowired
 	private BoardService boardService;
 	
-	// 공지
+	/*
+	 * 공지
+	 */
 	// 공지 리스트 띄우기
 	@RequestMapping(value = "/noticelist", method = RequestMethod.GET)
 	public String noticeList(Model model, NoticeVo vo,
@@ -199,9 +204,10 @@ public class ServiceController {
 		commentsService.deleteComments(no);
 		return "redirect:/service/noticeview/" + noticeNo;
 	}
-	///////////////////////////////////////////////////////////////////////////
 	
-	// 문의
+	/*
+	 * 문의
+	 */
 	// 문의 리스트
 	@RequestMapping("/questionlist")
 	public String questionList(Model model, BoardVo vo,
@@ -309,9 +315,10 @@ public class ServiceController {
 		boardService.updateAccept(no);
 		return "redirect:/service/questionlist";
 	}
-	///////////////////////////////////////////////////////////////////////////
 
-	// 희망도서
+	/*
+	 * 희망도서 신청
+	 */
 	// 희망도서 리스트
 	@RequestMapping("/wishbooklist")
 	public String wishBookList(Model model, WishbookVo wishbookVo) {

@@ -43,6 +43,9 @@ import kr.ac.readingbetter.vo.ScoresVo;
 import kr.ac.readingbetter.vo.ShopVo;
 import kr.ac.readingbetter.vo.WishbookVo;
 
+/**
+ * 관리자 페이지
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -89,6 +92,9 @@ public class AdminController {
 	@Autowired
 	private WishbookService wishBookService;
 	
+	/*
+	 * 관리자 메인페이지
+	 */
 	@RequestMapping("/main")
 	public String main() {
 		return "admin/main";
@@ -97,6 +103,7 @@ public class AdminController {
 	/*
 	 * 신고 관리
 	 */
+	// 신고 리스트
 	@RequestMapping("/accusationlist")
 	public String accusationList(Model model) {
 		List<AccusationVo> list = adminAccusationService.getList();
@@ -104,6 +111,7 @@ public class AdminController {
 		return "admin/accusationlist";
 	}
 
+	// 신고 글 보기
 	@RequestMapping(value = "/accusationview/{no}", method = RequestMethod.GET)
 	public String accusationView(@PathVariable("no") Long no, Model model) {
 		AccusationVo vo = adminAccusationService.getAccuView(no);
@@ -113,6 +121,7 @@ public class AdminController {
 		return "admin/accusationview";
 	}
 
+	// 신고 상태 변경
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@ResponseBody
 	public void modify(@RequestBody AccusationVo vo) {
@@ -122,6 +131,7 @@ public class AdminController {
 	/*
 	 * 도서 관리
 	 */
+	// 도서 리스트
 	@RequestMapping("/booklist")
 	public String bookList(BookVo bookvo, Model model) {
 		int pageLength = 5;
@@ -152,13 +162,14 @@ public class AdminController {
 		return "admin/booklist";
 	}
 
-	// 책 저장
+	// 책 추가 폼
 	@RequestMapping("/bookaddform")
 	public String bookaddList(Model model) {
 
 		return "admin/bookaddform";
 	}
 	
+	// 책 추가 동작
 	@RequestMapping("/insertbook")
 	public String Insert(@ModelAttribute BookVo vo) {
 		adminBookService.insert(vo);
@@ -174,7 +185,7 @@ public class AdminController {
 		return "admin/bookmodifyform";
 	}
 	
-	// 책 수정
+	// 책 수정 동작
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String bookModify(BookVo bookVo, @RequestParam(value="pageNo") Integer pageNo){
 		if(pageNo == null){
@@ -186,6 +197,7 @@ public class AdminController {
 		return "redirect:/admin/booklist?pageNo=" + pageNo;
 	}
 	
+	// 책이름 검색
 	@RequestMapping(value = "/checkbook", method = RequestMethod.POST)
 	@ResponseBody
 	public List<BookVo> checkBook(@RequestParam(value = "title") String title) {
@@ -195,6 +207,7 @@ public class AdminController {
 		return bookList;
 	}
 	
+	// 작가 검색
 	@RequestMapping(value = "/writercheck", method = RequestMethod.POST)
 	@ResponseBody
 	public List<AuthorVo> checkwriter(@RequestParam(value = "kwd2") String kwd2,AuthorVo authorvo) {
@@ -207,6 +220,7 @@ public class AdminController {
 		return authorlist;
 	}
 	
+	// 출판사 검색
 	@RequestMapping(value = "/publishercheck", method = RequestMethod.POST)
 	@ResponseBody
 	public List<PublisherVo> checkpublisher(@RequestParam(value = "kwd1") String kwd1,PublisherVo publishervo) {
@@ -223,6 +237,7 @@ public class AdminController {
 	/*
 	 * 출판사,작가 관리
 	 */
+	// 출판사, 작가 리스트
 	@RequestMapping("/bookinfolist")
 	public String bookInfoList(Model model, PublisherVo publishervo, AuthorVo authorvo) {
 		if (authorvo.getKwd2() == null) {
@@ -241,12 +256,14 @@ public class AdminController {
 		return "admin/bookinfolist";
 	}
 
+	// 출판사 추가
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insertPublisher(@ModelAttribute PublisherVo vo) {
 		publisherService.insert(vo);
 		return "redirect:/admin/bookinfolist";
 	}
 
+	// 작가 추가
 	@RequestMapping(value = "/insertauthor", method = RequestMethod.POST)
 	public String insertAuthor(@ModelAttribute AuthorVo vo) {
 		authorService.insert(vo);
@@ -305,6 +322,7 @@ public class AdminController {
 	/*
 	 * 회원 관리
 	 */
+	// 회원 리스트
 	@RequestMapping(value="/memberlist", method=RequestMethod.GET)
 	public String memberList(Model model, MemberVo vo) {
 		if(vo.getKwd() == null){
@@ -315,6 +333,7 @@ public class AdminController {
 		return "admin/memberlist";
 	}
 	
+	// 회원 삭제
 	@RequestMapping("/memberlist/delete/{no}")
 	public String memberDelete(@PathVariable("no") Long no, @ModelAttribute MemberVo vo){
 		memberService.delete(vo);
@@ -333,6 +352,7 @@ public class AdminController {
 	/*
 	 * 공지 관리
 	 */
+	// 공지 리스트
 	@RequestMapping(value = "/noticelist", method = RequestMethod.GET)
 	public String noticeList(Model model, NoticeVo vo) {
 		List<NoticeVo> list = noticeService.getList(vo);
@@ -340,17 +360,20 @@ public class AdminController {
 		return "admin/noticelist";
 	}
 	
+	// 공지 쓰기 폼
 	@RequestMapping(value = "/noticewriteform", method = RequestMethod.GET)
 	public String noticeWriteForm() {
 		return "admin/noticewriteform";
 	}
 	
+	// 공지 쓰기
 	@RequestMapping(value = "/noticewrite", method = RequestMethod.POST)
 	public String noticeWrite(@ModelAttribute NoticeVo vo) {
 		noticeService.noticeWrite(vo);
 		return "redirect:/admin/noticelist";
 	}
 
+	// 공지 보기
 	@RequestMapping(value = "/noticeview/{no}", method = RequestMethod.GET)
 	public String noticeView(@PathVariable("no") Long no, Model model) {
 		NoticeVo vo = noticeService.noticeView(no);
@@ -358,6 +381,7 @@ public class AdminController {
 		return "admin/noticeview";
 	}
 
+	// 공지 수정 폼
 	@RequestMapping(value = "/noticemodifyform/{no}", method = RequestMethod.GET)
 	public String noticeModifyForm(@PathVariable("no") Long no, Model model) {
 		NoticeVo vo = noticeService.noticeView(no);
@@ -365,6 +389,7 @@ public class AdminController {
 		return "admin/noticemodifyform";
 	}
 	
+	// 공지 수정
 	@RequestMapping(value = "/noticemodify", method = RequestMethod.POST)
 	public String noticeModify(@ModelAttribute NoticeVo vo) {
 		noticeService.noticeModify(vo);
@@ -395,7 +420,7 @@ public class AdminController {
 		return "admin/quizview";
 	}
 	
-	// 퀴즈 업데이트
+	// 퀴즈 상태 변경
 	@RequestMapping(value = "/quizUpdate", method = RequestMethod.POST)
 	public String quizUpdate(@ModelAttribute QuizVo vo) {
 		adminQuizService.quizUpdate(vo);
@@ -453,6 +478,7 @@ public class AdminController {
 	/*
 	 * 학교 관리
 	 */
+	// 학교 리스트
 	@RequestMapping("/schoollist")
 	public String schoolList(Model model, @RequestParam(value="kwd", required=false, defaultValue="") String kwd) {
 		if(kwd == null){
@@ -466,6 +492,7 @@ public class AdminController {
 		return "admin/schoollist";
 	}
 	
+	// 학교 추가
 	@RequestMapping(value="/schoollist/insert", method=RequestMethod.POST)
 	public String insertSchool(@RequestParam(value="add", required=false, defaultValue="") String title){
 		schoolService.insertSchool(title);
@@ -530,6 +557,7 @@ public class AdminController {
 	/*
 	 * 희망도서 관리
 	 */
+	// 희망도서 리스트
 	@RequestMapping("/wishbooklist")
 	public String wishBookList(Model model) {
 		List<WishbookVo> list = wishBookService.getList();
@@ -538,6 +566,7 @@ public class AdminController {
 		return "admin/wishbooklist";
 	}
 
+	// 희망도서 글 보기
 	@RequestMapping("/wishbooklist/wishbookview")
 	public String wishBookView(Model model, WishbookVo vo, PublisherVo pVo, BookVo bVo) {
 		vo = wishBookService.getView(vo);
@@ -560,6 +589,7 @@ public class AdminController {
 		return "admin/wishbookview";
 	}
 
+	// 희망도서 승인 시 동작
 	@RequestMapping(value = "/wishbooklist/wishbookview/accept", method = RequestMethod.POST)
 	public String wishBookAccept(@ModelAttribute WishbookVo vo) {
 		List<PublisherVo> pList = publisherService.selectPublisher(vo);
@@ -575,6 +605,7 @@ public class AdminController {
 		return "redirect:/admin/wishbooklist";
 	}
 
+	// 희망도서 반려 시 동작
 	@RequestMapping("/wishbooklist/wishbookview/refuse")
 	public String wishBookRefuse(WishbookVo vo) {
 		wishBookService.updateAcceptToTwo(vo);

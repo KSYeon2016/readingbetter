@@ -46,6 +46,7 @@ public class AdminAccusationService {
 		return adminAccusation;
 	}
 	
+	// 신고 내용 보기
 	public AccusationVo getAccuView(Long no) {
 		AccusationVo vo = new AccusationVo();
 		Long identity = accusationDao.selectIdentity(no);
@@ -62,6 +63,7 @@ public class AdminAccusationService {
 		return vo;
 	}
 	
+	// 신고 승인, 반려, 패널티 시 동작
 	public void updateAccept(AccusationVo vo) {
 		if (vo.getAccept().equals("1")) { // 신고 승인
 			accusationDao.updateAccept(vo);

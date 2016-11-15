@@ -22,6 +22,9 @@ import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.NoticeVo;
 import kr.ac.readingbetter.vo.ScoresVo;
 
+/**
+ * 메인
+ */
 @Controller
 @RequestMapping("/main")
 public class MainController {
@@ -38,7 +41,9 @@ public class MainController {
 	@Autowired
 	private BookService bookService;
 	
-	// 메인
+	/*
+	 * 메인 컨텐츠
+	 */
 	// 메인 화면 열기
 	@RequestMapping("")
 	public String Main(ScoresVo vo, NoticeVo nvo, Model model, HttpSession session, HistoryVo histroyVo) {
@@ -111,9 +116,10 @@ public class MainController {
 		
 		return "main/main";
 	}
-	////////////////////////////////////////////////////////////////////////////
 	
-	// 네비
+	/*
+	 * 네비(사이드바)
+	 */
 	// 네비의 로그인
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
@@ -150,9 +156,10 @@ public class MainController {
 		
 		return "main";
 	}
-	////////////////////////////////////////////////////////////////////////////
 	
-	// 헤더
+	/*
+	 * 헤더
+	 */
 	// 헤더에 로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
@@ -162,35 +169,32 @@ public class MainController {
 
 		return "redirect:/main";
 	}
-	////////////////////////////////////////////////////////////////////////////
 	
-	// 푸터
-	// 푸터의 이용법
+	/*
+	 * 푸터
+	 */
+	// 이용법
 	@RequestMapping("/manual")
 	public String Manual() {
 		return "main/manual";
 	}
 
-	// 푸터의 소개
+	// 소개
 	@RequestMapping("/siteinfo")
 	public String SiteInfo() {
 		return "main/siteinfo";
 	}
 
-	// 푸터의 사이트맵
+	// 사이트맵
 	@RequestMapping("/sitemap")
 	public String SiteMap() {
 		return "main/sitemap";
 	}
 	
+	// 출석체크창 다시보지 않기
 	@RequestMapping(value="/removeattend", method=RequestMethod.POST)
 	@ResponseBody
 	public void removeAttend(HttpSession session){
 		session.removeAttribute("checkAttend");
-	}
-	
-	@RequestMapping(value = "/newmain")
-	public String newMain(){
-		return "main/index";
 	}
 }
